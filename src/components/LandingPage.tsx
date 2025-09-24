@@ -77,10 +77,6 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
               Get Started
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button size="lg" variant="outline" className="group">
-              <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-              Watch Demo
-            </Button>
           </div>
         </div>
       </section>
