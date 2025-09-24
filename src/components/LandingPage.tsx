@@ -8,6 +8,8 @@ interface LandingPageProps {
 }
 
 const LandingPage = ({ onGetStarted }: LandingPageProps) => {
+  const backgroundImageUrl = "https://images.pexels.com/photos/9800029/pexels-photo-9800029.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop";
+
   const features = [
     {
       icon: Shield,
@@ -39,21 +41,21 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
   ];
 
   return (
-    <div className="min-h-screen bg-background relative">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
-        style={{
-          backgroundImage: `url('https://images.pexels.com/photos/9800029/pexels-photo-9800029.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop')`
-        }}
-      />
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('${backgroundImageUrl}')`
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-background/85" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-secondary/5" />
+      </div>
+      
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden z-10">
-        <div 
-          className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/20"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/90 to-background/95" />
-        
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
@@ -80,7 +82,7 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
           </p>
           
           <div className="flex justify-center items-center animate-fade-in delay-400">
-            <Button size="lg" className="shadow-xl hover:shadow-2xl transition-all duration-300" onClick={onGetStarted}>
+            <Button size="lg" className="shadow-xl hover:shadow-2xl transition-all duration-300 px-8 py-6 text-lg" onClick={onGetStarted}>
               Get Started
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
