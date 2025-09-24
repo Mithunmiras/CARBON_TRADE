@@ -39,9 +39,16 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
+        style={{
+          backgroundImage: `url('https://images.pexels.com/photos/9800029/pexels-photo-9800029.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop')`
+        }}
+      />
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden z-10">
         <div 
           className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/20"
         />
@@ -72,7 +79,7 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
             The world's most trusted platform for industrial carbon footprint measurement with anti-cheat validation and audit-ready reporting.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in delay-400">
+          <div className="flex justify-center items-center animate-fade-in delay-400">
             <Button size="lg" className="shadow-xl hover:shadow-2xl transition-all duration-300" onClick={onGetStarted}>
               Get Started
               <ArrowRight className="ml-2 h-5 w-5" />
