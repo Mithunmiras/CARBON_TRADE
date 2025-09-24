@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Bell, Settings, User } from "lucide-react";
 
 interface DashboardProps {
-  userRole: "company" | "auditor" | "admin";
+  userRole: "company" | "auditor" | "admin" | "domestic";
 }
 
 const Dashboard = ({ userRole }: DashboardProps) => {
@@ -16,13 +16,15 @@ const Dashboard = ({ userRole }: DashboardProps) => {
   const roleColors = {
     company: "bg-primary text-primary-foreground",
     auditor: "bg-secondary text-secondary-foreground", 
-    admin: "bg-warning text-warning-foreground"
+    admin: "bg-warning text-warning-foreground",
+    domestic: "bg-accent text-accent-foreground"
   };
 
   const roleLabels = {
     company: "Industry User",
     auditor: "Auditor",
-    admin: "Administrator"
+    admin: "Administrator",
+    domestic: "Domestic User"
   };
 
   return (

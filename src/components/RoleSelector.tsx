@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Users, Shield, Settings, ArrowRight } from "lucide-react";
 
 interface RoleSelectorProps {
-  onRoleSelect: (role: "company" | "auditor" | "admin") => void;
+  onRoleSelect: (role: "company" | "auditor" | "admin" | "domestic") => void;
 }
 
 const RoleSelector = ({ onRoleSelect }: RoleSelectorProps) => {
@@ -35,6 +35,15 @@ const RoleSelector = ({ onRoleSelect }: RoleSelectorProps) => {
       badge: "Management",
       color: "bg-warning text-warning-foreground",
       features: ["User Management", "System Analytics", "Ledger Operations", "Platform Settings"]
+    },
+    {
+      id: "domestic" as const,
+      title: "Domestic User",
+      description: "Track household energy consumption, calculate personal carbon footprint, and get eco-friendly recommendations.",
+      icon: Users,
+      badge: "Personal",
+      color: "bg-accent text-accent-foreground",
+      features: ["Energy Tracking", "Carbon Calculator", "Eco Tips", "Cost Analysis"]
     }
   ];
 

@@ -5,7 +5,7 @@ import Dashboard from "@/components/Dashboard";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
-type UserRole = "company" | "auditor" | "admin" | null;
+type UserRole = "company" | "auditor" | "admin" | "domestic" | null;
 type AppView = "landing" | "roleSelect" | "dashboard";
 
 const App = () => {

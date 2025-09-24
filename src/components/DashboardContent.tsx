@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 interface DashboardContentProps {
-  userRole: "company" | "auditor" | "admin";
+  userRole: "company" | "auditor" | "admin" | "domestic";
   currentView: string;
 }
 
@@ -48,11 +48,13 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
               {userRole === "company" && "Carbon Dashboard"}
               {userRole === "auditor" && "Audit Overview"}
               {userRole === "admin" && "Platform Administration"}
+              {userRole === "domestic" && "Home Energy Dashboard"}
             </h2>
             <p className="text-muted-foreground mt-1">
               {userRole === "company" && "Monitor your carbon footprint and validation status"}
               {userRole === "auditor" && "Review flagged records and validation queue"}
               {userRole === "admin" && "Manage platform operations and system health"}
+              {userRole === "domestic" && "Track your household energy consumption and carbon footprint"}
             </p>
           </div>
           <Button className="bg-gradient-primary shadow-elegant hover:shadow-glow transition-all">
@@ -60,6 +62,7 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
             {userRole === "company" && "Upload Data"}
             {userRole === "auditor" && "New Audit"}
             {userRole === "admin" && "System Report"}
+            {userRole === "domestic" && "Add Reading"}
           </Button>
         </div>
 
@@ -147,6 +150,7 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
               {userRole === "company" && "Facility Performance"}
               {userRole === "auditor" && "Industry Overview"}
               {userRole === "admin" && "Top Industries"}
+              {userRole === "domestic" && "Monthly Usage"}
             </CardTitle>
             <CardDescription>
               Recent carbon emissions data and validation status

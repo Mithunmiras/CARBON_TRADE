@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/sidebar";
 
 interface AppSidebarProps {
-  userRole: "company" | "auditor" | "admin";
+  userRole: "company" | "auditor" | "admin" | "domestic";
   currentView: string;
   onViewChange: (view: string) => void;
 }
@@ -59,10 +59,19 @@ export function AppSidebar({ userRole, currentView, onViewChange }: AppSidebarPr
     { id: "settings", title: "System Settings", icon: Settings },
   ];
 
+  const domesticMenuItems = [
+    { id: "overview", title: "Home Dashboard", icon: Home },
+    { id: "energy", title: "Energy Tracking", icon: BarChart3 },
+    { id: "calculator", title: "Carbon Calculator", icon: TrendingUp },
+    { id: "tips", title: "Eco Tips", icon: CheckCircle },
+    { id: "bills", title: "Bills & Costs", icon: FileText },
+  ];
+
   const menuItems = {
     company: companyMenuItems,
     auditor: auditorMenuItems,
-    admin: adminMenuItems
+    admin: adminMenuItems,
+    domestic: domesticMenuItems
   };
 
   const getNavClasses = (itemId: string) => {
