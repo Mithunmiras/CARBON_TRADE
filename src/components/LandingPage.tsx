@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Shield, TrendingUp, FileCheck, Users, ArrowRight, Factory, Leaf, BarChart3 } from "lucide-react";
-import heroImage from "@/assets/hero-industrial.jpg";
+import { Shield, TrendingUp, FileCheck, Users, ArrowRight, Factory, Leaf, BarChart3, Play } from "lucide-react";
 
 interface LandingPageProps {
   onGetStarted: () => void;
@@ -44,10 +43,16 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroImage})` }}
+          className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/20"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-secondary/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/90 to-background/95" />
+        
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+        </div>
         
         <div className="relative z-10 container mx-auto px-6 text-center">
           <Badge variant="secondary" className="mb-6 bg-primary-glow/20 text-primary-foreground border-primary-glow/30">
@@ -55,7 +60,7 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
             Smart Carbon Measurement Platform
           </Badge>
           
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight animate-fade-in">
             Measure, Validate &
             <br />
             <span className="bg-gradient-to-r from-primary-glow to-secondary bg-clip-text text-transparent">
@@ -63,17 +68,18 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-primary-foreground/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in delay-200">
             The world's most trusted platform for industrial carbon footprint measurement with anti-cheat validation and audit-ready reporting.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" variant="secondary" className="group" onClick={onGetStarted}>
-              Start Free Trial
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in delay-400">
+            <Button size="lg" className="group bg-gradient-primary hover:shadow-glow transition-all duration-300" onClick={onGetStarted}>
+              Get Started
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
-              View Demo
+            <Button size="lg" variant="outline" className="group">
+              <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+              Watch Demo
             </Button>
           </div>
         </div>
@@ -147,7 +153,7 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
           <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
             Join industry leaders who trust our platform for accurate, verifiable carbon measurement and reporting.
           </p>
-          <Button size="lg" variant="secondary" className="shadow-xl" onClick={onGetStarted}>
+          <Button size="lg" variant="secondary" className="shadow-xl hover:shadow-2xl transition-all duration-300" onClick={onGetStarted}>
             Get Started Today
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>

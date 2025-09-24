@@ -12,7 +12,9 @@ import {
   Fuel,
   BarChart3,
   Upload,
-  Shield
+  Shield,
+  Award,
+  XCircle
 } from "lucide-react";
 
 interface DashboardContentProps {
@@ -31,6 +33,19 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
     lastUpdate: "2 hours ago"
   };
 
+  const mockCarbonScore = {
+    score: 87,
+    grade: "B+",
+    improvement: 12,
+    trend: "improving"
+  };
+
+  const mockVerificationStats = {
+    verified: 1247,
+    notVerified: 156,
+    pending: 89
+  };
+
   const mockIndustries = [
     { name: "Steel Manufacturing", emissions: 4200, trend: -5.2, status: "validated" },
     { name: "Chemical Plant A", emissions: 3100, trend: 2.1, status: "flagged" },
@@ -45,13 +60,13 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-3xl font-bold text-foreground">
-              {userRole === "company" && "Carbon Dashboard"}
+              {userRole === "company" && "Industry Carbon Dashboard"}
               {userRole === "auditor" && "Audit Overview"}
               {userRole === "admin" && "Platform Administration"}
               {userRole === "domestic" && "Home Energy Dashboard"}
             </h2>
             <p className="text-muted-foreground mt-1">
-              {userRole === "company" && "Monitor your carbon footprint and validation status"}
+              {userRole === "company" && "Monitor your industrial carbon footprint and validation status"}
               {userRole === "auditor" && "Review flagged records and validation queue"}
               {userRole === "admin" && "Manage platform operations and system health"}
               {userRole === "domestic" && "Track your household energy consumption and carbon footprint"}
@@ -59,7 +74,7 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
           </div>
           <Button className="bg-gradient-primary shadow-elegant hover:shadow-glow transition-all">
             <Upload className="w-4 h-4 mr-2" />
-            {userRole === "company" && "Upload Data"}
+            {userRole === "company" && "Add Carbon Data"}
             {userRole === "auditor" && "New Audit"}
             {userRole === "admin" && "System Report"}
             {userRole === "domestic" && "Add Reading"}
@@ -68,10 +83,73 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
 
         {/* Key Metrics Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {(userRole === "company" || userRole === "domestic") && (
+            <Card className="border-0 shadow-card hover:shadow-elegant transition-all bg-gradient-card">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium text-muted-foreground">
+                  Carbon Score
+                </CardTitle>
+                <Award className="h-4 w-4 text-primary" />
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold text-foreground">
+                  {mockCarbonScore.score}/100
+                </div>
+                <div className="flex items-center mt-2">
+                  <Badge variant="secondary" className="mr-2">
+                    Grade {mockCarbonScore.grade}
+                  </Badge>
+                  <TrendingUp className="h-4 w-4 text-success mr-1" />
+                  <span className="text-sm text-success">
+                    +{mockCarbonScore.improvement}% this month
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {userRole === "auditor" && (
+            <>
+              <Card className="border-0 shadow-card hover:shadow-elegant transition-all bg-gradient-card">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium text-muted-foreground">
+                    Verified Records
+                  </CardTitle>
+                  <CheckCircle className="h-4 w-4 text-success" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold text-foreground">
+                    {mockVerificationStats.verified.toLocaleString()}
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-2">
+                    Successfully verified
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-card hover:shadow-elegant transition-all bg-gradient-card">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium text-muted-foreground">
+                    Not Verified
+                  </CardTitle>
+                  <XCircle className="h-4 w-4 text-destructive" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold text-foreground">
+                    {mockVerificationStats.notVerified}
+                  </div>
+                  <Badge variant="destructive" className="mt-2 text-xs">
+                    Requires Action
+                  </Badge>
+                </CardContent>
+              </Card>
+            </>
+          )}
+
           <Card className="border-0 shadow-card hover:shadow-elegant transition-all bg-gradient-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground">
-                Total CO₂ Emissions
+                {userRole === "domestic" ? "Monthly CO₂" : "Total CO₂ Emissions"}
               </CardTitle>
               <Factory className="h-4 w-4 text-primary" />
             </CardHeader>
@@ -92,44 +170,51 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
             </CardContent>
           </Card>
 
-          <Card className="border-0 shadow-card hover:shadow-elegant transition-all bg-gradient-card">
+          {userRole !== "auditor" && (
+            <Card className="border-0 shadow-card hover:shadow-elegant transition-all bg-gradient-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground">
-                Validated Records
+                {userRole === "domestic" ? "Energy Efficiency" : "Validated Records"}
               </CardTitle>
               <CheckCircle className="h-4 w-4 text-success" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-foreground">
-                {mockMetrics.validatedRecords.toLocaleString()}
+                {userRole === "domestic" ? "92%" : mockMetrics.validatedRecords.toLocaleString()}
               </div>
               <p className="text-xs text-muted-foreground mt-2">
-                Last updated {mockMetrics.lastUpdate}
+                {userRole === "domestic" ? "Above average" : `Last updated ${mockMetrics.lastUpdate}`}
               </p>
             </CardContent>
           </Card>
+          )}
 
           <Card className="border-0 shadow-card hover:shadow-elegant transition-all bg-gradient-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground">
-                Flagged Records
+                {userRole === "domestic" ? "Monthly Savings" : "Flagged Records"}
               </CardTitle>
-              <AlertTriangle className="h-4 w-4 text-warning" />
+              {userRole === "domestic" ? (
+                <TrendingDown className="h-4 w-4 text-success" />
+              ) : (
+                <AlertTriangle className="h-4 w-4 text-warning" />
+              )}
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-foreground">
-                {mockMetrics.flaggedRecords}
+                {userRole === "domestic" ? "$127" : mockMetrics.flaggedRecords}
               </div>
-              <Badge variant="outline" className="mt-2 text-xs border-warning/50 text-warning">
-                Requires Review
+              <Badge variant="outline" className={`mt-2 text-xs ${userRole === "domestic" ? "border-success/50 text-success" : "border-warning/50 text-warning"}`}>
+                {userRole === "domestic" ? "Cost Reduced" : "Requires Review"}
               </Badge>
             </CardContent>
           </Card>
 
-          <Card className="border-0 shadow-card hover:shadow-elegant transition-all bg-gradient-card">
+          {userRole !== "auditor" && (
+            <Card className="border-0 shadow-card hover:shadow-elegant transition-all bg-gradient-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground">
-                Data Quality Score
+                {userRole === "domestic" ? "Eco Score" : "Data Quality Score"}
               </CardTitle>
               <Shield className="h-4 w-4 text-primary" />
             </CardHeader>
@@ -140,6 +225,7 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
               <Progress value={mockMetrics.dataQuality} className="mt-2" />
             </CardContent>
           </Card>
+          )}
         </div>
 
         {/* Industries/Facilities Table */}
@@ -147,13 +233,13 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <BarChart3 className="h-5 w-5 text-primary" />
-              {userRole === "company" && "Facility Performance"}
+              {userRole === "company" && "Industrial Facility Performance"}
               {userRole === "auditor" && "Industry Overview"}
               {userRole === "admin" && "Top Industries"}
-              {userRole === "domestic" && "Monthly Usage"}
+              {userRole === "domestic" && "Household Energy Usage"}
             </CardTitle>
             <CardDescription>
-              Recent carbon emissions data and validation status
+              {userRole === "domestic" ? "Your monthly energy consumption breakdown" : "Recent carbon emissions data and validation status"}
             </CardDescription>
           </CardHeader>
           <CardContent>

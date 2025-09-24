@@ -12,29 +12,29 @@ const RoleSelector = ({ onRoleSelect }: RoleSelectorProps) => {
     {
       id: "domestic" as const,
       title: "Domestic User",
-      description: "Track household energy consumption, calculate personal carbon footprint, and get eco-friendly recommendations.",
+      description: "Track household energy consumption, view your carbon score, and get personalized eco-friendly recommendations.",
       icon: Users,
       badge: "Personal",
       color: "bg-accent text-accent-foreground",
-      features: ["Energy Tracking", "Carbon Calculator", "Eco Tips", "Cost Analysis"]
+      features: ["Energy Tracking", "Carbon Score", "Eco Tips", "Cost Savings"]
     },
     {
       id: "company" as const,
       title: "Industry User",
-      description: "Upload telemetry data, view emissions reports, and get carbon footprint insights for your industrial operations.",
+      description: "Monitor industrial carbon emissions, track your carbon score, and optimize your facility's environmental performance.",
       icon: Users,
       badge: "Primary Users",
       color: "bg-primary text-primary-foreground",
-      features: ["Data Upload", "Emissions Analytics", "Compliance Reports", "Optimization Insights"]
+      features: ["Carbon Data Upload", "Carbon Score", "Emissions Analytics", "Compliance Reports"]
     },
     {
       id: "auditor" as const,
       title: "Auditor",
-      description: "Review flagged records, validate suspicious data, and generate audit-ready compliance reports.",
+      description: "Review and verify carbon data, manage verified/unverified records, and generate comprehensive audit reports.",
       icon: Shield,
       badge: "Validation",
       color: "bg-secondary text-secondary-foreground",
-      features: ["Anomaly Review", "Data Validation", "Audit Reports", "Compliance Checks"]
+      features: ["Data Verification", "Verified Records", "Not Verified Queue", "Audit Reports"]
     },
     {
       id: "admin" as const,
