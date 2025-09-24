@@ -82,10 +82,12 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
           </p>
           
           <div className="flex justify-center items-center animate-fade-in delay-400">
-            <Button size="lg" className="shadow-xl hover:shadow-2xl transition-all duration-300 px-8 py-6 text-lg" onClick={onGetStarted}>
-              Get Started
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <div className="flex justify-center w-full">
+              <Button size="lg" className="shadow-xl hover:shadow-2xl transition-all duration-300 px-8 py-6 text-lg" onClick={onGetStarted}>
+                Get Started
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
           </div>
         </div>
       </section>
