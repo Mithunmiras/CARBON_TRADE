@@ -1,1481 +1,1014 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { 
+  BarChart3, 
   TrendingUp, 
   TrendingDown, 
-  AlertTriangle, 
-  CheckCircle, 
-  Upload, 
-  FileText, 
-  Users, 
-  Factory,
-  Leaf,
-  Zap,
-  Home,
-  Calculator,
-  Lightbulb,
-  DollarSign,
-  BarChart3,
-  Shield,
+  Leaf, 
+  Factory, 
+  Home, 
+  AlertTriangle,
+  CheckCircle,
+  ArrowUpRight,
+  ArrowDownRight,
+  Users,
   Database,
-  Calendar,
-  MapPin,
-  Phone,
-  Mail,
-  Settings,
-  Edit,
-  Trash2,
-  Eye,
-  Download
+  Shield
 } from "lucide-react";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell, Area, AreaChart } from "recharts";
+import { emissionData } from "@/data/emissionData";
+import { carbonCreditTransfers } from "@/data/carbonCreditTransfers";
 
 interface DashboardContentProps {
   userRole: "company" | "auditor" | "admin" | "domestic";
   currentView: string;
 }
 
-// Sample data for domestic users
-const domesticEnergyData = [
-  { month: "Jan 2024", electricity: 850, gas: 45, water: 12, total: 907, cost: 234 },
-  { month: "Feb 2024", electricity: 780, gas: 52, water: 11, total: 843, cost: 218 },
-  { month: "Mar 2024", electricity: 720, gas: 38, water: 13, total: 771, cost: 201 },
-  { month: "Apr 2024", electricity: 680, gas: 25, water: 14, total: 719, cost: 187 },
-  { month: "May 2024", electricity: 620, gas: 18, water: 15, total: 653, cost: 169 },
-  { month: "Jun 2024", electricity: 847, gas: 45, water: 12, total: 904, cost: 234 }
-];
-
-const domesticBills = [
-  { id: "B001", provider: "Green Energy Co.", type: "Electricity", amount: 156.78, dueDate: "2024-07-15", status: "Paid", usage: "847 kWh" },
-  { id: "B002", provider: "City Gas", type: "Natural Gas", amount: 67.45, dueDate: "2024-07-20", status: "Pending", usage: "45 therms" },
-  { id: "B003", provider: "Water Works", type: "Water", amount: 34.20, dueDate: "2024-07-25", status: "Paid", usage: "12,000 gal" },
-  { id: "B004", provider: "Solar Panel Co.", type: "Solar Credit", amount: -23.50, dueDate: "2024-07-30", status: "Credit", usage: "Generated 180 kWh" }
-];
-
-// Sample data for company users
-const companyFacilities = [
-  { id: "F001", name: "Manufacturing Plant A", location: "Detroit, MI", emissions: 2847, status: "Verified", lastUpdate: "2024-06-15" },
-  { id: "F002", name: "Warehouse B", location: "Chicago, IL", emissions: 1234, status: "Pending", lastUpdate: "2024-06-14" },
-  { id: "F003", name: "Office Complex", location: "Austin, TX", emissions: 567, status: "Approved", lastUpdate: "2024-06-13" },
-  { id: "F004", name: "Distribution Center", location: "Phoenix, AZ", emissions: 890, status: "Flagged", lastUpdate: "2024-06-12" }
-];
-
-const companyReports = [
-  { id: "R001", title: "Q2 2024 Carbon Footprint Report", facility: "All Facilities", date: "2024-06-30", status: "Complete", size: "2.4 MB" },
-  { id: "R002", title: "Manufacturing Emissions Analysis", facility: "Plant A", date: "2024-06-25", status: "Draft", size: "1.8 MB" },
-  { id: "R003", title: "Scope 1 & 2 Emissions Summary", facility: "Warehouse B", date: "2024-06-20", status: "Review", size: "1.2 MB" },
-  { id: "R004", title: "Annual Sustainability Report", facility: "All Facilities", date: "2024-06-15", status: "Published", size: "5.1 MB" }
-];
-
-const validationQueue = [
-  { id: "V001", facility: "Manufacturing Plant A", dataType: "Energy Consumption", submittedBy: "John Smith", date: "2024-06-15", priority: "High", status: "Pending" },
-  { id: "V002", facility: "Warehouse B", dataType: "Waste Management", submittedBy: "Sarah Johnson", date: "2024-06-14", priority: "Medium", status: "In Review" },
-  { id: "V003", facility: "Office Complex", dataType: "Transportation", submittedBy: "Mike Davis", date: "2024-06-13", priority: "Low", status: "Verified" },
-  { id: "V004", facility: "Distribution Center", dataType: "Process Emissions", submittedBy: "Lisa Wilson", date: "2024-06-12", priority: "High", status: "Flagged" }
-];
-
-// Sample data for auditor users
-const flaggedRecords = [
-  { id: "FR001", company: "TechCorp Industries", facility: "Plant A", issue: "Anomalous energy spike", severity: "High", date: "2024-06-15", auditor: "Unassigned" },
-  { id: "FR002", company: "GreenManufacturing", facility: "Facility B", issue: "Missing documentation", severity: "Medium", date: "2024-06-14", auditor: "Alice Brown" },
-  { id: "FR003", company: "EcoSolutions Ltd", facility: "Warehouse C", issue: "Data inconsistency", severity: "High", date: "2024-06-13", auditor: "Bob Wilson" },
-  { id: "FR004", company: "CleanTech Corp", facility: "Office D", issue: "Calculation error", severity: "Low", date: "2024-06-12", auditor: "Carol Davis" }
-];
-
-const auditReports = [
-  { id: "AR001", company: "TechCorp Industries", auditor: "Alice Brown", date: "2024-06-15", status: "Complete", findings: 3, recommendations: 5 },
-  { id: "AR002", company: "GreenManufacturing", auditor: "Bob Wilson", date: "2024-06-10", status: "In Progress", findings: 1, recommendations: 2 },
-  { id: "AR003", company: "EcoSolutions Ltd", auditor: "Carol Davis", date: "2024-06-05", status: "Draft", findings: 2, recommendations: 4 },
-  { id: "AR004", company: "CleanTech Corp", auditor: "Alice Brown", date: "2024-06-01", status: "Published", findings: 0, recommendations: 1 }
-];
-
-// Sample data for admin users
-const systemUsers = [
-  { id: "U001", name: "John Smith", email: "john.smith@techcorp.com", role: "Company Admin", company: "TechCorp Industries", lastLogin: "2024-06-15", status: "Active" },
-  { id: "U002", name: "Alice Brown", email: "alice.brown@audit.com", role: "Senior Auditor", company: "Carbon Audit Services", lastLogin: "2024-06-15", status: "Active" },
-  { id: "U003", name: "Sarah Johnson", email: "sarah.j@greenmanuf.com", role: "Environmental Manager", company: "GreenManufacturing", lastLogin: "2024-06-14", status: "Active" },
-  { id: "U004", name: "Mike Davis", email: "mike.davis@ecosol.com", role: "Sustainability Officer", company: "EcoSolutions Ltd", lastLogin: "2024-06-12", status: "Inactive" }
-];
-
-const industryRegistry = [
-  { id: "I001", name: "TechCorp Industries", industry: "Manufacturing", location: "Detroit, MI", facilities: 4, employees: 2500, registrationDate: "2023-01-15", status: "Verified" },
-  { id: "I002", name: "GreenManufacturing", industry: "Heavy Industry", location: "Pittsburgh, PA", facilities: 6, employees: 3200, registrationDate: "2023-02-20", status: "Verified" },
-  { id: "I003", name: "EcoSolutions Ltd", industry: "Data Centers", location: "Austin, TX", facilities: 2, employees: 800, registrationDate: "2023-03-10", status: "Pending" },
-  { id: "I004", name: "CleanTech Corp", industry: "Transport & Logistics", location: "Los Angeles, CA", facilities: 8, employees: 1500, registrationDate: "2023-04-05", status: "Verified" }
-];
-
-const systemSettings = [
-  { category: "Data Validation", setting: "Auto-validation threshold", value: "95%", description: "Automatic validation for data with confidence above this threshold" },
-  { category: "Security", setting: "Session timeout", value: "30 minutes", description: "User session timeout duration" },
-  { category: "Notifications", setting: "Email alerts", value: "Enabled", description: "Send email notifications for critical events" },
-  { category: "Reporting", setting: "Report retention", value: "7 years", description: "How long to retain generated reports" },
-  { category: "API", setting: "Rate limiting", value: "1000/hour", description: "API requests per hour per user" },
-  { category: "Backup", setting: "Backup frequency", value: "Daily", description: "Automated backup schedule" }
-];
-
 export function DashboardContent({ userRole, currentView }: DashboardContentProps) {
-  const renderCompanyDashboard = () => {
-    if (currentView === "overview") {
-      return (
-        <div className="p-6 space-y-6">
-          <div className="flex items-center justify-between">
+  // Process emission data for analytics
+  const homeEmissions = emissionData.filter(record => record.home_id === "home");
+  const industryEmissions = emissionData.filter(record => record.home_id === "industry");
+  
+  const totalHomeEmissions = homeEmissions.reduce((sum, record) => sum + record.emission_kg, 0);
+  const totalIndustryEmissions = industryEmissions.reduce((sum, record) => sum + record.emission_kg, 0);
+  const totalCreditsTransferred = carbonCreditTransfers.reduce((sum, transfer) => sum + transfer.credit_kg, 0);
+  
+  const avgHomeEmission = totalHomeEmissions / homeEmissions.length;
+  const avgIndustryEmission = totalIndustryEmissions / industryEmissions.length;
+
+  // Create chart data for emissions by cluster
+  const clusterData = [
+    {
+      cluster: "Urban Homes",
+      emissions: homeEmissions.filter(r => r.cluster === "urban").reduce((sum, r) => sum + r.emission_kg, 0),
+      devices: homeEmissions.filter(r => r.cluster === "urban").length,
+      avgEmission: homeEmissions.filter(r => r.cluster === "urban").reduce((sum, r) => sum + r.emission_kg, 0) / homeEmissions.filter(r => r.cluster === "urban").length
+    },
+    {
+      cluster: "Urban Industry",
+      emissions: industryEmissions.filter(r => r.cluster === "urban").reduce((sum, r) => sum + r.emission_kg, 0),
+      devices: industryEmissions.filter(r => r.cluster === "urban").length,
+      avgEmission: industryEmissions.filter(r => r.cluster === "urban").reduce((sum, r) => sum + r.emission_kg, 0) / industryEmissions.filter(r => r.cluster === "urban").length
+    },
+    {
+      cluster: "Industrial Complex",
+      emissions: industryEmissions.filter(r => r.cluster === "industry").reduce((sum, r) => sum + r.emission_kg, 0),
+      devices: industryEmissions.filter(r => r.cluster === "industry").length,
+      avgEmission: industryEmissions.filter(r => r.cluster === "industry").reduce((sum, r) => sum + r.emission_kg, 0) / industryEmissions.filter(r => r.cluster === "industry").length
+    }
+  ];
+
+  // Create transfer flow data
+  const transfersByReceiver = carbonCreditTransfers.reduce((acc, transfer) => {
+    if (!acc[transfer.received_by]) {
+      acc[transfer.received_by] = 0;
+    }
+    acc[transfer.received_by] += transfer.credit_kg;
+    return acc;
+  }, {} as Record<string, number>);
+
+  const topReceivers = Object.entries(transfersByReceiver)
+    .sort(([,a], [,b]) => b - a)
+    .slice(0, 10)
+    .map(([device, credits]) => ({ device, credits }));
+
+  // Emission distribution data
+  const emissionRanges = [
+    { range: "20-23 kg", count: emissionData.filter(r => r.emission_kg >= 20 && r.emission_kg < 23).length },
+    { range: "23-25 kg", count: emissionData.filter(r => r.emission_kg >= 23 && r.emission_kg < 25).length },
+    { range: "25-27 kg", count: emissionData.filter(r => r.emission_kg >= 25 && r.emission_kg < 27).length },
+    { range: "400-500 kg", count: emissionData.filter(r => r.emission_kg >= 400 && r.emission_kg < 500).length },
+    { range: "1800-2200 kg", count: emissionData.filter(r => r.emission_kg >= 1800 && r.emission_kg < 2200).length }
+  ];
+
+  const COLORS = ['#22c55e', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6'];
+
+  if (currentView === "overview") {
+    return (
+      <div className="p-6 space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
             <h1 className="text-3xl font-bold text-foreground">Carbon Emissions Overview</h1>
-            <Badge variant="outline" className="bg-success/10 text-success border-success/20">
-              Verified Data
-            </Badge>
+            <p className="text-muted-foreground">Real-time carbon footprint tracking and analysis</p>
           </div>
+          <Badge variant="secondary" className="bg-success/10 text-success border-success/20">
+            Live Data
+          </Badge>
+        </div>
 
-          {/* Key Metrics */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Total Emissions</CardTitle>
-                <Factory className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">5,538 tCO₂e</div>
-                <p className="text-xs text-muted-foreground">
-                  <span className="text-destructive flex items-center">
-                    <TrendingUp className="h-3 w-3 mr-1" />
-                    +8% from last quarter
-                  </span>
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Carbon Score</CardTitle>
-                <Leaf className="h-4 w-4 text-success" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-success">B+</div>
-                <p className="text-xs text-muted-foreground">
-                  <span className="text-success flex items-center">
-                    <TrendingUp className="h-3 w-3 mr-1" />
-                    Improved from B
-                  </span>
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Reduction Target</CardTitle>
-                <CheckCircle className="h-4 w-4 text-success" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">73%</div>
-                <Progress value={73} className="mt-2" />
-                <p className="text-xs text-muted-foreground mt-1">
-                  On track for 2030 goals
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Validation Status</CardTitle>
-                <Shield className="h-4 w-4 text-primary" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-primary">94%</div>
-                <p className="text-xs text-muted-foreground">
-                  Data verified by auditors
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Facilities Overview */}
-          <Card className="bg-gradient-card border-0 shadow-card">
-            <CardHeader>
-              <CardTitle>Facility Emissions Overview</CardTitle>
-              <CardDescription>Carbon emissions by facility location</CardDescription>
+        {/* Key Metrics */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <Card className="border-l-4 border-l-primary">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Total Devices</CardTitle>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold">{emissionData.length}</span>
+                <Database className="h-5 w-5 text-primary" />
+              </div>
             </CardHeader>
             <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Facility</TableHead>
-                    <TableHead>Location</TableHead>
-                    <TableHead>Emissions (tCO₂e)</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Last Update</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {companyFacilities.map((facility) => (
-                    <TableRow key={facility.id}>
-                      <TableCell className="font-medium">{facility.name}</TableCell>
-                      <TableCell>{facility.location}</TableCell>
-                      <TableCell>{facility.emissions.toLocaleString()}</TableCell>
-                      <TableCell>
-                        <Badge variant={facility.status === "Verified" ? "default" : facility.status === "Flagged" ? "destructive" : "secondary"}>
-                          {facility.status}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>{facility.lastUpdate}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+              <p className="text-xs text-muted-foreground">
+                {homeEmissions.length} homes + {industryEmissions.length} industrial
+              </p>
             </CardContent>
           </Card>
-        </div>
-      );
-    }
 
-    if (currentView === "analytics") {
-      return (
-        <div className="p-6 space-y-6">
-          <h1 className="text-3xl font-bold text-foreground">Analytics Dashboard</h1>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader>
-                <CardTitle>Emissions Trend Analysis</CardTitle>
-                <CardDescription>Monthly carbon emissions across all facilities</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {[
-                    { month: "Jan 2024", emissions: 5200, change: "+5%" },
-                    { month: "Feb 2024", emissions: 4980, change: "-4%" },
-                    { month: "Mar 2024", emissions: 5150, change: "+3%" },
-                    { month: "Apr 2024", emissions: 5380, change: "+4%" },
-                    { month: "May 2024", emissions: 5290, change: "-2%" },
-                    { month: "Jun 2024", emissions: 5538, change: "+5%" }
-                  ].map((data, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
-                      <div>
-                        <p className="font-medium">{data.month}</p>
-                        <p className="text-sm text-muted-foreground">{data.emissions} tCO₂e</p>
-                      </div>
-                      <Badge variant={data.change.startsWith('+') ? "destructive" : "default"}>
-                        {data.change}
-                      </Badge>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader>
-                <CardTitle>Emissions by Source</CardTitle>
-                <CardDescription>Breakdown of carbon emissions by source type</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {[
-                    { source: "Energy Consumption", percentage: 45, amount: "2,492 tCO₂e", color: "bg-primary" },
-                    { source: "Transportation", percentage: 28, amount: "1,551 tCO₂e", color: "bg-secondary" },
-                    { source: "Manufacturing Process", percentage: 18, amount: "997 tCO₂e", color: "bg-accent" },
-                    { source: "Waste Management", percentage: 9, amount: "498 tCO₂e", color: "bg-success" }
-                  ].map((item, index) => (
-                    <div key={index} className="space-y-2">
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium">{item.source}</span>
-                        <span className="text-sm text-muted-foreground">{item.amount}</span>
-                      </div>
-                      <div className="w-full bg-muted rounded-full h-2">
-                        <div className={`${item.color} h-2 rounded-full`} style={{ width: `${item.percentage}%` }}></div>
-                      </div>
-                      <div className="text-right text-sm text-muted-foreground">{item.percentage}%</div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      );
-    }
-
-    if (currentView === "reports") {
-      return (
-        <div className="p-6 space-y-6">
-          <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-bold text-foreground">Reports</h1>
-            <Button>
-              <FileText className="h-4 w-4 mr-2" />
-              Generate New Report
-            </Button>
-          </div>
-
-          <Card className="bg-gradient-card border-0 shadow-card">
-            <CardHeader>
-              <CardTitle>Available Reports</CardTitle>
-              <CardDescription>Generated carbon footprint and sustainability reports</CardDescription>
+          <Card className="border-l-4 border-l-warning">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Total Emissions</CardTitle>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold">{(totalHomeEmissions + totalIndustryEmissions).toFixed(1)}</span>
+                <span className="text-sm text-muted-foreground">kg CO₂</span>
+              </div>
             </CardHeader>
             <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Report Title</TableHead>
-                    <TableHead>Facility</TableHead>
-                    <TableHead>Date Generated</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Size</TableHead>
-                    <TableHead>Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {companyReports.map((report) => (
-                    <TableRow key={report.id}>
-                      <TableCell className="font-medium">{report.title}</TableCell>
-                      <TableCell>{report.facility}</TableCell>
-                      <TableCell>{report.date}</TableCell>
-                      <TableCell>
-                        <Badge variant={report.status === "Complete" || report.status === "Published" ? "default" : "secondary"}>
-                          {report.status}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>{report.size}</TableCell>
-                      <TableCell>
-                        <div className="flex space-x-2">
-                          <Button variant="ghost" size="sm">
-                            <Eye className="h-4 w-4" />
-                          </Button>
-                          <Button variant="ghost" size="sm">
-                            <Download className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+              <div className="flex items-center gap-1">
+                <TrendingUp className="h-4 w-4 text-warning" />
+                <span className="text-xs text-muted-foreground">Across all clusters</span>
+              </div>
             </CardContent>
           </Card>
-        </div>
-      );
-    }
 
-    if (currentView === "validation") {
-      return (
-        <div className="p-6 space-y-6">
-          <h1 className="text-3xl font-bold text-foreground">Data Validation</h1>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Pending Validation</CardTitle>
-                <AlertTriangle className="h-4 w-4 text-warning" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">12</div>
-                <p className="text-xs text-muted-foreground">Awaiting review</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Validated Today</CardTitle>
-                <CheckCircle className="h-4 w-4 text-success" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-success">8</div>
-                <p className="text-xs text-muted-foreground">Successfully verified</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Validation Rate</CardTitle>
-                <Shield className="h-4 w-4 text-primary" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-primary">94.2%</div>
-                <p className="text-xs text-muted-foreground">Overall accuracy</p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <Card className="bg-gradient-card border-0 shadow-card">
-            <CardHeader>
-              <CardTitle>Validation Queue</CardTitle>
-              <CardDescription>Data submissions awaiting validation</CardDescription>
+          <Card className="border-l-4 border-l-success">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Credits Transferred</CardTitle>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold">{totalCreditsTransferred.toFixed(1)}</span>
+                <span className="text-sm text-muted-foreground">kg CO₂</span>
+              </div>
             </CardHeader>
             <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>ID</TableHead>
-                    <TableHead>Facility</TableHead>
-                    <TableHead>Data Type</TableHead>
-                    <TableHead>Submitted By</TableHead>
-                    <TableHead>Date</TableHead>
-                    <TableHead>Priority</TableHead>
-                    <TableHead>Status</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {validationQueue.map((item) => (
-                    <TableRow key={item.id}>
-                      <TableCell className="font-medium">{item.id}</TableCell>
-                      <TableCell>{item.facility}</TableCell>
-                      <TableCell>{item.dataType}</TableCell>
-                      <TableCell>{item.submittedBy}</TableCell>
-                      <TableCell>{item.date}</TableCell>
-                      <TableCell>
-                        <Badge variant={item.priority === "High" ? "destructive" : item.priority === "Medium" ? "secondary" : "outline"}>
-                          {item.priority}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>
-                        <Badge variant={item.status === "Verified" ? "default" : item.status === "Flagged" ? "destructive" : "secondary"}>
-                          {item.status}
-                        </Badge>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+              <div className="flex items-center gap-1">
+                <ArrowUpRight className="h-4 w-4 text-success" />
+                <span className="text-xs text-muted-foreground">{carbonCreditTransfers.length} transfers</span>
+              </div>
             </CardContent>
           </Card>
-        </div>
-      );
-    }
 
-    if (currentView === "upload") {
-      return (
-        <div className="p-6 space-y-6">
-          <h1 className="text-3xl font-bold text-foreground">Data Upload</h1>
-          <Card className="bg-gradient-card border-0 shadow-card">
-            <CardHeader>
-              <CardTitle>Upload Carbon Emissions Data</CardTitle>
-              <CardDescription>Submit your facility's carbon footprint measurements</CardDescription>
+          <Card className="border-l-4 border-l-secondary">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Avg Home Emission</CardTitle>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold">{avgHomeEmission.toFixed(1)}</span>
+                <span className="text-sm text-muted-foreground">kg CO₂</span>
+              </div>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="border-2 border-dashed border-border rounded-lg p-8 text-center">
-                <Upload className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-                <p className="text-lg font-medium mb-2">Drop your files here or click to browse</p>
-                <p className="text-muted-foreground">Supported formats: CSV, Excel, JSON</p>
-                <Button className="mt-4">Choose Files</Button>
+            <CardContent>
+              <div className="flex items-center gap-1">
+                <Home className="h-4 w-4 text-secondary" />
+                <span className="text-xs text-muted-foreground">Per device</span>
               </div>
             </CardContent>
           </Card>
         </div>
-      );
-    }
 
-    return (
-      <div className="p-6">
-        <h1 className="text-3xl font-bold text-foreground mb-6">
-          {currentView.charAt(0).toUpperCase() + currentView.slice(1)}
-        </h1>
-        <Card className="bg-gradient-card border-0 shadow-card">
-          <CardContent className="p-8 text-center">
-            <p className="text-muted-foreground">This section is under development.</p>
+        {/* Charts Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <BarChart3 className="h-5 w-5" />
+                Emissions by Cluster
+              </CardTitle>
+              <CardDescription>Carbon emissions distribution across different clusters</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer config={{
+                emissions: { label: "Emissions (kg CO₂)", color: "hsl(var(--primary))" },
+                devices: { label: "Devices", color: "hsl(var(--secondary))" }
+              }}>
+                <ResponsiveContainer width="100%" height={300}>
+                  <BarChart data={clusterData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="cluster" />
+                    <YAxis />
+                    <ChartTooltip content={<ChartTooltipContent />} />
+                    <Bar dataKey="emissions" fill="var(--color-emissions)" radius={[4, 4, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </ChartContainer>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <TrendingUp className="h-5 w-5" />
+                Emission Distribution
+              </CardTitle>
+              <CardDescription>Distribution of emission levels across devices</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer config={{
+                count: { label: "Device Count", color: "hsl(var(--primary))" }
+              }}>
+                <ResponsiveContainer width="100%" height={300}>
+                  <PieChart>
+                    <Pie
+                      data={emissionRanges}
+                      cx="50%"
+                      cy="50%"
+                      labelLine={false}
+                      label={({ range, count }) => `${range}: ${count}`}
+                      outerRadius={80}
+                      fill="#8884d8"
+                      dataKey="count"
+                    >
+                      {emissionRanges.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      ))}
+                    </Pie>
+                    <ChartTooltip content={<ChartTooltipContent />} />
+                  </PieChart>
+                </ResponsiveContainer>
+              </ChartContainer>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Transfer Analysis */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <ArrowUpRight className="h-5 w-5" />
+              Top Carbon Credit Recipients
+            </CardTitle>
+            <CardDescription>Industrial devices receiving the most carbon credits</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ChartContainer config={{
+              credits: { label: "Credits (kg CO₂)", color: "hsl(var(--success))" }
+            }}>
+              <ResponsiveContainer width="100%" height={400}>
+                <BarChart data={topReceivers} layout="horizontal">
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis type="number" />
+                  <YAxis dataKey="device" type="category" width={80} />
+                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <Bar dataKey="credits" fill="var(--color-credits)" radius={[0, 4, 4, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </ChartContainer>
           </CardContent>
         </Card>
       </div>
     );
-  };
+  }
 
-  const renderAuditorDashboard = () => {
-    if (currentView === "overview") {
-      return (
-        <div className="p-6 space-y-6">
-          <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-bold text-foreground">Audit Dashboard</h1>
-            <Badge variant="outline" className="bg-secondary/10 text-secondary border-secondary/20">
-              Auditor Access
-            </Badge>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Pending Reviews</CardTitle>
-                <AlertTriangle className="h-4 w-4 text-warning" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">23</div>
-                <p className="text-xs text-muted-foreground">Awaiting validation</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Verified Today</CardTitle>
-                <CheckCircle className="h-4 w-4 text-success" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-success">47</div>
-                <p className="text-xs text-muted-foreground">Records validated</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Flagged Records</CardTitle>
-                <AlertTriangle className="h-4 w-4 text-destructive" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-destructive">8</div>
-                <p className="text-xs text-muted-foreground">Require attention</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Audit Score</CardTitle>
-                <Shield className="h-4 w-4 text-primary" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-primary">98.2%</div>
-                <p className="text-xs text-muted-foreground">Accuracy rate</p>
-              </CardContent>
-            </Card>
+  if (currentView === "analytics") {
+    return (
+      <div className="p-6 space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-foreground">Advanced Analytics</h1>
+            <p className="text-muted-foreground">Deep insights into carbon emission patterns</p>
           </div>
         </div>
-      );
-    }
 
-    if (currentView === "flagged") {
-      return (
-        <div className="p-6 space-y-6">
-          <h1 className="text-3xl font-bold text-foreground">Flagged Records</h1>
-          
-          <Card className="bg-gradient-card border-0 shadow-card">
-            <CardHeader>
-              <CardTitle>Records Requiring Attention</CardTitle>
-              <CardDescription>Data submissions flagged for review</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Record ID</TableHead>
-                    <TableHead>Company</TableHead>
-                    <TableHead>Facility</TableHead>
-                    <TableHead>Issue</TableHead>
-                    <TableHead>Severity</TableHead>
-                    <TableHead>Date</TableHead>
-                    <TableHead>Assigned Auditor</TableHead>
-                    <TableHead>Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {flaggedRecords.map((record) => (
-                    <TableRow key={record.id}>
-                      <TableCell className="font-medium">{record.id}</TableCell>
-                      <TableCell>{record.company}</TableCell>
-                      <TableCell>{record.facility}</TableCell>
-                      <TableCell>{record.issue}</TableCell>
-                      <TableCell>
-                        <Badge variant={record.severity === "High" ? "destructive" : record.severity === "Medium" ? "secondary" : "outline"}>
-                          {record.severity}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>{record.date}</TableCell>
-                      <TableCell>{record.auditor}</TableCell>
-                      <TableCell>
-                        <div className="flex space-x-2">
-                          <Button variant="ghost" size="sm">
-                            <Eye className="h-4 w-4" />
-                          </Button>
-                          <Button variant="ghost" size="sm">
-                            <Edit className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
-        </div>
-      );
-    }
+        <Tabs defaultValue="emissions" className="space-y-6">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="emissions">Emission Analysis</TabsTrigger>
+            <TabsTrigger value="transfers">Credit Transfers</TabsTrigger>
+            <TabsTrigger value="efficiency">Efficiency Metrics</TabsTrigger>
+          </TabsList>
 
-    if (currentView === "validation") {
-      return (
-        <div className="p-6 space-y-6">
-          <h1 className="text-3xl font-bold text-foreground">Validation Queue</h1>
-          
-          <Card className="bg-gradient-card border-0 shadow-card">
-            <CardHeader>
-              <CardTitle>Pending Validations</CardTitle>
-              <CardDescription>Data submissions awaiting auditor review</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>ID</TableHead>
-                    <TableHead>Facility</TableHead>
-                    <TableHead>Data Type</TableHead>
-                    <TableHead>Submitted By</TableHead>
-                    <TableHead>Date</TableHead>
-                    <TableHead>Priority</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {validationQueue.map((item) => (
-                    <TableRow key={item.id}>
-                      <TableCell className="font-medium">{item.id}</TableCell>
-                      <TableCell>{item.facility}</TableCell>
-                      <TableCell>{item.dataType}</TableCell>
-                      <TableCell>{item.submittedBy}</TableCell>
-                      <TableCell>{item.date}</TableCell>
-                      <TableCell>
-                        <Badge variant={item.priority === "High" ? "destructive" : item.priority === "Medium" ? "secondary" : "outline"}>
-                          {item.priority}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>
-                        <Badge variant={item.status === "Verified" ? "default" : item.status === "Flagged" ? "destructive" : "secondary"}>
-                          {item.status}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex space-x-2">
-                          <Button variant="ghost" size="sm">
-                            <CheckCircle className="h-4 w-4" />
-                          </Button>
-                          <Button variant="ghost" size="sm">
-                            <AlertTriangle className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
-        </div>
-      );
-    }
-
-    if (currentView === "reports") {
-      return (
-        <div className="p-6 space-y-6">
-          <h1 className="text-3xl font-bold text-foreground">Audit Reports</h1>
-          
-          <Card className="bg-gradient-card border-0 shadow-card">
-            <CardHeader>
-              <CardTitle>Generated Audit Reports</CardTitle>
-              <CardDescription>Completed and in-progress audit reports</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Report ID</TableHead>
-                    <TableHead>Company</TableHead>
-                    <TableHead>Auditor</TableHead>
-                    <TableHead>Date</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Findings</TableHead>
-                    <TableHead>Recommendations</TableHead>
-                    <TableHead>Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {auditReports.map((report) => (
-                    <TableRow key={report.id}>
-                      <TableCell className="font-medium">{report.id}</TableCell>
-                      <TableCell>{report.company}</TableCell>
-                      <TableCell>{report.auditor}</TableCell>
-                      <TableCell>{report.date}</TableCell>
-                      <TableCell>
-                        <Badge variant={report.status === "Complete" || report.status === "Published" ? "default" : "secondary"}>
-                          {report.status}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>{report.findings}</TableCell>
-                      <TableCell>{report.recommendations}</TableCell>
-                      <TableCell>
-                        <div className="flex space-x-2">
-                          <Button variant="ghost" size="sm">
-                            <Eye className="h-4 w-4" />
-                          </Button>
-                          <Button variant="ghost" size="sm">
-                            <Download className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
-        </div>
-      );
-    }
-
-    if (currentView === "analytics") {
-      return (
-        <div className="p-6 space-y-6">
-          <h1 className="text-3xl font-bold text-foreground">Compliance Analytics</h1>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader>
-                <CardTitle>Audit Performance</CardTitle>
-                <CardDescription>Monthly audit completion rates</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {[
-                    { month: "Jan 2024", completed: 45, pending: 8, rate: "85%" },
-                    { month: "Feb 2024", completed: 52, pending: 6, rate: "90%" },
-                    { month: "Mar 2024", completed: 48, pending: 12, rate: "80%" },
-                    { month: "Apr 2024", completed: 61, pending: 4, rate: "94%" },
-                    { month: "May 2024", completed: 58, pending: 7, rate: "89%" },
-                    { month: "Jun 2024", completed: 47, pending: 23, rate: "67%" }
-                  ].map((data, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
-                      <div>
-                        <p className="font-medium">{data.month}</p>
-                        <p className="text-sm text-muted-foreground">{data.completed} completed, {data.pending} pending</p>
+          <TabsContent value="emissions" className="space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Home vs Industry Emissions</CardTitle>
+                  <CardDescription>Comparative analysis of emission levels</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Home className="h-4 w-4 text-primary" />
+                        <span className="text-sm font-medium">Home Devices</span>
                       </div>
-                      <Badge variant="outline">{data.rate}</Badge>
+                      <span className="text-sm text-muted-foreground">{homeEmissions.length} devices</span>
                     </div>
-                  ))}
+                    <Progress value={(totalHomeEmissions / (totalHomeEmissions + totalIndustryEmissions)) * 100} className="h-2" />
+                    <div className="text-xs text-muted-foreground">
+                      {totalHomeEmissions.toFixed(1)} kg CO₂ ({((totalHomeEmissions / (totalHomeEmissions + totalIndustryEmissions)) * 100).toFixed(1)}%)
+                    </div>
+
+                    <div className="flex items-center justify-between mt-4">
+                      <div className="flex items-center gap-2">
+                        <Factory className="h-4 w-4 text-warning" />
+                        <span className="text-sm font-medium">Industry Devices</span>
+                      </div>
+                      <span className="text-sm text-muted-foreground">{industryEmissions.length} devices</span>
+                    </div>
+                    <Progress value={(totalIndustryEmissions / (totalHomeEmissions + totalIndustryEmissions)) * 100} className="h-2" />
+                    <div className="text-xs text-muted-foreground">
+                      {totalIndustryEmissions.toFixed(1)} kg CO₂ ({((totalIndustryEmissions / (totalHomeEmissions + totalIndustryEmissions)) * 100).toFixed(1)}%)
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Emission Intensity</CardTitle>
+                  <CardDescription>Average emissions per device type</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-6">
+                    <div className="flex items-center justify-between p-4 bg-muted/50 rounded-lg">
+                      <div className="flex items-center gap-3">
+                        <div className="w-3 h-3 bg-primary rounded-full"></div>
+                        <span className="font-medium">Home Devices</span>
+                      </div>
+                      <div className="text-right">
+                        <div className="font-bold">{avgHomeEmission.toFixed(2)} kg</div>
+                        <div className="text-xs text-muted-foreground">avg per device</div>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center justify-between p-4 bg-muted/50 rounded-lg">
+                      <div className="flex items-center gap-3">
+                        <div className="w-3 h-3 bg-warning rounded-full"></div>
+                        <span className="font-medium">Industry Devices</span>
+                      </div>
+                      <div className="text-right">
+                        <div className="font-bold">{avgIndustryEmission.toFixed(2)} kg</div>
+                        <div className="text-xs text-muted-foreground">avg per device</div>
+                      </div>
+                    </div>
+
+                    <div className="pt-4 border-t">
+                      <div className="text-sm text-muted-foreground">
+                        Industry devices emit <span className="font-bold text-warning">
+                        {(avgIndustryEmission / avgHomeEmission).toFixed(1)}x</span> more than home devices
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Cluster Performance Comparison</CardTitle>
+                <CardDescription>Detailed breakdown by cluster and device type</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer config={{
+                  emissions: { label: "Total Emissions", color: "hsl(var(--primary))" },
+                  avgEmission: { label: "Avg per Device", color: "hsl(var(--secondary))" }
+                }}>
+                  <ResponsiveContainer width="100%" height={400}>
+                    <BarChart data={clusterData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="cluster" />
+                      <YAxis yAxisId="left" />
+                      <YAxis yAxisId="right" orientation="right" />
+                      <ChartTooltip content={<ChartTooltipContent />} />
+                      <Bar yAxisId="left" dataKey="emissions" fill="var(--color-emissions)" radius={[4, 4, 0, 0]} />
+                      <Bar yAxisId="right" dataKey="avgEmission" fill="var(--color-avgEmission)" radius={[4, 4, 0, 0]} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </ChartContainer>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="transfers" className="space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Transfer Summary</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">Total Transfers</span>
+                    <span className="font-bold">{carbonCreditTransfers.length}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">Total Volume</span>
+                    <span className="font-bold">{totalCreditsTransferred.toFixed(1)} kg</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">Avg Transfer</span>
+                    <span className="font-bold">{(totalCreditsTransferred / carbonCreditTransfers.length).toFixed(2)} kg</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">Unique Recipients</span>
+                    <span className="font-bold">{Object.keys(transfersByReceiver).length}</span>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="lg:col-span-2">
+                <CardHeader>
+                  <CardTitle>Top Credit Recipients</CardTitle>
+                  <CardDescription>Industrial devices receiving the most carbon credits</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    {topReceivers.slice(0, 5).map((receiver, index) => (
+                      <div key={receiver.device} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                            <span className="text-xs font-bold text-primary">#{index + 1}</span>
+                          </div>
+                          <span className="font-medium">{receiver.device}</span>
+                        </div>
+                        <div className="text-right">
+                          <div className="font-bold">{receiver.credits.toFixed(1)} kg</div>
+                          <div className="text-xs text-muted-foreground">CO₂ credits</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Credit Transfer Flow</CardTitle>
+                <CardDescription>Volume of carbon credits transferred to top recipients</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer config={{
+                  credits: { label: "Credits (kg CO₂)", color: "hsl(var(--success))" }
+                }}>
+                  <ResponsiveContainer width="100%" height={400}>
+                    <AreaChart data={topReceivers}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="device" />
+                      <YAxis />
+                      <ChartTooltip content={<ChartTooltipContent />} />
+                      <Area type="monotone" dataKey="credits" stroke="var(--color-credits)" fill="var(--color-credits)" fillOpacity={0.3} />
+                    </AreaChart>
+                  </ResponsiveContainer>
+                </ChartContainer>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="efficiency" className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Efficiency Score</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-center space-y-4">
+                    <div className="text-4xl font-bold text-success">87%</div>
+                    <Progress value={87} className="h-3" />
+                    <p className="text-sm text-muted-foreground">
+                      Based on emission levels and credit transfers
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Carbon Offset Rate</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-center space-y-4">
+                    <div className="text-4xl font-bold text-primary">
+                      {((totalCreditsTransferred / (totalHomeEmissions + totalIndustryEmissions)) * 100).toFixed(1)}%
+                    </div>
+                    <Progress value={(totalCreditsTransferred / (totalHomeEmissions + totalIndustryEmissions)) * 100} className="h-3" />
+                    <p className="text-sm text-muted-foreground">
+                      Emissions offset through credit transfers
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Network Health</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm">Active Devices</span>
+                      <Badge variant="secondary" className="bg-success/10 text-success">
+                        {emissionData.length}
+                      </Badge>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm">Data Quality</span>
+                      <Badge variant="secondary" className="bg-success/10 text-success">
+                        High
+                      </Badge>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm">Validation Status</span>
+                      <Badge variant="secondary" className="bg-success/10 text-success">
+                        Verified
+                      </Badge>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Performance Trends</CardTitle>
+                <CardDescription>Emission efficiency across different device categories</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="text-center p-6 bg-gradient-to-br from-primary/5 to-primary/10 rounded-lg">
+                    <Leaf className="h-8 w-8 text-primary mx-auto mb-2" />
+                    <div className="text-2xl font-bold text-primary">{homeEmissions.length}</div>
+                    <div className="text-sm text-muted-foreground">Home Devices</div>
+                    <div className="text-xs text-muted-foreground mt-1">
+                      Avg: {avgHomeEmission.toFixed(1)} kg CO₂
+                    </div>
+                  </div>
+
+                  <div className="text-center p-6 bg-gradient-to-br from-warning/5 to-warning/10 rounded-lg">
+                    <Factory className="h-8 w-8 text-warning mx-auto mb-2" />
+                    <div className="text-2xl font-bold text-warning">{industryEmissions.length}</div>
+                    <div className="text-sm text-muted-foreground">Industry Devices</div>
+                    <div className="text-xs text-muted-foreground mt-1">
+                      Avg: {avgIndustryEmission.toFixed(1)} kg CO₂
+                    </div>
+                  </div>
+
+                  <div className="text-center p-6 bg-gradient-to-br from-success/5 to-success/10 rounded-lg">
+                    <ArrowUpRight className="h-8 w-8 text-success mx-auto mb-2" />
+                    <div className="text-2xl font-bold text-success">{carbonCreditTransfers.length}</div>
+                    <div className="text-sm text-muted-foreground">Credit Transfers</div>
+                    <div className="text-xs text-muted-foreground mt-1">
+                      Total: {totalCreditsTransferred.toFixed(1)} kg
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
+          </TabsContent>
+        </Tabs>
+      </div>
+    );
+  }
 
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader>
-                <CardTitle>Compliance Issues</CardTitle>
-                <CardDescription>Common issues found during audits</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {[
-                    { issue: "Missing Documentation", count: 15, percentage: 35 },
-                    { issue: "Data Inconsistency", count: 12, percentage: 28 },
-                    { issue: "Calculation Errors", count: 8, percentage: 19 },
-                    { issue: "Anomalous Values", count: 5, percentage: 12 },
-                    { issue: "Late Submissions", count: 3, percentage: 7 }
-                  ].map((item, index) => (
-                    <div key={index} className="space-y-2">
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium">{item.issue}</span>
-                        <span className="text-sm text-muted-foreground">{item.count} cases</span>
-                      </div>
-                      <div className="w-full bg-muted rounded-full h-2">
-                        <div className="bg-destructive h-2 rounded-full" style={{ width: `${item.percentage}%` }}></div>
-                      </div>
-                      <div className="text-right text-sm text-muted-foreground">{item.percentage}%</div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+  if (currentView === "upload" && userRole === "company") {
+    return (
+      <div className="p-6 space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-foreground">Data Upload</h1>
+            <p className="text-muted-foreground">Upload and manage your carbon emission data</p>
           </div>
         </div>
-      );
-    }
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Current Data Status</CardTitle>
+              <CardDescription>Overview of your uploaded emission data</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center justify-between p-4 bg-success/5 border border-success/20 rounded-lg">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-success" />
+                  <div>
+                    <div className="font-medium">Emission Records</div>
+                    <div className="text-sm text-muted-foreground">{emissionData.length} devices tracked</div>
+                  </div>
+                </div>
+                <Badge variant="secondary" className="bg-success/10 text-success">
+                  Active
+                </Badge>
+              </div>
+
+              <div className="flex items-center justify-between p-4 bg-primary/5 border border-primary/20 rounded-lg">
+                <div className="flex items-center gap-3">
+                  <ArrowUpRight className="h-5 w-5 text-primary" />
+                  <div>
+                    <div className="font-medium">Credit Transfers</div>
+                    <div className="text-sm text-muted-foreground">{carbonCreditTransfers.length} transactions</div>
+                  </div>
+                </div>
+                <Badge variant="secondary" className="bg-primary/10 text-primary">
+                  Verified
+                </Badge>
+              </div>
+
+              <div className="pt-4 border-t">
+                <div className="text-sm text-muted-foreground">
+                  Last updated: <span className="font-medium">Real-time</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Data Quality Metrics</CardTitle>
+              <CardDescription>Validation and integrity scores</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm">Data Completeness</span>
+                  <span className="text-sm font-medium">100%</span>
+                </div>
+                <Progress value={100} className="h-2" />
+              </div>
+
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm">Validation Score</span>
+                  <span className="text-sm font-medium">98%</span>
+                </div>
+                <Progress value={98} className="h-2" />
+              </div>
+
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm">Anti-Cheat Score</span>
+                  <span className="text-sm font-medium">95%</span>
+                </div>
+                <Progress value={95} className="h-2" />
+              </div>
+
+              <div className="pt-4 border-t">
+                <div className="flex items-center gap-2 text-success">
+                  <Shield className="h-4 w-4" />
+                  <span className="text-sm font-medium">Data Integrity Verified</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
+  }
+
+  if (currentView === "validation" && userRole === "auditor") {
+    const verifiedRecords = emissionData.filter(record => record.credits_signed > 0);
+    const unverifiedRecords = emissionData.filter(record => record.credits_signed === 0);
 
     return (
-      <div className="p-6">
-        <h1 className="text-3xl font-bold text-foreground mb-6">
-          {currentView.charAt(0).toUpperCase() + currentView.slice(1)}
-        </h1>
-        <Card className="bg-gradient-card border-0 shadow-card">
-          <CardContent className="p-8 text-center">
-            <p className="text-muted-foreground">This section is under development.</p>
+      <div className="p-6 space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-foreground">Data Validation</h1>
+            <p className="text-muted-foreground">Review and verify carbon emission records</p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-success" />
+                Verified Records
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold text-success">{verifiedRecords.length}</div>
+              <p className="text-sm text-muted-foreground">
+                {((verifiedRecords.length / emissionData.length) * 100).toFixed(1)}% of total
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg flex items-center gap-2">
+                <AlertTriangle className="h-5 w-5 text-warning" />
+                Pending Review
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold text-warning">{unverifiedRecords.length}</div>
+              <p className="text-sm text-muted-foreground">
+                {((unverifiedRecords.length / emissionData.length) * 100).toFixed(1)}% of total
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg flex items-center gap-2">
+                <TrendingUp className="h-5 w-5 text-primary" />
+                Validation Rate
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold text-primary">
+                {((verifiedRecords.length / emissionData.length) * 100).toFixed(1)}%
+              </div>
+              <Progress value={(verifiedRecords.length / emissionData.length) * 100} className="h-2 mt-2" />
+            </CardContent>
+          </Card>
+        </div>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Validation Queue</CardTitle>
+            <CardDescription>Records requiring auditor review</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              {unverifiedRecords.slice(0, 10).map((record, index) => (
+                <div key={record.device_id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-muted rounded-full flex items-center justify-center">
+                      {record.home_id === "home" ? <Home className="h-5 w-5" /> : <Factory className="h-5 w-5" />}
+                    </div>
+                    <div>
+                      <div className="font-medium">{record.device_id}</div>
+                      <div className="text-sm text-muted-foreground">
+                        {record.cluster} • {record.home_id}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-bold">{record.emission_kg.toFixed(2)} kg CO₂</div>
+                    <Badge variant="outline" className="text-xs">
+                      Pending
+                    </Badge>
+                  </div>
+                </div>
+              ))}
+            </div>
           </CardContent>
         </Card>
       </div>
     );
-  };
+  }
 
-  const renderAdminDashboard = () => {
-    if (currentView === "overview") {
-      return (
-        <div className="p-6 space-y-6">
-          <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-bold text-foreground">System Overview</h1>
-            <Badge variant="outline" className="bg-warning/10 text-warning border-warning/20">
-              Administrator
-            </Badge>
-          </div>
+  if (currentView === "energy" && userRole === "domestic") {
+    const userHomeData = homeEmissions.slice(0, 10); // Simulate user's home devices
+    const userTotalEmissions = userHomeData.reduce((sum, record) => sum + record.emission_kg, 0);
+    const userAvgEmission = userTotalEmissions / userHomeData.length;
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Total Users</CardTitle>
-                <Users className="h-4 w-4 text-primary" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">1,247</div>
-                <p className="text-xs text-muted-foreground">
-                  <span className="text-success flex items-center">
-                    <TrendingUp className="h-3 w-3 mr-1" />
-                    +18 this week
-                  </span>
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Data Records</CardTitle>
-                <Database className="h-4 w-4 text-secondary" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">89.2K</div>
-                <p className="text-xs text-muted-foreground">Carbon measurements</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">System Health</CardTitle>
-                <CheckCircle className="h-4 w-4 text-success" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-success">99.8%</div>
-                <p className="text-xs text-muted-foreground">Uptime this month</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Ledger Anchors</CardTitle>
-                <Shield className="h-4 w-4 text-primary" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">2,847</div>
-                <p className="text-xs text-muted-foreground">Blockchain records</p>
-              </CardContent>
-            </Card>
+    return (
+      <div className="p-6 space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-foreground">Energy Tracking</h1>
+            <p className="text-muted-foreground">Monitor your household carbon footprint</p>
           </div>
         </div>
-      );
-    }
 
-    if (currentView === "users") {
-      return (
-        <div className="p-6 space-y-6">
-          <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-bold text-foreground">User Management</h1>
-            <Button>
-              <Users className="h-4 w-4 mr-2" />
-              Add New User
-            </Button>
-          </div>
-          
-          <Card className="bg-gradient-card border-0 shadow-card">
-            <CardHeader>
-              <CardTitle>System Users</CardTitle>
-              <CardDescription>Manage user accounts and permissions</CardDescription>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <Card className="border-l-4 border-l-primary">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Your Devices</CardTitle>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold">{userHomeData.length}</span>
+                <Home className="h-5 w-5 text-primary" />
+              </div>
             </CardHeader>
             <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Email</TableHead>
-                    <TableHead>Role</TableHead>
-                    <TableHead>Company</TableHead>
-                    <TableHead>Last Login</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {systemUsers.map((user) => (
-                    <TableRow key={user.id}>
-                      <TableCell className="font-medium">{user.name}</TableCell>
-                      <TableCell>{user.email}</TableCell>
-                      <TableCell>{user.role}</TableCell>
-                      <TableCell>{user.company}</TableCell>
-                      <TableCell>{user.lastLogin}</TableCell>
-                      <TableCell>
-                        <Badge variant={user.status === "Active" ? "default" : "secondary"}>
-                          {user.status}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex space-x-2">
-                          <Button variant="ghost" size="sm">
-                            <Edit className="h-4 w-4" />
-                          </Button>
-                          <Button variant="ghost" size="sm">
-                            <Trash2 className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+              <p className="text-xs text-muted-foreground">Active monitoring</p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-l-4 border-l-warning">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Total Emissions</CardTitle>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold">{userTotalEmissions.toFixed(1)}</span>
+                <span className="text-sm text-muted-foreground">kg CO₂</span>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center gap-1">
+                <TrendingDown className="h-4 w-4 text-success" />
+                <span className="text-xs text-success">-5% vs last month</span>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="border-l-4 border-l-success">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Carbon Score</CardTitle>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold">B+</span>
+                <Leaf className="h-5 w-5 text-success" />
+              </div>
+            </CardHeader>
+            <CardContent>
+              <p className="text-xs text-muted-foreground">Above average efficiency</p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-l-4 border-l-secondary">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">Daily Average</CardTitle>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold">{userAvgEmission.toFixed(1)}</span>
+                <span className="text-sm text-muted-foreground">kg CO₂</span>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <p className="text-xs text-muted-foreground">Per device</p>
             </CardContent>
           </Card>
         </div>
-      );
-    }
 
-    if (currentView === "industries") {
-      return (
-        <div className="p-6 space-y-6">
-          <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-bold text-foreground">Industry Registry</h1>
-            <Button>
-              <Factory className="h-4 w-4 mr-2" />
-              Register New Industry
-            </Button>
-          </div>
-          
-          <Card className="bg-gradient-card border-0 shadow-card">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <Card>
             <CardHeader>
-              <CardTitle>Registered Industries</CardTitle>
-              <CardDescription>Companies registered on the platform</CardDescription>
+              <CardTitle>Your Device Emissions</CardTitle>
+              <CardDescription>Carbon footprint by device</CardDescription>
             </CardHeader>
             <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Company Name</TableHead>
-                    <TableHead>Industry Type</TableHead>
-                    <TableHead>Location</TableHead>
-                    <TableHead>Facilities</TableHead>
-                    <TableHead>Employees</TableHead>
-                    <TableHead>Registration Date</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {industryRegistry.map((company) => (
-                    <TableRow key={company.id}>
-                      <TableCell className="font-medium">{company.name}</TableCell>
-                      <TableCell>{company.industry}</TableCell>
-                      <TableCell>{company.location}</TableCell>
-                      <TableCell>{company.facilities}</TableCell>
-                      <TableCell>{company.employees.toLocaleString()}</TableCell>
-                      <TableCell>{company.registrationDate}</TableCell>
-                      <TableCell>
-                        <Badge variant={company.status === "Verified" ? "default" : "secondary"}>
-                          {company.status}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex space-x-2">
-                          <Button variant="ghost" size="sm">
-                            <Eye className="h-4 w-4" />
-                          </Button>
-                          <Button variant="ghost" size="sm">
-                            <Edit className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+              <ChartContainer config={{
+                emission_kg: { label: "Emissions (kg CO₂)", color: "hsl(var(--primary))" }
+              }}>
+                <ResponsiveContainer width="100%" height={300}>
+                  <BarChart data={userHomeData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="device_id" angle={-45} textAnchor="end" height={80} />
+                    <YAxis />
+                    <ChartTooltip content={<ChartTooltipContent />} />
+                    <Bar dataKey="emission_kg" fill="var(--color-emission_kg)" radius={[4, 4, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </ChartContainer>
             </CardContent>
           </Card>
-        </div>
-      );
-    }
 
-    if (currentView === "settings") {
-      return (
-        <div className="p-6 space-y-6">
-          <h1 className="text-3xl font-bold text-foreground">System Settings</h1>
-          
-          <Card className="bg-gradient-card border-0 shadow-card">
+          <Card>
             <CardHeader>
-              <CardTitle>Platform Configuration</CardTitle>
-              <CardDescription>Manage system-wide settings and configurations</CardDescription>
+              <CardTitle>Efficiency Comparison</CardTitle>
+              <CardDescription>How you compare to other homes</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
-                {systemSettings.map((setting, index) => (
-                  <div key={index} className="flex items-center justify-between p-4 border rounded-lg">
-                    <div className="space-y-1">
-                      <div className="flex items-center space-x-2">
-                        <Badge variant="outline">{setting.category}</Badge>
-                        <h3 className="font-medium">{setting.setting}</h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground">{setting.description}</p>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <span className="font-medium">{setting.value}</span>
-                      <Button variant="ghost" size="sm">
-                        <Settings className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      );
-    }
-
-    return (
-      <div className="p-6">
-        <h1 className="text-3xl font-bold text-foreground mb-6">
-          {currentView.charAt(0).toUpperCase() + currentView.slice(1)}
-        </h1>
-        <Card className="bg-gradient-card border-0 shadow-card">
-          <CardContent className="p-8 text-center">
-            <p className="text-muted-foreground">This section is under development.</p>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  };
-
-  const renderDomesticDashboard = () => {
-    if (currentView === "overview") {
-      return (
-        <div className="p-6 space-y-6">
-          <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-bold text-foreground">Home Dashboard</h1>
-            <Badge variant="outline" className="bg-accent/10 text-accent border-accent/20">
-              Domestic User
-            </Badge>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Monthly Usage</CardTitle>
-                <Zap className="h-4 w-4 text-warning" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">847 kWh</div>
-                <p className="text-xs text-muted-foreground">
-                  <span className="text-success flex items-center">
-                    <TrendingDown className="h-3 w-3 mr-1" />
-                    -12% from last month
-                  </span>
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Carbon Score</CardTitle>
-                <Leaf className="h-4 w-4 text-success" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-success">A-</div>
-                <p className="text-xs text-muted-foreground">Excellent performance</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Monthly Savings</CardTitle>
-                <DollarSign className="h-4 w-4 text-success" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-success">$47</div>
-                <p className="text-xs text-muted-foreground">Compared to average</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">CO₂ Avoided</CardTitle>
-                <Leaf className="h-4 w-4 text-success" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">127 kg</div>
-                <p className="text-xs text-muted-foreground">This month</p>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Energy Breakdown */}
-          <Card className="bg-gradient-card border-0 shadow-card">
-            <CardHeader>
-              <CardTitle>Energy Breakdown</CardTitle>
-              <CardDescription>Your household energy consumption by category</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {[
-                  { category: "Heating & Cooling", usage: "45%", amount: "381 kWh", color: "bg-primary" },
-                  { category: "Water Heating", usage: "23%", amount: "195 kWh", color: "bg-secondary" },
-                  { category: "Appliances", usage: "18%", amount: "152 kWh", color: "bg-accent" },
-                  { category: "Lighting", usage: "14%", amount: "119 kWh", color: "bg-success" },
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center justify-between">
-                    <div className="flex items-center space-x-3">
-                      <div className={`w-3 h-3 rounded-full ${item.color}`}></div>
-                      <span className="font-medium">{item.category}</span>
-                    </div>
-                    <div className="text-right">
-                      <span className="font-bold">{item.usage}</span>
-                      <p className="text-sm text-muted-foreground">{item.amount}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      );
-    }
-
-    if (currentView === "energy") {
-      return (
-        <div className="p-6 space-y-6">
-          <h1 className="text-3xl font-bold text-foreground">Energy Tracking</h1>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader>
-                <CardTitle>Monthly Energy Usage</CardTitle>
-                <CardDescription>Track your energy consumption over time</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Month</TableHead>
-                      <TableHead>Electricity</TableHead>
-                      <TableHead>Gas</TableHead>
-                      <TableHead>Water</TableHead>
-                      <TableHead>Total</TableHead>
-                      <TableHead>Cost</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {domesticEnergyData.map((data, index) => (
-                      <TableRow key={index}>
-                        <TableCell className="font-medium">{data.month}</TableCell>
-                        <TableCell>{data.electricity} kWh</TableCell>
-                        <TableCell>{data.gas} therms</TableCell>
-                        <TableCell>{data.water}k gal</TableCell>
-                        <TableCell>{data.total}</TableCell>
-                        <TableCell>${data.cost}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader>
-                <CardTitle>Usage Trends</CardTitle>
-                <CardDescription>Your energy consumption patterns</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {domesticEnergyData.slice(-3).map((data, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
-                      <div>
-                        <p className="font-medium">{data.month}</p>
-                        <p className="text-sm text-muted-foreground">{data.total} units total</p>
-                      </div>
-                      <div className="text-right">
-                        <p className="font-bold">${data.cost}</p>
-                        <p className="text-sm text-muted-foreground">
-                          {index > 0 && domesticEnergyData[domesticEnergyData.length - 3 + index - 1] ? 
-                            (((data.cost - domesticEnergyData[domesticEnergyData.length - 3 + index - 1].cost) / domesticEnergyData[domesticEnergyData.length - 3 + index - 1].cost * 100).toFixed(1) + "% change") : 
-                            "Base month"
-                          }
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-primary mb-2">{userAvgEmission.toFixed(1)}</div>
+                  <div className="text-sm text-muted-foreground">Your average (kg CO₂)</div>
                 </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      );
-    }
 
-    if (currentView === "bills") {
-      return (
-        <div className="p-6 space-y-6">
-          <h1 className="text-3xl font-bold text-foreground">Bills & Costs</h1>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Total Monthly Cost</CardTitle>
-                <DollarSign className="h-4 w-4 text-primary" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">$234.93</div>
-                <p className="text-xs text-muted-foreground">Current month</p>
-              </CardContent>
-            </Card>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm">vs Network Average</span>
+                    <div className="flex items-center gap-2">
+                      {userAvgEmission < avgHomeEmission ? (
+                        <TrendingDown className="h-4 w-4 text-success" />
+                      ) : (
+                        <TrendingUp className="h-4 w-4 text-warning" />
+                      )}
+                      <span className={`text-sm font-medium ${userAvgEmission < avgHomeEmission ? 'text-success' : 'text-warning'}`}>
+                        {Math.abs(((userAvgEmission - avgHomeEmission) / avgHomeEmission) * 100).toFixed(1)}%
+                      </span>
+                    </div>
+                  </div>
 
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Pending Bills</CardTitle>
-                <AlertTriangle className="h-4 w-4 text-warning" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">1</div>
-                <p className="text-xs text-muted-foreground">Due soon</p>
-              </CardContent>
-            </Card>
+                  <Progress 
+                    value={userAvgEmission < avgHomeEmission ? 75 : 45} 
+                    className="h-2" 
+                  />
 
-            <Card className="bg-gradient-card border-0 shadow-card">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Savings This Year</CardTitle>
-                <TrendingDown className="h-4 w-4 text-success" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-success">$312</div>
-                <p className="text-xs text-muted-foreground">vs. last year</p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <Card className="bg-gradient-card border-0 shadow-card">
-            <CardHeader>
-              <CardTitle>Recent Bills</CardTitle>
-              <CardDescription>Your utility bills and payments</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Bill ID</TableHead>
-                    <TableHead>Provider</TableHead>
-                    <TableHead>Type</TableHead>
-                    <TableHead>Amount</TableHead>
-                    <TableHead>Usage</TableHead>
-                    <TableHead>Due Date</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {domesticBills.map((bill) => (
-                    <TableRow key={bill.id}>
-                      <TableCell className="font-medium">{bill.id}</TableCell>
-                      <TableCell>{bill.provider}</TableCell>
-                      <TableCell>{bill.type}</TableCell>
-                      <TableCell className={bill.amount < 0 ? "text-success" : ""}>
-                        ${Math.abs(bill.amount).toFixed(2)}
-                        {bill.amount < 0 && " (Credit)"}
-                      </TableCell>
-                      <TableCell>{bill.usage}</TableCell>
-                      <TableCell>{bill.dueDate}</TableCell>
-                      <TableCell>
-                        <Badge variant={bill.status === "Paid" ? "default" : bill.status === "Credit" ? "outline" : "secondary"}>
-                          {bill.status}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex space-x-2">
-                          <Button variant="ghost" size="sm">
-                            <Eye className="h-4 w-4" />
-                          </Button>
-                          <Button variant="ghost" size="sm">
-                            <Download className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+                  <div className="text-xs text-muted-foreground">
+                    Network average: {avgHomeEmission.toFixed(1)} kg CO₂
+                  </div>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </div>
-      );
-    }
 
-    if (currentView === "calculator") {
-      return (
-        <div className="p-6 space-y-6">
-          <h1 className="text-3xl font-bold text-foreground">Carbon Calculator</h1>
-          <Card className="bg-gradient-card border-0 shadow-card">
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <Calculator className="h-5 w-5 mr-2" />
-                Calculate Your Carbon Footprint
-              </CardTitle>
-              <CardDescription>Estimate your household's environmental impact</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Tabs defaultValue="energy" className="w-full">
-                <TabsList className="grid w-full grid-cols-4">
-                  <TabsTrigger value="energy">Energy</TabsTrigger>
-                  <TabsTrigger value="transport">Transport</TabsTrigger>
-                  <TabsTrigger value="waste">Waste</TabsTrigger>
-                  <TabsTrigger value="results">Results</TabsTrigger>
-                </TabsList>
-                <TabsContent value="energy" className="space-y-4">
-                  <p className="text-muted-foreground">Enter your monthly energy consumption details.</p>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-sm font-medium">Electricity (kWh)</label>
-                      <input className="w-full mt-1 p-2 border rounded-md" placeholder="847" />
+        <Card>
+          <CardHeader>
+            <CardTitle>Device Performance</CardTitle>
+            <CardDescription>Individual device emission tracking</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              {userHomeData.map((device, index) => (
+                <div key={device.device_id} className="flex items-center justify-between p-4 border rounded-lg">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Home className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                      <label className="text-sm font-medium">Natural Gas (therms)</label>
-                      <input className="w-full mt-1 p-2 border rounded-md" placeholder="45" />
+                      <div className="font-medium">{device.device_id}</div>
+                      <div className="text-sm text-muted-foreground">{device.cluster} cluster</div>
                     </div>
                   </div>
-                  <div className="bg-muted/30 p-4 rounded-lg">
-                    <h4 className="font-medium mb-2">Estimated Monthly CO₂ Emissions</h4>
-                    <p className="text-2xl font-bold text-primary">1.2 tons CO₂e</p>
-                    <p className="text-sm text-muted-foreground">Based on current inputs</p>
+                  <div className="text-right">
+                    <div className="font-bold">{device.emission_kg.toFixed(2)} kg CO₂</div>
+                    <Badge 
+                      variant="outline" 
+                      className={`text-xs ${device.emission_kg < avgHomeEmission ? 'border-success text-success' : 'border-warning text-warning'}`}
+                    >
+                      {device.emission_kg < avgHomeEmission ? 'Efficient' : 'Above Avg'}
+                    </Badge>
                   </div>
-                </TabsContent>
-                <TabsContent value="transport" className="space-y-4">
-                  <p className="text-muted-foreground">Transportation and travel information.</p>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-sm font-medium">Miles Driven (monthly)</label>
-                      <input className="w-full mt-1 p-2 border rounded-md" placeholder="1200" />
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium">Vehicle MPG</label>
-                      <input className="w-full mt-1 p-2 border rounded-md" placeholder="28" />
-                    </div>
-                  </div>
-                </TabsContent>
-                <TabsContent value="waste" className="space-y-4">
-                  <p className="text-muted-foreground">Waste and recycling habits.</p>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-sm font-medium">Waste Generated (lbs/week)</label>
-                      <input className="w-full mt-1 p-2 border rounded-md" placeholder="25" />
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium">Recycling Rate (%)</label>
-                      <input className="w-full mt-1 p-2 border rounded-md" placeholder="65" />
-                    </div>
-                  </div>
-                </TabsContent>
-                <TabsContent value="results" className="space-y-4">
-                  <div className="text-center space-y-4">
-                    <div className="bg-gradient-primary p-6 rounded-lg text-primary-foreground">
-                      <h3 className="text-lg font-medium mb-2">Your Total Carbon Footprint</h3>
-                      <p className="text-4xl font-bold">2.8 tons CO₂e</p>
-                      <p className="text-sm opacity-90">per month</p>
-                    </div>
-                    <div className="grid grid-cols-3 gap-4 text-center">
-                      <div className="p-4 bg-muted/30 rounded-lg">
-                        <p className="text-sm text-muted-foreground">Energy</p>
-                        <p className="text-xl font-bold">1.2t</p>
-                      </div>
-                      <div className="p-4 bg-muted/30 rounded-lg">
-                        <p className="text-sm text-muted-foreground">Transport</p>
-                        <p className="text-xl font-bold">1.4t</p>
-                      </div>
-                      <div className="p-4 bg-muted/30 rounded-lg">
-                        <p className="text-sm text-muted-foreground">Waste</p>
-                        <p className="text-xl font-bold">0.2t</p>
-                      </div>
-                    </div>
-                  </div>
-                </TabsContent>
-              </Tabs>
-            </CardContent>
-          </Card>
-        </div>
-      );
-    }
-
-    if (currentView === "tips") {
-      return (
-        <div className="p-6 space-y-6">
-          <h1 className="text-3xl font-bold text-foreground">Eco Tips</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              {
-                title: "Smart Thermostat",
-                description: "Install a programmable thermostat to reduce heating and cooling costs by up to 15%.",
-                impact: "Save $180/year",
-                icon: Home
-              },
-              {
-                title: "LED Lighting",
-                description: "Replace incandescent bulbs with LED lights to use 75% less energy.",
-                impact: "Reduce 450kg CO₂",
-                icon: Lightbulb
-              },
-              {
-                title: "Energy Star Appliances",
-                description: "Choose ENERGY STAR certified appliances for maximum efficiency.",
-                impact: "Save $300/year",
-                icon: Zap
-              },
-              {
-                title: "Solar Panels",
-                description: "Consider solar installation to generate clean, renewable energy.",
-                impact: "Offset 80% emissions",
-                icon: Leaf
-              }
-            ].map((tip, index) => (
-              <Card key={index} className="bg-gradient-card border-0 shadow-card">
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <tip.icon className="h-5 w-5 mr-2 text-primary" />
-                    {tip.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-3">{tip.description}</p>
-                  <Badge variant="outline" className="bg-success/10 text-success border-success/20">
-                    {tip.impact}
-                  </Badge>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <div className="p-6">
-        <h1 className="text-3xl font-bold text-foreground mb-6">
-          {currentView.charAt(0).toUpperCase() + currentView.slice(1)}
-        </h1>
-        <Card className="bg-gradient-card border-0 shadow-card">
-          <CardContent className="p-8 text-center">
-            <p className="text-muted-foreground">This section is under development.</p>
+                </div>
+              ))}
+            </div>
           </CardContent>
         </Card>
       </div>
     );
-  };
-
-  // Route to appropriate dashboard based on user role
-  switch (userRole) {
-    case "company":
-      return renderCompanyDashboard();
-    case "auditor":
-      return renderAuditorDashboard();
-    case "admin":
-      return renderAdminDashboard();
-    case "domestic":
-      return renderDomesticDashboard();
-    default:
-      return (
-        <div className="p-6">
-          <Card className="bg-gradient-card border-0 shadow-card">
-            <CardContent className="p-8 text-center">
-              <p className="text-muted-foreground">Please select a valid user role.</p>
-            </CardContent>
-          </Card>
-        </div>
-      );
   }
+
+  // Default overview for other roles and views
+  return (
+    <div className="p-6 space-y-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
+          <p className="text-muted-foreground">Carbon emission tracking and analysis platform</p>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Database className="h-5 w-5" />
+              Data Overview
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Total Records</span>
+              <span className="font-bold">{emissionData.length}</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Home Devices</span>
+              <span className="font-bold">{homeEmissions.length}</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Industry Devices</span>
+              <span className="font-bold">{industryEmissions.length}</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Credit Transfers</span>
+              <span className="font-bold">{carbonCreditTransfers.length}</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <BarChart3 className="h-5 w-5" />
+              Emission Summary
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Total Emissions</span>
+              <span className="font-bold">{(totalHomeEmissions + totalIndustryEmissions).toFixed(1)} kg</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Home Emissions</span>
+              <span className="font-bold">{totalHomeEmissions.toFixed(1)} kg</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Industry Emissions</span>
+              <span className="font-bold">{totalIndustryEmissions.toFixed(1)} kg</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Credits Transferred</span>
+              <span className="font-bold">{totalCreditsTransferred.toFixed(1)} kg</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Shield className="h-5 w-5" />
+              System Status
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Data Quality</span>
+              <Badge variant="secondary" className="bg-success/10 text-success">High</Badge>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Validation</span>
+              <Badge variant="secondary" className="bg-success/10 text-success">Active</Badge>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Anti-Cheat</span>
+              <Badge variant="secondary" className="bg-success/10 text-success">Enabled</Badge>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Network</span>
+              <Badge variant="secondary" className="bg-success/10 text-success">Online</Badge>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
 }
