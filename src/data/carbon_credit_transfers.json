@@ -1,0 +1,5177 @@
+[
+    {
+        "transferred_by": "HOM0001",
+        "received_by": "IND0001",
+        "credit_kg": 25.868
+    },
+    {
+        "transferred_by": "HOM0002",
+        "received_by": "IND0001",
+        "credit_kg": 24.734
+    },
+    {
+        "transferred_by": "HOM0003",
+        "received_by": "IND0001",
+        "credit_kg": 25.394
+    },
+    {
+        "transferred_by": "HOM0004",
+        "received_by": "IND0001",
+        "credit_kg": 25.429
+    },
+    {
+        "transferred_by": "HOM0005",
+        "received_by": "IND0001",
+        "credit_kg": 26.149
+    },
+    {
+        "transferred_by": "HOM0006",
+        "received_by": "IND0001",
+        "credit_kg": 24.68
+    },
+    {
+        "transferred_by": "HOM0007",
+        "received_by": "IND0001",
+        "credit_kg": 25.267
+    },
+    {
+        "transferred_by": "HOM0008",
+        "received_by": "IND0001",
+        "credit_kg": 26.058
+    },
+    {
+        "transferred_by": "HOM0009",
+        "received_by": "IND0001",
+        "credit_kg": 26.222
+    },
+    {
+        "transferred_by": "HOM0010",
+        "received_by": "IND0001",
+        "credit_kg": 25.757
+    },
+    {
+        "transferred_by": "HOM0011",
+        "received_by": "IND0001",
+        "credit_kg": 25.445
+    },
+    {
+        "transferred_by": "HOM0012",
+        "received_by": "IND0001",
+        "credit_kg": 25.285
+    },
+    {
+        "transferred_by": "HOM0013",
+        "received_by": "IND0001",
+        "credit_kg": 25.742
+    },
+    {
+        "transferred_by": "HOM0014",
+        "received_by": "IND0001",
+        "credit_kg": 25.64
+    },
+    {
+        "transferred_by": "HOM0015",
+        "received_by": "IND0001",
+        "credit_kg": 26.676
+    },
+    {
+        "transferred_by": "HOM0016",
+        "received_by": "IND0001",
+        "credit_kg": 25.938
+    },
+    {
+        "transferred_by": "HOM0017",
+        "received_by": "IND0001",
+        "credit_kg": 7.989
+    },
+    {
+        "transferred_by": "HOM0017",
+        "received_by": "IND0002",
+        "credit_kg": 17.964
+    },
+    {
+        "transferred_by": "HOM0018",
+        "received_by": "IND0002",
+        "credit_kg": 24.727
+    },
+    {
+        "transferred_by": "HOM0019",
+        "received_by": "IND0002",
+        "credit_kg": 25.275
+    },
+    {
+        "transferred_by": "HOM0020",
+        "received_by": "IND0002",
+        "credit_kg": 27.327
+    },
+    {
+        "transferred_by": "HOM0021",
+        "received_by": "IND0002",
+        "credit_kg": 26.106
+    },
+    {
+        "transferred_by": "HOM0022",
+        "received_by": "IND0002",
+        "credit_kg": 25.857
+    },
+    {
+        "transferred_by": "HOM0023",
+        "received_by": "IND0002",
+        "credit_kg": 25.525
+    },
+    {
+        "transferred_by": "HOM0024",
+        "received_by": "IND0002",
+        "credit_kg": 25.9
+    },
+    {
+        "transferred_by": "HOM0025",
+        "received_by": "IND0002",
+        "credit_kg": 26.271
+    },
+    {
+        "transferred_by": "HOM0026",
+        "received_by": "IND0002",
+        "credit_kg": 25.807
+    },
+    {
+        "transferred_by": "HOM0027",
+        "received_by": "IND0002",
+        "credit_kg": 25.858
+    },
+    {
+        "transferred_by": "HOM0028",
+        "received_by": "IND0002",
+        "credit_kg": 25.08
+    },
+    {
+        "transferred_by": "HOM0029",
+        "received_by": "IND0002",
+        "credit_kg": 25.845
+    },
+    {
+        "transferred_by": "HOM0030",
+        "received_by": "IND0002",
+        "credit_kg": 25.521
+    },
+    {
+        "transferred_by": "HOM0031",
+        "received_by": "IND0002",
+        "credit_kg": 25.962
+    },
+    {
+        "transferred_by": "HOM0032",
+        "received_by": "IND0002",
+        "credit_kg": 22.462
+    },
+    {
+        "transferred_by": "HOM0032",
+        "received_by": "IND0003",
+        "credit_kg": 3.303
+    },
+    {
+        "transferred_by": "HOM0033",
+        "received_by": "IND0003",
+        "credit_kg": 25.313
+    },
+    {
+        "transferred_by": "HOM0034",
+        "received_by": "IND0003",
+        "credit_kg": 25.075
+    },
+    {
+        "transferred_by": "HOM0035",
+        "received_by": "IND0003",
+        "credit_kg": 24.498
+    },
+    {
+        "transferred_by": "HOM0036",
+        "received_by": "IND0003",
+        "credit_kg": 25.412
+    },
+    {
+        "transferred_by": "HOM0037",
+        "received_by": "IND0003",
+        "credit_kg": 26.469
+    },
+    {
+        "transferred_by": "HOM0038",
+        "received_by": "IND0003",
+        "credit_kg": 25.792
+    },
+    {
+        "transferred_by": "HOM0039",
+        "received_by": "IND0003",
+        "credit_kg": 26.587
+    },
+    {
+        "transferred_by": "HOM0040",
+        "received_by": "IND0003",
+        "credit_kg": 26.31
+    },
+    {
+        "transferred_by": "HOM0041",
+        "received_by": "IND0003",
+        "credit_kg": 26.186
+    },
+    {
+        "transferred_by": "HOM0042",
+        "received_by": "IND0003",
+        "credit_kg": 25.713
+    },
+    {
+        "transferred_by": "HOM0043",
+        "received_by": "IND0003",
+        "credit_kg": 25.738
+    },
+    {
+        "transferred_by": "HOM0044",
+        "received_by": "IND0003",
+        "credit_kg": 25.133
+    },
+    {
+        "transferred_by": "HOM0045",
+        "received_by": "IND0003",
+        "credit_kg": 24.926
+    },
+    {
+        "transferred_by": "HOM0046",
+        "received_by": "IND0003",
+        "credit_kg": 25.305
+    },
+    {
+        "transferred_by": "HOM0047",
+        "received_by": "IND0003",
+        "credit_kg": 25.428
+    },
+    {
+        "transferred_by": "HOM0048",
+        "received_by": "IND0003",
+        "credit_kg": 19.695
+    },
+    {
+        "transferred_by": "HOM0048",
+        "received_by": "IND0004",
+        "credit_kg": 6.244
+    },
+    {
+        "transferred_by": "HOM0049",
+        "received_by": "IND0004",
+        "credit_kg": 26.933
+    },
+    {
+        "transferred_by": "HOM0050",
+        "received_by": "IND0004",
+        "credit_kg": 25.632
+    },
+    {
+        "transferred_by": "HOM0051",
+        "received_by": "IND0004",
+        "credit_kg": 25.601
+    },
+    {
+        "transferred_by": "HOM0052",
+        "received_by": "IND0004",
+        "credit_kg": 25.178
+    },
+    {
+        "transferred_by": "HOM0053",
+        "received_by": "IND0004",
+        "credit_kg": 23.421
+    },
+    {
+        "transferred_by": "HOM0054",
+        "received_by": "IND0004",
+        "credit_kg": 26.863
+    },
+    {
+        "transferred_by": "HOM0055",
+        "received_by": "IND0004",
+        "credit_kg": 25.272
+    },
+    {
+        "transferred_by": "HOM0056",
+        "received_by": "IND0004",
+        "credit_kg": 25.588
+    },
+    {
+        "transferred_by": "HOM0057",
+        "received_by": "IND0004",
+        "credit_kg": 24.975
+    },
+    {
+        "transferred_by": "HOM0058",
+        "received_by": "IND0004",
+        "credit_kg": 25.615
+    },
+    {
+        "transferred_by": "HOM0059",
+        "received_by": "IND0004",
+        "credit_kg": 26.001
+    },
+    {
+        "transferred_by": "HOM0060",
+        "received_by": "IND0004",
+        "credit_kg": 26.49
+    },
+    {
+        "transferred_by": "HOM0061",
+        "received_by": "IND0004",
+        "credit_kg": 26.327
+    },
+    {
+        "transferred_by": "HOM0062",
+        "received_by": "IND0004",
+        "credit_kg": 24.79
+    },
+    {
+        "transferred_by": "HOM0063",
+        "received_by": "IND0004",
+        "credit_kg": 25.457
+    },
+    {
+        "transferred_by": "HOM0064",
+        "received_by": "IND0004",
+        "credit_kg": 26.196
+    },
+    {
+        "transferred_by": "HOM0065",
+        "received_by": "IND0004",
+        "credit_kg": 6.283
+    },
+    {
+        "transferred_by": "HOM0065",
+        "received_by": "IND0005",
+        "credit_kg": 19.7
+    },
+    {
+        "transferred_by": "HOM0066",
+        "received_by": "IND0005",
+        "credit_kg": 25.533
+    },
+    {
+        "transferred_by": "HOM0067",
+        "received_by": "IND0005",
+        "credit_kg": 25.71
+    },
+    {
+        "transferred_by": "HOM0068",
+        "received_by": "IND0005",
+        "credit_kg": 25.184
+    },
+    {
+        "transferred_by": "HOM0069",
+        "received_by": "IND0005",
+        "credit_kg": 26.161
+    },
+    {
+        "transferred_by": "HOM0070",
+        "received_by": "IND0005",
+        "credit_kg": 25.257
+    },
+    {
+        "transferred_by": "HOM0071",
+        "received_by": "IND0005",
+        "credit_kg": 25.364
+    },
+    {
+        "transferred_by": "HOM0072",
+        "received_by": "IND0005",
+        "credit_kg": 25.45
+    },
+    {
+        "transferred_by": "HOM0073",
+        "received_by": "IND0005",
+        "credit_kg": 26.551
+    },
+    {
+        "transferred_by": "HOM0074",
+        "received_by": "IND0005",
+        "credit_kg": 25.549
+    },
+    {
+        "transferred_by": "HOM0075",
+        "received_by": "IND0005",
+        "credit_kg": 25.975
+    },
+    {
+        "transferred_by": "HOM0076",
+        "received_by": "IND0005",
+        "credit_kg": 24.951
+    },
+    {
+        "transferred_by": "HOM0077",
+        "received_by": "IND0005",
+        "credit_kg": 25.087
+    },
+    {
+        "transferred_by": "HOM0078",
+        "received_by": "IND0005",
+        "credit_kg": 26.628
+    },
+    {
+        "transferred_by": "HOM0079",
+        "received_by": "IND0005",
+        "credit_kg": 26.1
+    },
+    {
+        "transferred_by": "HOM0080",
+        "received_by": "IND0005",
+        "credit_kg": 24.354
+    },
+    {
+        "transferred_by": "HOM0081",
+        "received_by": "IND0005",
+        "credit_kg": 20.492
+    },
+    {
+        "transferred_by": "HOM0081",
+        "received_by": "IND0006",
+        "credit_kg": 6.362
+    },
+    {
+        "transferred_by": "HOM0082",
+        "received_by": "IND0006",
+        "credit_kg": 25.31
+    },
+    {
+        "transferred_by": "HOM0083",
+        "received_by": "IND0006",
+        "credit_kg": 26.409
+    },
+    {
+        "transferred_by": "HOM0084",
+        "received_by": "IND0006",
+        "credit_kg": 24.615
+    },
+    {
+        "transferred_by": "HOM0085",
+        "received_by": "IND0006",
+        "credit_kg": 24.372
+    },
+    {
+        "transferred_by": "HOM0086",
+        "received_by": "IND0006",
+        "credit_kg": 25.991
+    },
+    {
+        "transferred_by": "HOM0087",
+        "received_by": "IND0006",
+        "credit_kg": 24.579
+    },
+    {
+        "transferred_by": "HOM0088",
+        "received_by": "IND0006",
+        "credit_kg": 25.583
+    },
+    {
+        "transferred_by": "HOM0089",
+        "received_by": "IND0006",
+        "credit_kg": 25.236
+    },
+    {
+        "transferred_by": "HOM0090",
+        "received_by": "IND0006",
+        "credit_kg": 25.478
+    },
+    {
+        "transferred_by": "HOM0091",
+        "received_by": "IND0006",
+        "credit_kg": 25.225
+    },
+    {
+        "transferred_by": "HOM0092",
+        "received_by": "IND0006",
+        "credit_kg": 26.852
+    },
+    {
+        "transferred_by": "HOM0093",
+        "received_by": "IND0006",
+        "credit_kg": 25.165
+    },
+    {
+        "transferred_by": "HOM0094",
+        "received_by": "IND0006",
+        "credit_kg": 26.131
+    },
+    {
+        "transferred_by": "HOM0095",
+        "received_by": "IND0006",
+        "credit_kg": 25.977
+    },
+    {
+        "transferred_by": "HOM0096",
+        "received_by": "IND0006",
+        "credit_kg": 26.569
+    },
+    {
+        "transferred_by": "HOM0097",
+        "received_by": "IND0006",
+        "credit_kg": 25.018
+    },
+    {
+        "transferred_by": "HOM0098",
+        "received_by": "IND0006",
+        "credit_kg": 12.957
+    },
+    {
+        "transferred_by": "HOM0098",
+        "received_by": "IND0007",
+        "credit_kg": 12.957
+    },
+    {
+        "transferred_by": "HOM0099",
+        "received_by": "IND0007",
+        "credit_kg": 25.953
+    },
+    {
+        "transferred_by": "HOM0100",
+        "received_by": "IND0007",
+        "credit_kg": 26.293
+    },
+    {
+        "transferred_by": "HOM0101",
+        "received_by": "IND0007",
+        "credit_kg": 24.995
+    },
+    {
+        "transferred_by": "HOM0102",
+        "received_by": "IND0007",
+        "credit_kg": 26.779
+    },
+    {
+        "transferred_by": "HOM0103",
+        "received_by": "IND0007",
+        "credit_kg": 25.825
+    },
+    {
+        "transferred_by": "HOM0104",
+        "received_by": "IND0007",
+        "credit_kg": 26.114
+    },
+    {
+        "transferred_by": "HOM0105",
+        "received_by": "IND0007",
+        "credit_kg": 24.925
+    },
+    {
+        "transferred_by": "HOM0106",
+        "received_by": "IND0007",
+        "credit_kg": 25.511
+    },
+    {
+        "transferred_by": "HOM0107",
+        "received_by": "IND0007",
+        "credit_kg": 25.97
+    },
+    {
+        "transferred_by": "HOM0108",
+        "received_by": "IND0007",
+        "credit_kg": 25.939
+    },
+    {
+        "transferred_by": "HOM0109",
+        "received_by": "IND0007",
+        "credit_kg": 26.421
+    },
+    {
+        "transferred_by": "HOM0110",
+        "received_by": "IND0007",
+        "credit_kg": 25.426
+    },
+    {
+        "transferred_by": "HOM0111",
+        "received_by": "IND0007",
+        "credit_kg": 25.455
+    },
+    {
+        "transferred_by": "HOM0112",
+        "received_by": "IND0007",
+        "credit_kg": 26.171
+    },
+    {
+        "transferred_by": "HOM0113",
+        "received_by": "IND0007",
+        "credit_kg": 25.459
+    },
+    {
+        "transferred_by": "HOM0114",
+        "received_by": "IND0007",
+        "credit_kg": 23.828
+    },
+    {
+        "transferred_by": "HOM0114",
+        "received_by": "IND0008",
+        "credit_kg": 3.038
+    },
+    {
+        "transferred_by": "HOM0115",
+        "received_by": "IND0008",
+        "credit_kg": 25.597
+    },
+    {
+        "transferred_by": "HOM0116",
+        "received_by": "IND0008",
+        "credit_kg": 25.402
+    },
+    {
+        "transferred_by": "HOM0117",
+        "received_by": "IND0008",
+        "credit_kg": 25.551
+    },
+    {
+        "transferred_by": "HOM0118",
+        "received_by": "IND0008",
+        "credit_kg": 25.621
+    },
+    {
+        "transferred_by": "HOM0119",
+        "received_by": "IND0008",
+        "credit_kg": 26.183
+    },
+    {
+        "transferred_by": "HOM0120",
+        "received_by": "IND0008",
+        "credit_kg": 25.992
+    },
+    {
+        "transferred_by": "HOM0121",
+        "received_by": "IND0008",
+        "credit_kg": 25.876
+    },
+    {
+        "transferred_by": "HOM0122",
+        "received_by": "IND0008",
+        "credit_kg": 25.6
+    },
+    {
+        "transferred_by": "HOM0123",
+        "received_by": "IND0008",
+        "credit_kg": 24.84
+    },
+    {
+        "transferred_by": "HOM0124",
+        "received_by": "IND0008",
+        "credit_kg": 24.716
+    },
+    {
+        "transferred_by": "HOM0125",
+        "received_by": "IND0008",
+        "credit_kg": 26.946
+    },
+    {
+        "transferred_by": "HOM0126",
+        "received_by": "IND0008",
+        "credit_kg": 25.867
+    },
+    {
+        "transferred_by": "HOM0127",
+        "received_by": "IND0008",
+        "credit_kg": 24.868
+    },
+    {
+        "transferred_by": "HOM0128",
+        "received_by": "IND0008",
+        "credit_kg": 25.712
+    },
+    {
+        "transferred_by": "HOM0129",
+        "received_by": "IND0008",
+        "credit_kg": 26.13
+    },
+    {
+        "transferred_by": "HOM0130",
+        "received_by": "IND0008",
+        "credit_kg": 24.526
+    },
+    {
+        "transferred_by": "HOM0131",
+        "received_by": "IND0008",
+        "credit_kg": 2.015
+    },
+    {
+        "transferred_by": "HOM0131",
+        "received_by": "IND0009",
+        "credit_kg": 24.343
+    },
+    {
+        "transferred_by": "HOM0132",
+        "received_by": "IND0009",
+        "credit_kg": 25.16
+    },
+    {
+        "transferred_by": "HOM0133",
+        "received_by": "IND0009",
+        "credit_kg": 26.456
+    },
+    {
+        "transferred_by": "HOM0134",
+        "received_by": "IND0009",
+        "credit_kg": 24.333
+    },
+    {
+        "transferred_by": "HOM0135",
+        "received_by": "IND0009",
+        "credit_kg": 25.064
+    },
+    {
+        "transferred_by": "HOM0136",
+        "received_by": "IND0009",
+        "credit_kg": 25.958
+    },
+    {
+        "transferred_by": "HOM0137",
+        "received_by": "IND0009",
+        "credit_kg": 25.629
+    },
+    {
+        "transferred_by": "HOM0138",
+        "received_by": "IND0009",
+        "credit_kg": 27.32
+    },
+    {
+        "transferred_by": "HOM0139",
+        "received_by": "IND0009",
+        "credit_kg": 26.223
+    },
+    {
+        "transferred_by": "HOM0140",
+        "received_by": "IND0009",
+        "credit_kg": 24.876
+    },
+    {
+        "transferred_by": "HOM0141",
+        "received_by": "IND0009",
+        "credit_kg": 26.576
+    },
+    {
+        "transferred_by": "HOM0142",
+        "received_by": "IND0009",
+        "credit_kg": 24.308
+    },
+    {
+        "transferred_by": "HOM0143",
+        "received_by": "IND0009",
+        "credit_kg": 25.673
+    },
+    {
+        "transferred_by": "HOM0144",
+        "received_by": "IND0009",
+        "credit_kg": 25.389
+    },
+    {
+        "transferred_by": "HOM0145",
+        "received_by": "IND0009",
+        "credit_kg": 25.447
+    },
+    {
+        "transferred_by": "HOM0146",
+        "received_by": "IND0009",
+        "credit_kg": 26.893
+    },
+    {
+        "transferred_by": "HOM0147",
+        "received_by": "IND0009",
+        "credit_kg": 13.989
+    },
+    {
+        "transferred_by": "HOM0147",
+        "received_by": "IND0010",
+        "credit_kg": 10.418
+    },
+    {
+        "transferred_by": "HOM0148",
+        "received_by": "IND0010",
+        "credit_kg": 25.167
+    },
+    {
+        "transferred_by": "HOM0149",
+        "received_by": "IND0010",
+        "credit_kg": 26.855
+    },
+    {
+        "transferred_by": "HOM0150",
+        "received_by": "IND0010",
+        "credit_kg": 24.873
+    },
+    {
+        "transferred_by": "HOM0151",
+        "received_by": "IND0010",
+        "credit_kg": 26.044
+    },
+    {
+        "transferred_by": "HOM0152",
+        "received_by": "IND0010",
+        "credit_kg": 26.53
+    },
+    {
+        "transferred_by": "HOM0153",
+        "received_by": "IND0010",
+        "credit_kg": 24.225
+    },
+    {
+        "transferred_by": "HOM0154",
+        "received_by": "IND0010",
+        "credit_kg": 26.062
+    },
+    {
+        "transferred_by": "HOM0155",
+        "received_by": "IND0010",
+        "credit_kg": 25.173
+    },
+    {
+        "transferred_by": "HOM0156",
+        "received_by": "IND0010",
+        "credit_kg": 24.997
+    },
+    {
+        "transferred_by": "HOM0157",
+        "received_by": "IND0010",
+        "credit_kg": 25.155
+    },
+    {
+        "transferred_by": "HOM0158",
+        "received_by": "IND0010",
+        "credit_kg": 26.425
+    },
+    {
+        "transferred_by": "HOM0159",
+        "received_by": "IND0010",
+        "credit_kg": 25.136
+    },
+    {
+        "transferred_by": "HOM0160",
+        "received_by": "IND0010",
+        "credit_kg": 27.586
+    },
+    {
+        "transferred_by": "HOM0161",
+        "received_by": "IND0010",
+        "credit_kg": 24.609
+    },
+    {
+        "transferred_by": "HOM0162",
+        "received_by": "IND0010",
+        "credit_kg": 26.042
+    },
+    {
+        "transferred_by": "HOM0163",
+        "received_by": "IND0010",
+        "credit_kg": 22.632
+    },
+    {
+        "transferred_by": "HOM0163",
+        "received_by": "IND0011",
+        "credit_kg": 3.75
+    },
+    {
+        "transferred_by": "HOM0164",
+        "received_by": "IND0011",
+        "credit_kg": 25.642
+    },
+    {
+        "transferred_by": "HOM0165",
+        "received_by": "IND0011",
+        "credit_kg": 26.029
+    },
+    {
+        "transferred_by": "HOM0166",
+        "received_by": "IND0011",
+        "credit_kg": 25.251
+    },
+    {
+        "transferred_by": "HOM0167",
+        "received_by": "IND0011",
+        "credit_kg": 25.852
+    },
+    {
+        "transferred_by": "HOM0168",
+        "received_by": "IND0011",
+        "credit_kg": 26.272
+    },
+    {
+        "transferred_by": "HOM0169",
+        "received_by": "IND0011",
+        "credit_kg": 25.457
+    },
+    {
+        "transferred_by": "HOM0170",
+        "received_by": "IND0011",
+        "credit_kg": 26.262
+    },
+    {
+        "transferred_by": "HOM0171",
+        "received_by": "IND0011",
+        "credit_kg": 26.208
+    },
+    {
+        "transferred_by": "HOM0172",
+        "received_by": "IND0011",
+        "credit_kg": 26.548
+    },
+    {
+        "transferred_by": "HOM0173",
+        "received_by": "IND0011",
+        "credit_kg": 25.131
+    },
+    {
+        "transferred_by": "HOM0174",
+        "received_by": "IND0011",
+        "credit_kg": 25.863
+    },
+    {
+        "transferred_by": "HOM0175",
+        "received_by": "IND0011",
+        "credit_kg": 26.063
+    },
+    {
+        "transferred_by": "HOM0176",
+        "received_by": "IND0011",
+        "credit_kg": 27.221
+    },
+    {
+        "transferred_by": "HOM0177",
+        "received_by": "IND0011",
+        "credit_kg": 25.838
+    },
+    {
+        "transferred_by": "HOM0178",
+        "received_by": "IND0011",
+        "credit_kg": 25.097
+    },
+    {
+        "transferred_by": "HOM0178",
+        "received_by": "IND0012",
+        "credit_kg": 0.402
+    },
+    {
+        "transferred_by": "HOM0179",
+        "received_by": "IND0012",
+        "credit_kg": 24.65
+    },
+    {
+        "transferred_by": "HOM0180",
+        "received_by": "IND0012",
+        "credit_kg": 25.702
+    },
+    {
+        "transferred_by": "HOM0181",
+        "received_by": "IND0012",
+        "credit_kg": 25.399
+    },
+    {
+        "transferred_by": "HOM0182",
+        "received_by": "IND0012",
+        "credit_kg": 24.317
+    },
+    {
+        "transferred_by": "HOM0183",
+        "received_by": "IND0012",
+        "credit_kg": 25.983
+    },
+    {
+        "transferred_by": "HOM0184",
+        "received_by": "IND0012",
+        "credit_kg": 25.604
+    },
+    {
+        "transferred_by": "HOM0185",
+        "received_by": "IND0012",
+        "credit_kg": 26.355
+    },
+    {
+        "transferred_by": "HOM0186",
+        "received_by": "IND0012",
+        "credit_kg": 26.747
+    },
+    {
+        "transferred_by": "HOM0187",
+        "received_by": "IND0012",
+        "credit_kg": 25.782
+    },
+    {
+        "transferred_by": "HOM0188",
+        "received_by": "IND0012",
+        "credit_kg": 26.994
+    },
+    {
+        "transferred_by": "HOM0189",
+        "received_by": "IND0012",
+        "credit_kg": 25.056
+    },
+    {
+        "transferred_by": "HOM0190",
+        "received_by": "IND0012",
+        "credit_kg": 24.473
+    },
+    {
+        "transferred_by": "HOM0191",
+        "received_by": "IND0012",
+        "credit_kg": 25.856
+    },
+    {
+        "transferred_by": "HOM0192",
+        "received_by": "IND0012",
+        "credit_kg": 26.593
+    },
+    {
+        "transferred_by": "HOM0193",
+        "received_by": "IND0012",
+        "credit_kg": 25.356
+    },
+    {
+        "transferred_by": "HOM0194",
+        "received_by": "IND0012",
+        "credit_kg": 24.622
+    },
+    {
+        "transferred_by": "HOM0195",
+        "received_by": "IND0012",
+        "credit_kg": 26.704
+    },
+    {
+        "transferred_by": "HOM0196",
+        "received_by": "IND0012",
+        "credit_kg": 0.512
+    },
+    {
+        "transferred_by": "HOM0196",
+        "received_by": "IND0013",
+        "credit_kg": 25.073
+    },
+    {
+        "transferred_by": "HOM0197",
+        "received_by": "IND0013",
+        "credit_kg": 24.643
+    },
+    {
+        "transferred_by": "HOM0198",
+        "received_by": "IND0013",
+        "credit_kg": 25.039
+    },
+    {
+        "transferred_by": "HOM0199",
+        "received_by": "IND0013",
+        "credit_kg": 25.691
+    },
+    {
+        "transferred_by": "HOM0200",
+        "received_by": "IND0013",
+        "credit_kg": 24.637
+    },
+    {
+        "transferred_by": "HOM0201",
+        "received_by": "IND0013",
+        "credit_kg": 26.549
+    },
+    {
+        "transferred_by": "HOM0202",
+        "received_by": "IND0013",
+        "credit_kg": 25.781
+    },
+    {
+        "transferred_by": "HOM0203",
+        "received_by": "IND0013",
+        "credit_kg": 25.469
+    },
+    {
+        "transferred_by": "HOM0204",
+        "received_by": "IND0013",
+        "credit_kg": 25.54
+    },
+    {
+        "transferred_by": "HOM0205",
+        "received_by": "IND0013",
+        "credit_kg": 25.233
+    },
+    {
+        "transferred_by": "HOM0206",
+        "received_by": "IND0013",
+        "credit_kg": 25.08
+    },
+    {
+        "transferred_by": "HOM0207",
+        "received_by": "IND0013",
+        "credit_kg": 26.735
+    },
+    {
+        "transferred_by": "HOM0208",
+        "received_by": "IND0013",
+        "credit_kg": 24.668
+    },
+    {
+        "transferred_by": "HOM0209",
+        "received_by": "IND0013",
+        "credit_kg": 26.29
+    },
+    {
+        "transferred_by": "HOM0210",
+        "received_by": "IND0013",
+        "credit_kg": 24.294
+    },
+    {
+        "transferred_by": "HOM0211",
+        "received_by": "IND0013",
+        "credit_kg": 19.657
+    },
+    {
+        "transferred_by": "HOM0211",
+        "received_by": "IND0014",
+        "credit_kg": 5.308
+    },
+    {
+        "transferred_by": "HOM0212",
+        "received_by": "IND0014",
+        "credit_kg": 25.762
+    },
+    {
+        "transferred_by": "HOM0213",
+        "received_by": "IND0014",
+        "credit_kg": 26.309
+    },
+    {
+        "transferred_by": "HOM0214",
+        "received_by": "IND0014",
+        "credit_kg": 25.306
+    },
+    {
+        "transferred_by": "HOM0215",
+        "received_by": "IND0014",
+        "credit_kg": 26.374
+    },
+    {
+        "transferred_by": "HOM0216",
+        "received_by": "IND0014",
+        "credit_kg": 27.02
+    },
+    {
+        "transferred_by": "HOM0217",
+        "received_by": "IND0014",
+        "credit_kg": 25.901
+    },
+    {
+        "transferred_by": "HOM0218",
+        "received_by": "IND0014",
+        "credit_kg": 25.862
+    },
+    {
+        "transferred_by": "HOM0219",
+        "received_by": "IND0014",
+        "credit_kg": 24.423
+    },
+    {
+        "transferred_by": "HOM0220",
+        "received_by": "IND0014",
+        "credit_kg": 25.29
+    },
+    {
+        "transferred_by": "HOM0221",
+        "received_by": "IND0014",
+        "credit_kg": 25.451
+    },
+    {
+        "transferred_by": "HOM0222",
+        "received_by": "IND0014",
+        "credit_kg": 25.055
+    },
+    {
+        "transferred_by": "HOM0223",
+        "received_by": "IND0014",
+        "credit_kg": 26.411
+    },
+    {
+        "transferred_by": "HOM0224",
+        "received_by": "IND0014",
+        "credit_kg": 25.388
+    },
+    {
+        "transferred_by": "HOM0225",
+        "received_by": "IND0014",
+        "credit_kg": 25.844
+    },
+    {
+        "transferred_by": "HOM0226",
+        "received_by": "IND0014",
+        "credit_kg": 26.194
+    },
+    {
+        "transferred_by": "HOM0227",
+        "received_by": "IND0014",
+        "credit_kg": 25.987
+    },
+    {
+        "transferred_by": "HOM0228",
+        "received_by": "IND0014",
+        "credit_kg": 1.58
+    },
+    {
+        "transferred_by": "HOM0228",
+        "received_by": "IND0015",
+        "credit_kg": 24.447
+    },
+    {
+        "transferred_by": "HOM0229",
+        "received_by": "IND0015",
+        "credit_kg": 26.566
+    },
+    {
+        "transferred_by": "HOM0230",
+        "received_by": "IND0015",
+        "credit_kg": 25.863
+    },
+    {
+        "transferred_by": "HOM0231",
+        "received_by": "IND0015",
+        "credit_kg": 25.683
+    },
+    {
+        "transferred_by": "HOM0232",
+        "received_by": "IND0015",
+        "credit_kg": 24.931
+    },
+    {
+        "transferred_by": "HOM0233",
+        "received_by": "IND0015",
+        "credit_kg": 25.04
+    },
+    {
+        "transferred_by": "HOM0234",
+        "received_by": "IND0015",
+        "credit_kg": 25.914
+    },
+    {
+        "transferred_by": "HOM0235",
+        "received_by": "IND0015",
+        "credit_kg": 26.427
+    },
+    {
+        "transferred_by": "HOM0236",
+        "received_by": "IND0015",
+        "credit_kg": 25.827
+    },
+    {
+        "transferred_by": "HOM0237",
+        "received_by": "IND0015",
+        "credit_kg": 26.036
+    },
+    {
+        "transferred_by": "HOM0238",
+        "received_by": "IND0015",
+        "credit_kg": 25.131
+    },
+    {
+        "transferred_by": "HOM0239",
+        "received_by": "IND0015",
+        "credit_kg": 26.129
+    },
+    {
+        "transferred_by": "HOM0240",
+        "received_by": "IND0015",
+        "credit_kg": 26.137
+    },
+    {
+        "transferred_by": "HOM0241",
+        "received_by": "IND0015",
+        "credit_kg": 26.075
+    },
+    {
+        "transferred_by": "HOM0242",
+        "received_by": "IND0015",
+        "credit_kg": 25.008
+    },
+    {
+        "transferred_by": "HOM0243",
+        "received_by": "IND0015",
+        "credit_kg": 25.401
+    },
+    {
+        "transferred_by": "HOM0244",
+        "received_by": "IND0015",
+        "credit_kg": 14.616
+    },
+    {
+        "transferred_by": "HOM0244",
+        "received_by": "IND0016",
+        "credit_kg": 12.398
+    },
+    {
+        "transferred_by": "HOM0245",
+        "received_by": "IND0016",
+        "credit_kg": 25.313
+    },
+    {
+        "transferred_by": "HOM0246",
+        "received_by": "IND0016",
+        "credit_kg": 25.824
+    },
+    {
+        "transferred_by": "HOM0247",
+        "received_by": "IND0016",
+        "credit_kg": 24.938
+    },
+    {
+        "transferred_by": "HOM0248",
+        "received_by": "IND0016",
+        "credit_kg": 25.815
+    },
+    {
+        "transferred_by": "HOM0249",
+        "received_by": "IND0016",
+        "credit_kg": 25.14
+    },
+    {
+        "transferred_by": "HOM0250",
+        "received_by": "IND0016",
+        "credit_kg": 25.009
+    },
+    {
+        "transferred_by": "HOM0251",
+        "received_by": "IND0016",
+        "credit_kg": 26.319
+    },
+    {
+        "transferred_by": "HOM0252",
+        "received_by": "IND0016",
+        "credit_kg": 26.069
+    },
+    {
+        "transferred_by": "HOM0253",
+        "received_by": "IND0016",
+        "credit_kg": 24.444
+    },
+    {
+        "transferred_by": "HOM0254",
+        "received_by": "IND0016",
+        "credit_kg": 25.465
+    },
+    {
+        "transferred_by": "HOM0255",
+        "received_by": "IND0016",
+        "credit_kg": 26.067
+    },
+    {
+        "transferred_by": "HOM0256",
+        "received_by": "IND0016",
+        "credit_kg": 24.517
+    },
+    {
+        "transferred_by": "HOM0257",
+        "received_by": "IND0016",
+        "credit_kg": 25.038
+    },
+    {
+        "transferred_by": "HOM0258",
+        "received_by": "IND0016",
+        "credit_kg": 25.686
+    },
+    {
+        "transferred_by": "HOM0259",
+        "received_by": "IND0016",
+        "credit_kg": 26.561
+    },
+    {
+        "transferred_by": "HOM0260",
+        "received_by": "IND0016",
+        "credit_kg": 26.275
+    },
+    {
+        "transferred_by": "HOM0261",
+        "received_by": "IND0016",
+        "credit_kg": 13.472
+    },
+    {
+        "transferred_by": "HOM0261",
+        "received_by": "IND0017",
+        "credit_kg": 12.935
+    },
+    {
+        "transferred_by": "HOM0262",
+        "received_by": "IND0017",
+        "credit_kg": 25.248
+    },
+    {
+        "transferred_by": "HOM0263",
+        "received_by": "IND0017",
+        "credit_kg": 25.544
+    },
+    {
+        "transferred_by": "HOM0264",
+        "received_by": "IND0017",
+        "credit_kg": 25.728
+    },
+    {
+        "transferred_by": "HOM0265",
+        "received_by": "IND0017",
+        "credit_kg": 23.755
+    },
+    {
+        "transferred_by": "HOM0266",
+        "received_by": "IND0017",
+        "credit_kg": 25.519
+    },
+    {
+        "transferred_by": "HOM0267",
+        "received_by": "IND0017",
+        "credit_kg": 25.467
+    },
+    {
+        "transferred_by": "HOM0268",
+        "received_by": "IND0017",
+        "credit_kg": 25.49
+    },
+    {
+        "transferred_by": "HOM0269",
+        "received_by": "IND0017",
+        "credit_kg": 25.342
+    },
+    {
+        "transferred_by": "HOM0270",
+        "received_by": "IND0017",
+        "credit_kg": 26.252
+    },
+    {
+        "transferred_by": "HOM0271",
+        "received_by": "IND0017",
+        "credit_kg": 24.776
+    },
+    {
+        "transferred_by": "HOM0272",
+        "received_by": "IND0017",
+        "credit_kg": 26.256
+    },
+    {
+        "transferred_by": "HOM0273",
+        "received_by": "IND0017",
+        "credit_kg": 25.917
+    },
+    {
+        "transferred_by": "HOM0274",
+        "received_by": "IND0017",
+        "credit_kg": 26.336
+    },
+    {
+        "transferred_by": "HOM0275",
+        "received_by": "IND0017",
+        "credit_kg": 25.528
+    },
+    {
+        "transferred_by": "HOM0276",
+        "received_by": "IND0017",
+        "credit_kg": 26.246
+    },
+    {
+        "transferred_by": "HOM0277",
+        "received_by": "IND0017",
+        "credit_kg": 25.724
+    },
+    {
+        "transferred_by": "HOM0278",
+        "received_by": "IND0017",
+        "credit_kg": 3.281
+    },
+    {
+        "transferred_by": "HOM0278",
+        "received_by": "IND0018",
+        "credit_kg": 22.44
+    },
+    {
+        "transferred_by": "HOM0279",
+        "received_by": "IND0018",
+        "credit_kg": 26.43
+    },
+    {
+        "transferred_by": "HOM0280",
+        "received_by": "IND0018",
+        "credit_kg": 24.437
+    },
+    {
+        "transferred_by": "HOM0281",
+        "received_by": "IND0018",
+        "credit_kg": 25.56
+    },
+    {
+        "transferred_by": "HOM0282",
+        "received_by": "IND0018",
+        "credit_kg": 25.709
+    },
+    {
+        "transferred_by": "HOM0283",
+        "received_by": "IND0018",
+        "credit_kg": 24.983
+    },
+    {
+        "transferred_by": "HOM0284",
+        "received_by": "IND0018",
+        "credit_kg": 26.239
+    },
+    {
+        "transferred_by": "HOM0285",
+        "received_by": "IND0018",
+        "credit_kg": 25.007
+    },
+    {
+        "transferred_by": "HOM0286",
+        "received_by": "IND0018",
+        "credit_kg": 24.692
+    },
+    {
+        "transferred_by": "HOM0287",
+        "received_by": "IND0018",
+        "credit_kg": 25.86
+    },
+    {
+        "transferred_by": "HOM0288",
+        "received_by": "IND0018",
+        "credit_kg": 26.17
+    },
+    {
+        "transferred_by": "HOM0289",
+        "received_by": "IND0018",
+        "credit_kg": 25.819
+    },
+    {
+        "transferred_by": "HOM0290",
+        "received_by": "IND0018",
+        "credit_kg": 26.294
+    },
+    {
+        "transferred_by": "HOM0291",
+        "received_by": "IND0018",
+        "credit_kg": 26.48
+    },
+    {
+        "transferred_by": "HOM0292",
+        "received_by": "IND0018",
+        "credit_kg": 26.656
+    },
+    {
+        "transferred_by": "HOM0293",
+        "received_by": "IND0018",
+        "credit_kg": 25.34
+    },
+    {
+        "transferred_by": "HOM0294",
+        "received_by": "IND0018",
+        "credit_kg": 2.796
+    },
+    {
+        "transferred_by": "HOM0294",
+        "received_by": "IND0019",
+        "credit_kg": 23.086
+    },
+    {
+        "transferred_by": "HOM0295",
+        "received_by": "IND0019",
+        "credit_kg": 25.808
+    },
+    {
+        "transferred_by": "HOM0296",
+        "received_by": "IND0019",
+        "credit_kg": 25.454
+    },
+    {
+        "transferred_by": "HOM0297",
+        "received_by": "IND0019",
+        "credit_kg": 26.128
+    },
+    {
+        "transferred_by": "HOM0298",
+        "received_by": "IND0019",
+        "credit_kg": 25.734
+    },
+    {
+        "transferred_by": "HOM0299",
+        "received_by": "IND0019",
+        "credit_kg": 24.567
+    },
+    {
+        "transferred_by": "HOM0300",
+        "received_by": "IND0019",
+        "credit_kg": 25.277
+    },
+    {
+        "transferred_by": "HOM0301",
+        "received_by": "IND0019",
+        "credit_kg": 25.462
+    },
+    {
+        "transferred_by": "HOM0302",
+        "received_by": "IND0019",
+        "credit_kg": 24.722
+    },
+    {
+        "transferred_by": "HOM0303",
+        "received_by": "IND0019",
+        "credit_kg": 26.072
+    },
+    {
+        "transferred_by": "HOM0304",
+        "received_by": "IND0019",
+        "credit_kg": 25.363
+    },
+    {
+        "transferred_by": "HOM0305",
+        "received_by": "IND0019",
+        "credit_kg": 25.724
+    },
+    {
+        "transferred_by": "HOM0306",
+        "received_by": "IND0019",
+        "credit_kg": 25.612
+    },
+    {
+        "transferred_by": "HOM0307",
+        "received_by": "IND0019",
+        "credit_kg": 25.674
+    },
+    {
+        "transferred_by": "HOM0308",
+        "received_by": "IND0019",
+        "credit_kg": 25.626
+    },
+    {
+        "transferred_by": "HOM0309",
+        "received_by": "IND0019",
+        "credit_kg": 23.854
+    },
+    {
+        "transferred_by": "HOM0309",
+        "received_by": "IND0020",
+        "credit_kg": 1.441
+    },
+    {
+        "transferred_by": "HOM0310",
+        "received_by": "IND0020",
+        "credit_kg": 24.966
+    },
+    {
+        "transferred_by": "HOM0311",
+        "received_by": "IND0020",
+        "credit_kg": 24.925
+    },
+    {
+        "transferred_by": "HOM0312",
+        "received_by": "IND0020",
+        "credit_kg": 24.869
+    },
+    {
+        "transferred_by": "HOM0313",
+        "received_by": "IND0020",
+        "credit_kg": 25.259
+    },
+    {
+        "transferred_by": "HOM0314",
+        "received_by": "IND0020",
+        "credit_kg": 25.673
+    },
+    {
+        "transferred_by": "HOM0315",
+        "received_by": "IND0020",
+        "credit_kg": 26.966
+    },
+    {
+        "transferred_by": "HOM0316",
+        "received_by": "IND0020",
+        "credit_kg": 25.347
+    },
+    {
+        "transferred_by": "HOM0317",
+        "received_by": "IND0020",
+        "credit_kg": 24.734
+    },
+    {
+        "transferred_by": "HOM0318",
+        "received_by": "IND0020",
+        "credit_kg": 25.667
+    },
+    {
+        "transferred_by": "HOM0319",
+        "received_by": "IND0020",
+        "credit_kg": 26.18
+    },
+    {
+        "transferred_by": "HOM0320",
+        "received_by": "IND0020",
+        "credit_kg": 25.28
+    },
+    {
+        "transferred_by": "HOM0321",
+        "received_by": "IND0020",
+        "credit_kg": 26.496
+    },
+    {
+        "transferred_by": "HOM0322",
+        "received_by": "IND0020",
+        "credit_kg": 24.951
+    },
+    {
+        "transferred_by": "HOM0323",
+        "received_by": "IND0020",
+        "credit_kg": 25.405
+    },
+    {
+        "transferred_by": "HOM0324",
+        "received_by": "IND0020",
+        "credit_kg": 25.009
+    },
+    {
+        "transferred_by": "HOM0325",
+        "received_by": "IND0020",
+        "credit_kg": 25.522
+    },
+    {
+        "transferred_by": "HOM0326",
+        "received_by": "IND0020",
+        "credit_kg": 16.279
+    },
+    {
+        "transferred_by": "HOM0326",
+        "received_by": "IND0021",
+        "credit_kg": 9.555
+    },
+    {
+        "transferred_by": "HOM0327",
+        "received_by": "IND0021",
+        "credit_kg": 25.615
+    },
+    {
+        "transferred_by": "HOM0328",
+        "received_by": "IND0021",
+        "credit_kg": 25.774
+    },
+    {
+        "transferred_by": "HOM0329",
+        "received_by": "IND0021",
+        "credit_kg": 26.027
+    },
+    {
+        "transferred_by": "HOM0330",
+        "received_by": "IND0021",
+        "credit_kg": 25.482
+    },
+    {
+        "transferred_by": "HOM0331",
+        "received_by": "IND0021",
+        "credit_kg": 26.604
+    },
+    {
+        "transferred_by": "HOM0332",
+        "received_by": "IND0021",
+        "credit_kg": 26.077
+    },
+    {
+        "transferred_by": "HOM0333",
+        "received_by": "IND0021",
+        "credit_kg": 24.342
+    },
+    {
+        "transferred_by": "HOM0334",
+        "received_by": "IND0021",
+        "credit_kg": 25.787
+    },
+    {
+        "transferred_by": "HOM0335",
+        "received_by": "IND0021",
+        "credit_kg": 26.028
+    },
+    {
+        "transferred_by": "HOM0336",
+        "received_by": "IND0021",
+        "credit_kg": 25.133
+    },
+    {
+        "transferred_by": "HOM0337",
+        "received_by": "IND0021",
+        "credit_kg": 26.215
+    },
+    {
+        "transferred_by": "HOM0338",
+        "received_by": "IND0021",
+        "credit_kg": 25.206
+    },
+    {
+        "transferred_by": "HOM0339",
+        "received_by": "IND0021",
+        "credit_kg": 25.655
+    },
+    {
+        "transferred_by": "HOM0340",
+        "received_by": "IND0021",
+        "credit_kg": 26.263
+    },
+    {
+        "transferred_by": "HOM0341",
+        "received_by": "IND0021",
+        "credit_kg": 25.366
+    },
+    {
+        "transferred_by": "HOM0342",
+        "received_by": "IND0021",
+        "credit_kg": 16.718
+    },
+    {
+        "transferred_by": "HOM0342",
+        "received_by": "IND0022",
+        "credit_kg": 8.768
+    },
+    {
+        "transferred_by": "HOM0343",
+        "received_by": "IND0022",
+        "credit_kg": 26.043
+    },
+    {
+        "transferred_by": "HOM0344",
+        "received_by": "IND0022",
+        "credit_kg": 26.95
+    },
+    {
+        "transferred_by": "HOM0345",
+        "received_by": "IND0022",
+        "credit_kg": 26.745
+    },
+    {
+        "transferred_by": "HOM0346",
+        "received_by": "IND0022",
+        "credit_kg": 26.97
+    },
+    {
+        "transferred_by": "HOM0347",
+        "received_by": "IND0022",
+        "credit_kg": 25.817
+    },
+    {
+        "transferred_by": "HOM0348",
+        "received_by": "IND0022",
+        "credit_kg": 25.66
+    },
+    {
+        "transferred_by": "HOM0349",
+        "received_by": "IND0022",
+        "credit_kg": 25.115
+    },
+    {
+        "transferred_by": "HOM0350",
+        "received_by": "IND0022",
+        "credit_kg": 25.764
+    },
+    {
+        "transferred_by": "HOM0351",
+        "received_by": "IND0022",
+        "credit_kg": 24.944
+    },
+    {
+        "transferred_by": "HOM0352",
+        "received_by": "IND0022",
+        "credit_kg": 25.61
+    },
+    {
+        "transferred_by": "HOM0353",
+        "received_by": "IND0022",
+        "credit_kg": 25.084
+    },
+    {
+        "transferred_by": "HOM0354",
+        "received_by": "IND0022",
+        "credit_kg": 25.973
+    },
+    {
+        "transferred_by": "HOM0355",
+        "received_by": "IND0022",
+        "credit_kg": 25.93
+    },
+    {
+        "transferred_by": "HOM0356",
+        "received_by": "IND0022",
+        "credit_kg": 26.88
+    },
+    {
+        "transferred_by": "HOM0357",
+        "received_by": "IND0022",
+        "credit_kg": 25.526
+    },
+    {
+        "transferred_by": "HOM0358",
+        "received_by": "IND0022",
+        "credit_kg": 12.467
+    },
+    {
+        "transferred_by": "HOM0358",
+        "received_by": "IND0023",
+        "credit_kg": 12.404
+    },
+    {
+        "transferred_by": "HOM0359",
+        "received_by": "IND0023",
+        "credit_kg": 25.558
+    },
+    {
+        "transferred_by": "HOM0360",
+        "received_by": "IND0023",
+        "credit_kg": 25.299
+    },
+    {
+        "transferred_by": "HOM0361",
+        "received_by": "IND0023",
+        "credit_kg": 25.505
+    },
+    {
+        "transferred_by": "HOM0362",
+        "received_by": "IND0023",
+        "credit_kg": 25.344
+    },
+    {
+        "transferred_by": "HOM0363",
+        "received_by": "IND0023",
+        "credit_kg": 24.223
+    },
+    {
+        "transferred_by": "HOM0364",
+        "received_by": "IND0023",
+        "credit_kg": 25.08
+    },
+    {
+        "transferred_by": "HOM0365",
+        "received_by": "IND0023",
+        "credit_kg": 25.245
+    },
+    {
+        "transferred_by": "HOM0366",
+        "received_by": "IND0023",
+        "credit_kg": 24.524
+    },
+    {
+        "transferred_by": "HOM0367",
+        "received_by": "IND0023",
+        "credit_kg": 25.236
+    },
+    {
+        "transferred_by": "HOM0368",
+        "received_by": "IND0023",
+        "credit_kg": 26.153
+    },
+    {
+        "transferred_by": "HOM0369",
+        "received_by": "IND0023",
+        "credit_kg": 25.401
+    },
+    {
+        "transferred_by": "HOM0370",
+        "received_by": "IND0023",
+        "credit_kg": 25.736
+    },
+    {
+        "transferred_by": "HOM0371",
+        "received_by": "IND0023",
+        "credit_kg": 26.099
+    },
+    {
+        "transferred_by": "HOM0372",
+        "received_by": "IND0023",
+        "credit_kg": 25.728
+    },
+    {
+        "transferred_by": "HOM0373",
+        "received_by": "IND0023",
+        "credit_kg": 26.143
+    },
+    {
+        "transferred_by": "HOM0374",
+        "received_by": "IND0023",
+        "credit_kg": 25.003
+    },
+    {
+        "transferred_by": "HOM0375",
+        "received_by": "IND0023",
+        "credit_kg": 7.117
+    },
+    {
+        "transferred_by": "HOM0375",
+        "received_by": "IND0024",
+        "credit_kg": 18.124
+    },
+    {
+        "transferred_by": "HOM0376",
+        "received_by": "IND0024",
+        "credit_kg": 26.077
+    },
+    {
+        "transferred_by": "HOM0377",
+        "received_by": "IND0024",
+        "credit_kg": 25.648
+    },
+    {
+        "transferred_by": "HOM0378",
+        "received_by": "IND0024",
+        "credit_kg": 26.208
+    },
+    {
+        "transferred_by": "HOM0379",
+        "received_by": "IND0024",
+        "credit_kg": 26.468
+    },
+    {
+        "transferred_by": "HOM0380",
+        "received_by": "IND0024",
+        "credit_kg": 25.588
+    },
+    {
+        "transferred_by": "HOM0381",
+        "received_by": "IND0024",
+        "credit_kg": 25.479
+    },
+    {
+        "transferred_by": "HOM0382",
+        "received_by": "IND0024",
+        "credit_kg": 24.806
+    },
+    {
+        "transferred_by": "HOM0383",
+        "received_by": "IND0024",
+        "credit_kg": 24.997
+    },
+    {
+        "transferred_by": "HOM0384",
+        "received_by": "IND0024",
+        "credit_kg": 24.979
+    },
+    {
+        "transferred_by": "HOM0385",
+        "received_by": "IND0024",
+        "credit_kg": 25.281
+    },
+    {
+        "transferred_by": "HOM0386",
+        "received_by": "IND0024",
+        "credit_kg": 25.629
+    },
+    {
+        "transferred_by": "HOM0387",
+        "received_by": "IND0024",
+        "credit_kg": 25.542
+    },
+    {
+        "transferred_by": "HOM0388",
+        "received_by": "IND0024",
+        "credit_kg": 25.629
+    },
+    {
+        "transferred_by": "HOM0389",
+        "received_by": "IND0024",
+        "credit_kg": 24.321
+    },
+    {
+        "transferred_by": "HOM0390",
+        "received_by": "IND0024",
+        "credit_kg": 26.471
+    },
+    {
+        "transferred_by": "HOM0391",
+        "received_by": "IND0024",
+        "credit_kg": 27.337
+    },
+    {
+        "transferred_by": "HOM0392",
+        "received_by": "IND0024",
+        "credit_kg": 14.885
+    },
+    {
+        "transferred_by": "HOM0392",
+        "received_by": "IND0025",
+        "credit_kg": 11.382
+    },
+    {
+        "transferred_by": "HOM0393",
+        "received_by": "IND0025",
+        "credit_kg": 26.154
+    },
+    {
+        "transferred_by": "HOM0394",
+        "received_by": "IND0025",
+        "credit_kg": 26.331
+    },
+    {
+        "transferred_by": "HOM0395",
+        "received_by": "IND0025",
+        "credit_kg": 26.1
+    },
+    {
+        "transferred_by": "HOM0396",
+        "received_by": "IND0025",
+        "credit_kg": 25.652
+    },
+    {
+        "transferred_by": "HOM0397",
+        "received_by": "IND0025",
+        "credit_kg": 26.239
+    },
+    {
+        "transferred_by": "HOM0398",
+        "received_by": "IND0025",
+        "credit_kg": 25.977
+    },
+    {
+        "transferred_by": "HOM0399",
+        "received_by": "IND0025",
+        "credit_kg": 24.985
+    },
+    {
+        "transferred_by": "HOM0400",
+        "received_by": "IND0025",
+        "credit_kg": 25.984
+    },
+    {
+        "transferred_by": "HOM0401",
+        "received_by": "IND0025",
+        "credit_kg": 25.423
+    },
+    {
+        "transferred_by": "HOM0402",
+        "received_by": "IND0025",
+        "credit_kg": 26.245
+    },
+    {
+        "transferred_by": "HOM0403",
+        "received_by": "IND0025",
+        "credit_kg": 25.451
+    },
+    {
+        "transferred_by": "HOM0404",
+        "received_by": "IND0025",
+        "credit_kg": 26.711
+    },
+    {
+        "transferred_by": "HOM0405",
+        "received_by": "IND0025",
+        "credit_kg": 25.624
+    },
+    {
+        "transferred_by": "HOM0406",
+        "received_by": "IND0025",
+        "credit_kg": 26.066
+    },
+    {
+        "transferred_by": "HOM0407",
+        "received_by": "IND0025",
+        "credit_kg": 25.582
+    },
+    {
+        "transferred_by": "HOM0408",
+        "received_by": "IND0025",
+        "credit_kg": 12.098
+    },
+    {
+        "transferred_by": "HOM0408",
+        "received_by": "IND0026",
+        "credit_kg": 14.849
+    },
+    {
+        "transferred_by": "HOM0409",
+        "received_by": "IND0026",
+        "credit_kg": 24.461
+    },
+    {
+        "transferred_by": "HOM0410",
+        "received_by": "IND0026",
+        "credit_kg": 24.452
+    },
+    {
+        "transferred_by": "HOM0411",
+        "received_by": "IND0026",
+        "credit_kg": 25.61
+    },
+    {
+        "transferred_by": "HOM0412",
+        "received_by": "IND0026",
+        "credit_kg": 25.744
+    },
+    {
+        "transferred_by": "HOM0413",
+        "received_by": "IND0026",
+        "credit_kg": 25.759
+    },
+    {
+        "transferred_by": "HOM0414",
+        "received_by": "IND0026",
+        "credit_kg": 24.789
+    },
+    {
+        "transferred_by": "HOM0415",
+        "received_by": "IND0026",
+        "credit_kg": 24.049
+    },
+    {
+        "transferred_by": "HOM0416",
+        "received_by": "IND0026",
+        "credit_kg": 25.572
+    },
+    {
+        "transferred_by": "HOM0417",
+        "received_by": "IND0026",
+        "credit_kg": 25.142
+    },
+    {
+        "transferred_by": "HOM0418",
+        "received_by": "IND0026",
+        "credit_kg": 25.829
+    },
+    {
+        "transferred_by": "HOM0419",
+        "received_by": "IND0026",
+        "credit_kg": 25.964
+    },
+    {
+        "transferred_by": "HOM0420",
+        "received_by": "IND0026",
+        "credit_kg": 25.552
+    },
+    {
+        "transferred_by": "HOM0421",
+        "received_by": "IND0026",
+        "credit_kg": 26.307
+    },
+    {
+        "transferred_by": "HOM0422",
+        "received_by": "IND0026",
+        "credit_kg": 26.029
+    },
+    {
+        "transferred_by": "HOM0423",
+        "received_by": "IND0026",
+        "credit_kg": 27.015
+    },
+    {
+        "transferred_by": "HOM0424",
+        "received_by": "IND0026",
+        "credit_kg": 23.805
+    },
+    {
+        "transferred_by": "HOM0424",
+        "received_by": "IND0027",
+        "credit_kg": 2.866
+    },
+    {
+        "transferred_by": "HOM0425",
+        "received_by": "IND0027",
+        "credit_kg": 24.483
+    },
+    {
+        "transferred_by": "HOM0426",
+        "received_by": "IND0027",
+        "credit_kg": 25.099
+    },
+    {
+        "transferred_by": "HOM0427",
+        "received_by": "IND0027",
+        "credit_kg": 25.316
+    },
+    {
+        "transferred_by": "HOM0428",
+        "received_by": "IND0027",
+        "credit_kg": 26.071
+    },
+    {
+        "transferred_by": "HOM0429",
+        "received_by": "IND0027",
+        "credit_kg": 25.897
+    },
+    {
+        "transferred_by": "HOM0430",
+        "received_by": "IND0027",
+        "credit_kg": 25.483
+    },
+    {
+        "transferred_by": "HOM0431",
+        "received_by": "IND0027",
+        "credit_kg": 26.742
+    },
+    {
+        "transferred_by": "HOM0432",
+        "received_by": "IND0027",
+        "credit_kg": 24.922
+    },
+    {
+        "transferred_by": "HOM0433",
+        "received_by": "IND0027",
+        "credit_kg": 24.961
+    },
+    {
+        "transferred_by": "HOM0434",
+        "received_by": "IND0027",
+        "credit_kg": 26.827
+    },
+    {
+        "transferred_by": "HOM0435",
+        "received_by": "IND0027",
+        "credit_kg": 25.553
+    },
+    {
+        "transferred_by": "HOM0436",
+        "received_by": "IND0027",
+        "credit_kg": 24.853
+    },
+    {
+        "transferred_by": "HOM0437",
+        "received_by": "IND0027",
+        "credit_kg": 26.0
+    },
+    {
+        "transferred_by": "HOM0438",
+        "received_by": "IND0027",
+        "credit_kg": 26.144
+    },
+    {
+        "transferred_by": "HOM0439",
+        "received_by": "IND0027",
+        "credit_kg": 25.817
+    },
+    {
+        "transferred_by": "HOM0440",
+        "received_by": "IND0027",
+        "credit_kg": 24.544
+    },
+    {
+        "transferred_by": "HOM0440",
+        "received_by": "IND0028",
+        "credit_kg": 1.66
+    },
+    {
+        "transferred_by": "HOM0441",
+        "received_by": "IND0028",
+        "credit_kg": 24.975
+    },
+    {
+        "transferred_by": "HOM0442",
+        "received_by": "IND0028",
+        "credit_kg": 25.898
+    },
+    {
+        "transferred_by": "HOM0443",
+        "received_by": "IND0028",
+        "credit_kg": 26.323
+    },
+    {
+        "transferred_by": "HOM0444",
+        "received_by": "IND0028",
+        "credit_kg": 25.69
+    },
+    {
+        "transferred_by": "HOM0445",
+        "received_by": "IND0028",
+        "credit_kg": 24.777
+    },
+    {
+        "transferred_by": "HOM0446",
+        "received_by": "IND0028",
+        "credit_kg": 24.681
+    },
+    {
+        "transferred_by": "HOM0447",
+        "received_by": "IND0028",
+        "credit_kg": 26.166
+    },
+    {
+        "transferred_by": "HOM0448",
+        "received_by": "IND0028",
+        "credit_kg": 25.207
+    },
+    {
+        "transferred_by": "HOM0449",
+        "received_by": "IND0028",
+        "credit_kg": 26.083
+    },
+    {
+        "transferred_by": "HOM0450",
+        "received_by": "IND0028",
+        "credit_kg": 26.294
+    },
+    {
+        "transferred_by": "HOM0451",
+        "received_by": "IND0028",
+        "credit_kg": 25.576
+    },
+    {
+        "transferred_by": "HOM0452",
+        "received_by": "IND0028",
+        "credit_kg": 27.168
+    },
+    {
+        "transferred_by": "HOM0453",
+        "received_by": "IND0028",
+        "credit_kg": 25.96
+    },
+    {
+        "transferred_by": "HOM0454",
+        "received_by": "IND0028",
+        "credit_kg": 25.962
+    },
+    {
+        "transferred_by": "HOM0455",
+        "received_by": "IND0028",
+        "credit_kg": 25.478
+    },
+    {
+        "transferred_by": "HOM0456",
+        "received_by": "IND0028",
+        "credit_kg": 24.461
+    },
+    {
+        "transferred_by": "HOM0457",
+        "received_by": "IND0028",
+        "credit_kg": 19.687
+    },
+    {
+        "transferred_by": "HOM0457",
+        "received_by": "IND0029",
+        "credit_kg": 6.656
+    },
+    {
+        "transferred_by": "HOM0458",
+        "received_by": "IND0029",
+        "credit_kg": 24.831
+    },
+    {
+        "transferred_by": "HOM0459",
+        "received_by": "IND0029",
+        "credit_kg": 26.339
+    },
+    {
+        "transferred_by": "HOM0460",
+        "received_by": "IND0029",
+        "credit_kg": 25.342
+    },
+    {
+        "transferred_by": "HOM0461",
+        "received_by": "IND0029",
+        "credit_kg": 25.73
+    },
+    {
+        "transferred_by": "HOM0462",
+        "received_by": "IND0029",
+        "credit_kg": 25.165
+    },
+    {
+        "transferred_by": "HOM0463",
+        "received_by": "IND0029",
+        "credit_kg": 25.997
+    },
+    {
+        "transferred_by": "HOM0464",
+        "received_by": "IND0029",
+        "credit_kg": 26.036
+    },
+    {
+        "transferred_by": "HOM0465",
+        "received_by": "IND0029",
+        "credit_kg": 25.064
+    },
+    {
+        "transferred_by": "HOM0466",
+        "received_by": "IND0029",
+        "credit_kg": 26.286
+    },
+    {
+        "transferred_by": "HOM0467",
+        "received_by": "IND0029",
+        "credit_kg": 26.31
+    },
+    {
+        "transferred_by": "HOM0468",
+        "received_by": "IND0029",
+        "credit_kg": 25.394
+    },
+    {
+        "transferred_by": "HOM0469",
+        "received_by": "IND0029",
+        "credit_kg": 25.296
+    },
+    {
+        "transferred_by": "HOM0470",
+        "received_by": "IND0029",
+        "credit_kg": 25.538
+    },
+    {
+        "transferred_by": "HOM0471",
+        "received_by": "IND0029",
+        "credit_kg": 25.932
+    },
+    {
+        "transferred_by": "HOM0472",
+        "received_by": "IND0029",
+        "credit_kg": 24.928
+    },
+    {
+        "transferred_by": "HOM0473",
+        "received_by": "IND0029",
+        "credit_kg": 18.739
+    },
+    {
+        "transferred_by": "HOM0473",
+        "received_by": "IND0030",
+        "credit_kg": 6.409
+    },
+    {
+        "transferred_by": "HOM0474",
+        "received_by": "IND0030",
+        "credit_kg": 26.132
+    },
+    {
+        "transferred_by": "HOM0475",
+        "received_by": "IND0030",
+        "credit_kg": 25.297
+    },
+    {
+        "transferred_by": "HOM0476",
+        "received_by": "IND0030",
+        "credit_kg": 26.665
+    },
+    {
+        "transferred_by": "HOM0477",
+        "received_by": "IND0030",
+        "credit_kg": 25.884
+    },
+    {
+        "transferred_by": "HOM0478",
+        "received_by": "IND0030",
+        "credit_kg": 26.498
+    },
+    {
+        "transferred_by": "HOM0479",
+        "received_by": "IND0030",
+        "credit_kg": 26.174
+    },
+    {
+        "transferred_by": "HOM0480",
+        "received_by": "IND0030",
+        "credit_kg": 26.114
+    },
+    {
+        "transferred_by": "HOM0481",
+        "received_by": "IND0030",
+        "credit_kg": 26.593
+    },
+    {
+        "transferred_by": "HOM0482",
+        "received_by": "IND0030",
+        "credit_kg": 25.487
+    },
+    {
+        "transferred_by": "HOM0483",
+        "received_by": "IND0030",
+        "credit_kg": 26.017
+    },
+    {
+        "transferred_by": "HOM0484",
+        "received_by": "IND0030",
+        "credit_kg": 25.769
+    },
+    {
+        "transferred_by": "HOM0485",
+        "received_by": "IND0030",
+        "credit_kg": 25.241
+    },
+    {
+        "transferred_by": "HOM0486",
+        "received_by": "IND0030",
+        "credit_kg": 25.937
+    },
+    {
+        "transferred_by": "HOM0487",
+        "received_by": "IND0030",
+        "credit_kg": 25.119
+    },
+    {
+        "transferred_by": "HOM0488",
+        "received_by": "IND0030",
+        "credit_kg": 25.687
+    },
+    {
+        "transferred_by": "HOM0489",
+        "received_by": "IND0030",
+        "credit_kg": 25.997
+    },
+    {
+        "transferred_by": "HOM0490",
+        "received_by": "IND0030",
+        "credit_kg": 6.425
+    },
+    {
+        "transferred_by": "HOM0490",
+        "received_by": "IND0031",
+        "credit_kg": 19.843
+    },
+    {
+        "transferred_by": "HOM0491",
+        "received_by": "IND0031",
+        "credit_kg": 26.452
+    },
+    {
+        "transferred_by": "HOM0492",
+        "received_by": "IND0031",
+        "credit_kg": 25.995
+    },
+    {
+        "transferred_by": "HOM0493",
+        "received_by": "IND0031",
+        "credit_kg": 25.053
+    },
+    {
+        "transferred_by": "HOM0494",
+        "received_by": "IND0031",
+        "credit_kg": 25.144
+    },
+    {
+        "transferred_by": "HOM0495",
+        "received_by": "IND0031",
+        "credit_kg": 25.598
+    },
+    {
+        "transferred_by": "HOM0496",
+        "received_by": "IND0031",
+        "credit_kg": 26.207
+    },
+    {
+        "transferred_by": "HOM0497",
+        "received_by": "IND0031",
+        "credit_kg": 25.312
+    },
+    {
+        "transferred_by": "HOM0498",
+        "received_by": "IND0031",
+        "credit_kg": 26.049
+    },
+    {
+        "transferred_by": "HOM0499",
+        "received_by": "IND0031",
+        "credit_kg": 24.574
+    },
+    {
+        "transferred_by": "HOM0500",
+        "received_by": "IND0031",
+        "credit_kg": 26.325
+    },
+    {
+        "transferred_by": "HOM0501",
+        "received_by": "IND0031",
+        "credit_kg": 27.046
+    },
+    {
+        "transferred_by": "HOM0502",
+        "received_by": "IND0031",
+        "credit_kg": 24.816
+    },
+    {
+        "transferred_by": "HOM0503",
+        "received_by": "IND0031",
+        "credit_kg": 26.617
+    },
+    {
+        "transferred_by": "HOM0504",
+        "received_by": "IND0031",
+        "credit_kg": 26.107
+    },
+    {
+        "transferred_by": "HOM0505",
+        "received_by": "IND0031",
+        "credit_kg": 25.72
+    },
+    {
+        "transferred_by": "HOM0506",
+        "received_by": "IND0031",
+        "credit_kg": 24.955
+    },
+    {
+        "transferred_by": "HOM0507",
+        "received_by": "IND0031",
+        "credit_kg": 2.991
+    },
+    {
+        "transferred_by": "HOM0507",
+        "received_by": "IND0032",
+        "credit_kg": 22.862
+    },
+    {
+        "transferred_by": "HOM0508",
+        "received_by": "IND0032",
+        "credit_kg": 25.81
+    },
+    {
+        "transferred_by": "HOM0509",
+        "received_by": "IND0032",
+        "credit_kg": 25.335
+    },
+    {
+        "transferred_by": "HOM0510",
+        "received_by": "IND0032",
+        "credit_kg": 25.87
+    },
+    {
+        "transferred_by": "HOM0511",
+        "received_by": "IND0032",
+        "credit_kg": 26.276
+    },
+    {
+        "transferred_by": "HOM0512",
+        "received_by": "IND0032",
+        "credit_kg": 25.798
+    },
+    {
+        "transferred_by": "HOM0513",
+        "received_by": "IND0032",
+        "credit_kg": 26.23
+    },
+    {
+        "transferred_by": "HOM0514",
+        "received_by": "IND0032",
+        "credit_kg": 25.789
+    },
+    {
+        "transferred_by": "HOM0515",
+        "received_by": "IND0032",
+        "credit_kg": 25.567
+    },
+    {
+        "transferred_by": "HOM0516",
+        "received_by": "IND0032",
+        "credit_kg": 25.31
+    },
+    {
+        "transferred_by": "HOM0517",
+        "received_by": "IND0032",
+        "credit_kg": 25.102
+    },
+    {
+        "transferred_by": "HOM0518",
+        "received_by": "IND0032",
+        "credit_kg": 24.89
+    },
+    {
+        "transferred_by": "HOM0519",
+        "received_by": "IND0032",
+        "credit_kg": 25.171
+    },
+    {
+        "transferred_by": "HOM0520",
+        "received_by": "IND0032",
+        "credit_kg": 24.992
+    },
+    {
+        "transferred_by": "HOM0521",
+        "received_by": "IND0032",
+        "credit_kg": 24.571
+    },
+    {
+        "transferred_by": "HOM0522",
+        "received_by": "IND0032",
+        "credit_kg": 25.075
+    },
+    {
+        "transferred_by": "HOM0523",
+        "received_by": "IND0032",
+        "credit_kg": 13.834
+    },
+    {
+        "transferred_by": "HOM0523",
+        "received_by": "IND0033",
+        "credit_kg": 12.583
+    },
+    {
+        "transferred_by": "HOM0524",
+        "received_by": "IND0033",
+        "credit_kg": 26.946
+    },
+    {
+        "transferred_by": "HOM0525",
+        "received_by": "IND0033",
+        "credit_kg": 25.836
+    },
+    {
+        "transferred_by": "HOM0526",
+        "received_by": "IND0033",
+        "credit_kg": 24.597
+    },
+    {
+        "transferred_by": "HOM0527",
+        "received_by": "IND0033",
+        "credit_kg": 25.909
+    },
+    {
+        "transferred_by": "HOM0528",
+        "received_by": "IND0033",
+        "credit_kg": 25.078
+    },
+    {
+        "transferred_by": "HOM0529",
+        "received_by": "IND0033",
+        "credit_kg": 25.576
+    },
+    {
+        "transferred_by": "HOM0530",
+        "received_by": "IND0033",
+        "credit_kg": 27.397
+    },
+    {
+        "transferred_by": "HOM0531",
+        "received_by": "IND0033",
+        "credit_kg": 25.929
+    },
+    {
+        "transferred_by": "HOM0532",
+        "received_by": "IND0033",
+        "credit_kg": 26.152
+    },
+    {
+        "transferred_by": "HOM0533",
+        "received_by": "IND0033",
+        "credit_kg": 25.746
+    },
+    {
+        "transferred_by": "HOM0534",
+        "received_by": "IND0033",
+        "credit_kg": 25.809
+    },
+    {
+        "transferred_by": "HOM0535",
+        "received_by": "IND0033",
+        "credit_kg": 26.225
+    },
+    {
+        "transferred_by": "HOM0536",
+        "received_by": "IND0033",
+        "credit_kg": 25.867
+    },
+    {
+        "transferred_by": "HOM0537",
+        "received_by": "IND0033",
+        "credit_kg": 25.709
+    },
+    {
+        "transferred_by": "HOM0538",
+        "received_by": "IND0033",
+        "credit_kg": 24.792
+    },
+    {
+        "transferred_by": "HOM0539",
+        "received_by": "IND0033",
+        "credit_kg": 4.636
+    },
+    {
+        "transferred_by": "HOM0539",
+        "received_by": "IND0034",
+        "credit_kg": 21.041
+    },
+    {
+        "transferred_by": "HOM0540",
+        "received_by": "IND0034",
+        "credit_kg": 25.072
+    },
+    {
+        "transferred_by": "HOM0541",
+        "received_by": "IND0034",
+        "credit_kg": 26.619
+    },
+    {
+        "transferred_by": "HOM0542",
+        "received_by": "IND0034",
+        "credit_kg": 25.648
+    },
+    {
+        "transferred_by": "HOM0543",
+        "received_by": "IND0034",
+        "credit_kg": 26.174
+    },
+    {
+        "transferred_by": "HOM0544",
+        "received_by": "IND0034",
+        "credit_kg": 25.971
+    },
+    {
+        "transferred_by": "HOM0545",
+        "received_by": "IND0034",
+        "credit_kg": 25.047
+    },
+    {
+        "transferred_by": "HOM0546",
+        "received_by": "IND0034",
+        "credit_kg": 25.673
+    },
+    {
+        "transferred_by": "HOM0547",
+        "received_by": "IND0034",
+        "credit_kg": 25.996
+    },
+    {
+        "transferred_by": "HOM0548",
+        "received_by": "IND0034",
+        "credit_kg": 25.302
+    },
+    {
+        "transferred_by": "HOM0549",
+        "received_by": "IND0034",
+        "credit_kg": 25.251
+    },
+    {
+        "transferred_by": "HOM0550",
+        "received_by": "IND0034",
+        "credit_kg": 26.331
+    },
+    {
+        "transferred_by": "HOM0551",
+        "received_by": "IND0034",
+        "credit_kg": 25.228
+    },
+    {
+        "transferred_by": "HOM0552",
+        "received_by": "IND0034",
+        "credit_kg": 25.926
+    },
+    {
+        "transferred_by": "HOM0553",
+        "received_by": "IND0034",
+        "credit_kg": 26.539
+    },
+    {
+        "transferred_by": "HOM0554",
+        "received_by": "IND0034",
+        "credit_kg": 26.767
+    },
+    {
+        "transferred_by": "HOM0555",
+        "received_by": "IND0034",
+        "credit_kg": 14.961
+    },
+    {
+        "transferred_by": "HOM0555",
+        "received_by": "IND0035",
+        "credit_kg": 9.805
+    },
+    {
+        "transferred_by": "HOM0556",
+        "received_by": "IND0035",
+        "credit_kg": 27.511
+    },
+    {
+        "transferred_by": "HOM0557",
+        "received_by": "IND0035",
+        "credit_kg": 25.285
+    },
+    {
+        "transferred_by": "HOM0558",
+        "received_by": "IND0035",
+        "credit_kg": 25.696
+    },
+    {
+        "transferred_by": "HOM0559",
+        "received_by": "IND0035",
+        "credit_kg": 25.251
+    },
+    {
+        "transferred_by": "HOM0560",
+        "received_by": "IND0035",
+        "credit_kg": 25.247
+    },
+    {
+        "transferred_by": "HOM0561",
+        "received_by": "IND0035",
+        "credit_kg": 25.651
+    },
+    {
+        "transferred_by": "HOM0562",
+        "received_by": "IND0035",
+        "credit_kg": 25.53
+    },
+    {
+        "transferred_by": "HOM0563",
+        "received_by": "IND0035",
+        "credit_kg": 25.425
+    },
+    {
+        "transferred_by": "HOM0564",
+        "received_by": "IND0035",
+        "credit_kg": 25.85
+    },
+    {
+        "transferred_by": "HOM0565",
+        "received_by": "IND0035",
+        "credit_kg": 26.273
+    },
+    {
+        "transferred_by": "HOM0566",
+        "received_by": "IND0035",
+        "credit_kg": 26.489
+    },
+    {
+        "transferred_by": "HOM0567",
+        "received_by": "IND0035",
+        "credit_kg": 25.002
+    },
+    {
+        "transferred_by": "HOM0568",
+        "received_by": "IND0035",
+        "credit_kg": 26.111
+    },
+    {
+        "transferred_by": "HOM0569",
+        "received_by": "IND0035",
+        "credit_kg": 25.825
+    },
+    {
+        "transferred_by": "HOM0570",
+        "received_by": "IND0035",
+        "credit_kg": 25.134
+    },
+    {
+        "transferred_by": "HOM0571",
+        "received_by": "IND0035",
+        "credit_kg": 20.152
+    },
+    {
+        "transferred_by": "HOM0571",
+        "received_by": "IND0036",
+        "credit_kg": 6.029
+    },
+    {
+        "transferred_by": "HOM0572",
+        "received_by": "IND0036",
+        "credit_kg": 25.695
+    },
+    {
+        "transferred_by": "HOM0573",
+        "received_by": "IND0036",
+        "credit_kg": 25.594
+    },
+    {
+        "transferred_by": "HOM0574",
+        "received_by": "IND0036",
+        "credit_kg": 25.299
+    },
+    {
+        "transferred_by": "HOM0575",
+        "received_by": "IND0036",
+        "credit_kg": 25.355
+    },
+    {
+        "transferred_by": "HOM0576",
+        "received_by": "IND0036",
+        "credit_kg": 25.444
+    },
+    {
+        "transferred_by": "HOM0577",
+        "received_by": "IND0036",
+        "credit_kg": 25.225
+    },
+    {
+        "transferred_by": "HOM0578",
+        "received_by": "IND0036",
+        "credit_kg": 26.373
+    },
+    {
+        "transferred_by": "HOM0579",
+        "received_by": "IND0036",
+        "credit_kg": 24.709
+    },
+    {
+        "transferred_by": "HOM0580",
+        "received_by": "IND0036",
+        "credit_kg": 25.905
+    },
+    {
+        "transferred_by": "HOM0581",
+        "received_by": "IND0036",
+        "credit_kg": 24.575
+    },
+    {
+        "transferred_by": "HOM0582",
+        "received_by": "IND0036",
+        "credit_kg": 25.988
+    },
+    {
+        "transferred_by": "HOM0583",
+        "received_by": "IND0036",
+        "credit_kg": 26.209
+    },
+    {
+        "transferred_by": "HOM0584",
+        "received_by": "IND0036",
+        "credit_kg": 25.211
+    },
+    {
+        "transferred_by": "HOM0585",
+        "received_by": "IND0036",
+        "credit_kg": 25.79
+    },
+    {
+        "transferred_by": "HOM0586",
+        "received_by": "IND0036",
+        "credit_kg": 25.082
+    },
+    {
+        "transferred_by": "HOM0587",
+        "received_by": "IND0036",
+        "credit_kg": 25.703
+    },
+    {
+        "transferred_by": "HOM0588",
+        "received_by": "IND0036",
+        "credit_kg": 22.747
+    },
+    {
+        "transferred_by": "HOM0588",
+        "received_by": "IND0037",
+        "credit_kg": 2.739
+    },
+    {
+        "transferred_by": "HOM0589",
+        "received_by": "IND0037",
+        "credit_kg": 26.463
+    },
+    {
+        "transferred_by": "HOM0590",
+        "received_by": "IND0037",
+        "credit_kg": 24.801
+    },
+    {
+        "transferred_by": "HOM0591",
+        "received_by": "IND0037",
+        "credit_kg": 24.649
+    },
+    {
+        "transferred_by": "HOM0592",
+        "received_by": "IND0037",
+        "credit_kg": 26.48
+    },
+    {
+        "transferred_by": "HOM0593",
+        "received_by": "IND0037",
+        "credit_kg": 26.112
+    },
+    {
+        "transferred_by": "HOM0594",
+        "received_by": "IND0037",
+        "credit_kg": 26.043
+    },
+    {
+        "transferred_by": "HOM0595",
+        "received_by": "IND0037",
+        "credit_kg": 26.108
+    },
+    {
+        "transferred_by": "HOM0596",
+        "received_by": "IND0037",
+        "credit_kg": 25.796
+    },
+    {
+        "transferred_by": "HOM0597",
+        "received_by": "IND0037",
+        "credit_kg": 26.598
+    },
+    {
+        "transferred_by": "HOM0598",
+        "received_by": "IND0037",
+        "credit_kg": 25.997
+    },
+    {
+        "transferred_by": "HOM0599",
+        "received_by": "IND0037",
+        "credit_kg": 25.203
+    },
+    {
+        "transferred_by": "HOM0600",
+        "received_by": "IND0037",
+        "credit_kg": 25.532
+    },
+    {
+        "transferred_by": "HOM0601",
+        "received_by": "IND0037",
+        "credit_kg": 24.376
+    },
+    {
+        "transferred_by": "HOM0602",
+        "received_by": "IND0037",
+        "credit_kg": 26.016
+    },
+    {
+        "transferred_by": "HOM0603",
+        "received_by": "IND0037",
+        "credit_kg": 24.616
+    },
+    {
+        "transferred_by": "HOM0604",
+        "received_by": "IND0037",
+        "credit_kg": 26.868
+    },
+    {
+        "transferred_by": "HOM0605",
+        "received_by": "IND0037",
+        "credit_kg": 4.981
+    },
+    {
+        "transferred_by": "HOM0605",
+        "received_by": "IND0038",
+        "credit_kg": 21.574
+    },
+    {
+        "transferred_by": "HOM0606",
+        "received_by": "IND0038",
+        "credit_kg": 23.722
+    },
+    {
+        "transferred_by": "HOM0607",
+        "received_by": "IND0038",
+        "credit_kg": 26.737
+    },
+    {
+        "transferred_by": "HOM0608",
+        "received_by": "IND0038",
+        "credit_kg": 25.847
+    },
+    {
+        "transferred_by": "HOM0609",
+        "received_by": "IND0038",
+        "credit_kg": 25.063
+    },
+    {
+        "transferred_by": "HOM0610",
+        "received_by": "IND0038",
+        "credit_kg": 25.047
+    },
+    {
+        "transferred_by": "HOM0611",
+        "received_by": "IND0038",
+        "credit_kg": 25.352
+    },
+    {
+        "transferred_by": "HOM0612",
+        "received_by": "IND0038",
+        "credit_kg": 26.011
+    },
+    {
+        "transferred_by": "HOM0613",
+        "received_by": "IND0038",
+        "credit_kg": 25.976
+    },
+    {
+        "transferred_by": "HOM0614",
+        "received_by": "IND0038",
+        "credit_kg": 24.26
+    },
+    {
+        "transferred_by": "HOM0615",
+        "received_by": "IND0038",
+        "credit_kg": 27.146
+    },
+    {
+        "transferred_by": "HOM0616",
+        "received_by": "IND0038",
+        "credit_kg": 25.482
+    },
+    {
+        "transferred_by": "HOM0617",
+        "received_by": "IND0038",
+        "credit_kg": 25.623
+    },
+    {
+        "transferred_by": "HOM0618",
+        "received_by": "IND0038",
+        "credit_kg": 25.372
+    },
+    {
+        "transferred_by": "HOM0619",
+        "received_by": "IND0038",
+        "credit_kg": 24.808
+    },
+    {
+        "transferred_by": "HOM0620",
+        "received_by": "IND0038",
+        "credit_kg": 25.539
+    },
+    {
+        "transferred_by": "HOM0621",
+        "received_by": "IND0038",
+        "credit_kg": 26.183
+    },
+    {
+        "transferred_by": "HOM0622",
+        "received_by": "IND0038",
+        "credit_kg": 4.188
+    },
+    {
+        "transferred_by": "HOM0622",
+        "received_by": "IND0039",
+        "credit_kg": 21.429
+    },
+    {
+        "transferred_by": "HOM0623",
+        "received_by": "IND0039",
+        "credit_kg": 26.0
+    },
+    {
+        "transferred_by": "HOM0624",
+        "received_by": "IND0039",
+        "credit_kg": 26.877
+    },
+    {
+        "transferred_by": "HOM0625",
+        "received_by": "IND0039",
+        "credit_kg": 26.381
+    },
+    {
+        "transferred_by": "HOM0626",
+        "received_by": "IND0039",
+        "credit_kg": 25.581
+    },
+    {
+        "transferred_by": "HOM0627",
+        "received_by": "IND0039",
+        "credit_kg": 24.547
+    },
+    {
+        "transferred_by": "HOM0628",
+        "received_by": "IND0039",
+        "credit_kg": 25.665
+    },
+    {
+        "transferred_by": "HOM0629",
+        "received_by": "IND0039",
+        "credit_kg": 25.825
+    },
+    {
+        "transferred_by": "HOM0630",
+        "received_by": "IND0039",
+        "credit_kg": 25.676
+    },
+    {
+        "transferred_by": "HOM0631",
+        "received_by": "IND0039",
+        "credit_kg": 26.167
+    },
+    {
+        "transferred_by": "HOM0632",
+        "received_by": "IND0039",
+        "credit_kg": 25.268
+    },
+    {
+        "transferred_by": "HOM0633",
+        "received_by": "IND0039",
+        "credit_kg": 24.824
+    },
+    {
+        "transferred_by": "HOM0634",
+        "received_by": "IND0039",
+        "credit_kg": 26.539
+    },
+    {
+        "transferred_by": "HOM0635",
+        "received_by": "IND0039",
+        "credit_kg": 25.879
+    },
+    {
+        "transferred_by": "HOM0636",
+        "received_by": "IND0039",
+        "credit_kg": 25.884
+    },
+    {
+        "transferred_by": "HOM0637",
+        "received_by": "IND0039",
+        "credit_kg": 24.582
+    },
+    {
+        "transferred_by": "HOM0638",
+        "received_by": "IND0039",
+        "credit_kg": 25.747
+    },
+    {
+        "transferred_by": "HOM0639",
+        "received_by": "IND0039",
+        "credit_kg": 3.758
+    },
+    {
+        "transferred_by": "HOM0639",
+        "received_by": "IND0040",
+        "credit_kg": 21.782
+    },
+    {
+        "transferred_by": "HOM0640",
+        "received_by": "IND0040",
+        "credit_kg": 25.614
+    },
+    {
+        "transferred_by": "HOM0641",
+        "received_by": "IND0040",
+        "credit_kg": 25.037
+    },
+    {
+        "transferred_by": "HOM0642",
+        "received_by": "IND0040",
+        "credit_kg": 26.459
+    },
+    {
+        "transferred_by": "HOM0643",
+        "received_by": "IND0040",
+        "credit_kg": 25.43
+    },
+    {
+        "transferred_by": "HOM0644",
+        "received_by": "IND0040",
+        "credit_kg": 25.321
+    },
+    {
+        "transferred_by": "HOM0645",
+        "received_by": "IND0040",
+        "credit_kg": 26.565
+    },
+    {
+        "transferred_by": "HOM0646",
+        "received_by": "IND0040",
+        "credit_kg": 25.593
+    },
+    {
+        "transferred_by": "HOM0647",
+        "received_by": "IND0040",
+        "credit_kg": 25.42
+    },
+    {
+        "transferred_by": "HOM0648",
+        "received_by": "IND0040",
+        "credit_kg": 25.006
+    },
+    {
+        "transferred_by": "HOM0649",
+        "received_by": "IND0040",
+        "credit_kg": 26.489
+    },
+    {
+        "transferred_by": "HOM0650",
+        "received_by": "IND0040",
+        "credit_kg": 26.16
+    },
+    {
+        "transferred_by": "HOM0651",
+        "received_by": "IND0040",
+        "credit_kg": 25.792
+    },
+    {
+        "transferred_by": "HOM0652",
+        "received_by": "IND0040",
+        "credit_kg": 26.156
+    },
+    {
+        "transferred_by": "HOM0653",
+        "received_by": "IND0040",
+        "credit_kg": 25.828
+    },
+    {
+        "transferred_by": "HOM0654",
+        "received_by": "IND0040",
+        "credit_kg": 25.416
+    },
+    {
+        "transferred_by": "HOM0655",
+        "received_by": "IND0040",
+        "credit_kg": 3.172
+    },
+    {
+        "transferred_by": "HOM0655",
+        "received_by": "IND0041",
+        "credit_kg": 21.537
+    },
+    {
+        "transferred_by": "HOM0656",
+        "received_by": "IND0041",
+        "credit_kg": 26.421
+    },
+    {
+        "transferred_by": "HOM0657",
+        "received_by": "IND0041",
+        "credit_kg": 25.289
+    },
+    {
+        "transferred_by": "HOM0658",
+        "received_by": "IND0041",
+        "credit_kg": 25.663
+    },
+    {
+        "transferred_by": "HOM0659",
+        "received_by": "IND0041",
+        "credit_kg": 26.29
+    },
+    {
+        "transferred_by": "HOM0660",
+        "received_by": "IND0041",
+        "credit_kg": 26.094
+    },
+    {
+        "transferred_by": "HOM0661",
+        "received_by": "IND0041",
+        "credit_kg": 25.037
+    },
+    {
+        "transferred_by": "HOM0662",
+        "received_by": "IND0041",
+        "credit_kg": 25.449
+    },
+    {
+        "transferred_by": "HOM0663",
+        "received_by": "IND0041",
+        "credit_kg": 24.517
+    },
+    {
+        "transferred_by": "HOM0664",
+        "received_by": "IND0041",
+        "credit_kg": 25.385
+    },
+    {
+        "transferred_by": "HOM0665",
+        "received_by": "IND0041",
+        "credit_kg": 25.76
+    },
+    {
+        "transferred_by": "HOM0666",
+        "received_by": "IND0041",
+        "credit_kg": 25.299
+    },
+    {
+        "transferred_by": "HOM0667",
+        "received_by": "IND0041",
+        "credit_kg": 25.735
+    },
+    {
+        "transferred_by": "HOM0668",
+        "received_by": "IND0041",
+        "credit_kg": 25.486
+    },
+    {
+        "transferred_by": "HOM0669",
+        "received_by": "IND0041",
+        "credit_kg": 25.101
+    },
+    {
+        "transferred_by": "HOM0670",
+        "received_by": "IND0041",
+        "credit_kg": 26.055
+    },
+    {
+        "transferred_by": "HOM0671",
+        "received_by": "IND0041",
+        "credit_kg": 7.411
+    },
+    {
+        "transferred_by": "HOM0671",
+        "received_by": "IND0042",
+        "credit_kg": 18.159
+    },
+    {
+        "transferred_by": "HOM0672",
+        "received_by": "IND0042",
+        "credit_kg": 25.4
+    },
+    {
+        "transferred_by": "HOM0673",
+        "received_by": "IND0042",
+        "credit_kg": 25.546
+    },
+    {
+        "transferred_by": "HOM0674",
+        "received_by": "IND0042",
+        "credit_kg": 26.222
+    },
+    {
+        "transferred_by": "HOM0675",
+        "received_by": "IND0042",
+        "credit_kg": 26.237
+    },
+    {
+        "transferred_by": "HOM0676",
+        "received_by": "IND0042",
+        "credit_kg": 25.035
+    },
+    {
+        "transferred_by": "HOM0677",
+        "received_by": "IND0042",
+        "credit_kg": 26.253
+    },
+    {
+        "transferred_by": "HOM0678",
+        "received_by": "IND0042",
+        "credit_kg": 25.865
+    },
+    {
+        "transferred_by": "HOM0679",
+        "received_by": "IND0042",
+        "credit_kg": 26.024
+    },
+    {
+        "transferred_by": "HOM0680",
+        "received_by": "IND0042",
+        "credit_kg": 26.015
+    },
+    {
+        "transferred_by": "HOM0681",
+        "received_by": "IND0042",
+        "credit_kg": 25.983
+    },
+    {
+        "transferred_by": "HOM0682",
+        "received_by": "IND0042",
+        "credit_kg": 26.146
+    },
+    {
+        "transferred_by": "HOM0683",
+        "received_by": "IND0042",
+        "credit_kg": 26.206
+    },
+    {
+        "transferred_by": "HOM0684",
+        "received_by": "IND0042",
+        "credit_kg": 26.634
+    },
+    {
+        "transferred_by": "HOM0685",
+        "received_by": "IND0042",
+        "credit_kg": 24.694
+    },
+    {
+        "transferred_by": "HOM0686",
+        "received_by": "IND0042",
+        "credit_kg": 25.465
+    },
+    {
+        "transferred_by": "HOM0687",
+        "received_by": "IND0042",
+        "credit_kg": 8.723
+    },
+    {
+        "transferred_by": "HOM0687",
+        "received_by": "IND0043",
+        "credit_kg": 15.97
+    },
+    {
+        "transferred_by": "HOM0688",
+        "received_by": "IND0043",
+        "credit_kg": 25.569
+    },
+    {
+        "transferred_by": "HOM0689",
+        "received_by": "IND0043",
+        "credit_kg": 25.577
+    },
+    {
+        "transferred_by": "HOM0690",
+        "received_by": "IND0043",
+        "credit_kg": 25.965
+    },
+    {
+        "transferred_by": "HOM0691",
+        "received_by": "IND0043",
+        "credit_kg": 25.895
+    },
+    {
+        "transferred_by": "HOM0692",
+        "received_by": "IND0043",
+        "credit_kg": 25.611
+    },
+    {
+        "transferred_by": "HOM0693",
+        "received_by": "IND0043",
+        "credit_kg": 26.934
+    },
+    {
+        "transferred_by": "HOM0694",
+        "received_by": "IND0043",
+        "credit_kg": 26.232
+    },
+    {
+        "transferred_by": "HOM0695",
+        "received_by": "IND0043",
+        "credit_kg": 26.503
+    },
+    {
+        "transferred_by": "HOM0696",
+        "received_by": "IND0043",
+        "credit_kg": 26.866
+    },
+    {
+        "transferred_by": "HOM0697",
+        "received_by": "IND0043",
+        "credit_kg": 25.071
+    },
+    {
+        "transferred_by": "HOM0698",
+        "received_by": "IND0043",
+        "credit_kg": 25.142
+    },
+    {
+        "transferred_by": "HOM0699",
+        "received_by": "IND0043",
+        "credit_kg": 24.418
+    },
+    {
+        "transferred_by": "HOM0700",
+        "received_by": "IND0043",
+        "credit_kg": 25.791
+    },
+    {
+        "transferred_by": "IND0001",
+        "received_by": "IND0043",
+        "credit_kg": 61.575
+    },
+    {
+        "transferred_by": "IND0001",
+        "received_by": "IND0044",
+        "credit_kg": 419.158
+    },
+    {
+        "transferred_by": "IND0001",
+        "received_by": "IND0045",
+        "credit_kg": 411.124
+    },
+    {
+        "transferred_by": "IND0001",
+        "received_by": "IND0046",
+        "credit_kg": 416.297
+    },
+    {
+        "transferred_by": "IND0001",
+        "received_by": "IND0047",
+        "credit_kg": 417.488
+    },
+    {
+        "transferred_by": "IND0001",
+        "received_by": "IND0048",
+        "credit_kg": 412.769
+    },
+    {
+        "transferred_by": "IND0001",
+        "received_by": "IND0049",
+        "credit_kg": 411.531
+    },
+    {
+        "transferred_by": "IND0001",
+        "received_by": "IND0050",
+        "credit_kg": 412.236
+    },
+    {
+        "transferred_by": "IND0001",
+        "received_by": "IND0051",
+        "credit_kg": 133.345
+    },
+    {
+        "transferred_by": "IND0002",
+        "received_by": "IND0051",
+        "credit_kg": 267.324
+    },
+    {
+        "transferred_by": "IND0002",
+        "received_by": "IND0052",
+        "credit_kg": 401.761
+    },
+    {
+        "transferred_by": "IND0002",
+        "received_by": "IND0053",
+        "credit_kg": 412.265
+    },
+    {
+        "transferred_by": "IND0002",
+        "received_by": "IND0054",
+        "credit_kg": 433.702
+    },
+    {
+        "transferred_by": "IND0002",
+        "received_by": "IND0055",
+        "credit_kg": 420.72
+    },
+    {
+        "transferred_by": "IND0002",
+        "received_by": "IND0056",
+        "credit_kg": 414.564
+    },
+    {
+        "transferred_by": "IND0002",
+        "received_by": "IND0057",
+        "credit_kg": 411.092
+    },
+    {
+        "transferred_by": "IND0002",
+        "received_by": "IND0058",
+        "credit_kg": 188.013
+    },
+    {
+        "transferred_by": "IND0003",
+        "received_by": "IND0058",
+        "credit_kg": 232.27
+    },
+    {
+        "transferred_by": "IND0003",
+        "received_by": "IND0059",
+        "credit_kg": 424.717
+    },
+    {
+        "transferred_by": "IND0003",
+        "received_by": "IND0060",
+        "credit_kg": 418.804
+    },
+    {
+        "transferred_by": "IND0003",
+        "received_by": "IND0061",
+        "credit_kg": 420.011
+    },
+    {
+        "transferred_by": "IND0003",
+        "received_by": "IND0062",
+        "credit_kg": 416.785
+    },
+    {
+        "transferred_by": "IND0003",
+        "received_by": "IND0063",
+        "credit_kg": 422.984
+    },
+    {
+        "transferred_by": "IND0003",
+        "received_by": "IND0064",
+        "credit_kg": 415.584
+    },
+    {
+        "transferred_by": "IND0003",
+        "received_by": "IND0065",
+        "credit_kg": 300.025
+    },
+    {
+        "transferred_by": "IND0004",
+        "received_by": "IND0065",
+        "credit_kg": 117.879
+    },
+    {
+        "transferred_by": "IND0004",
+        "received_by": "IND0066",
+        "credit_kg": 393.852
+    },
+    {
+        "transferred_by": "IND0004",
+        "received_by": "IND0067",
+        "credit_kg": 419.469
+    },
+    {
+        "transferred_by": "IND0004",
+        "received_by": "IND0068",
+        "credit_kg": 405.346
+    },
+    {
+        "transferred_by": "IND0004",
+        "received_by": "IND0069",
+        "credit_kg": 402.617
+    },
+    {
+        "transferred_by": "IND0004",
+        "received_by": "IND0070",
+        "credit_kg": 413.439
+    },
+    {
+        "transferred_by": "IND0004",
+        "received_by": "IND0071",
+        "credit_kg": 421.743
+    },
+    {
+        "transferred_by": "IND0004",
+        "received_by": "IND0072",
+        "credit_kg": 355.692
+    },
+    {
+        "transferred_by": "IND0005",
+        "received_by": "IND0072",
+        "credit_kg": 60.507
+    },
+    {
+        "transferred_by": "IND0005",
+        "received_by": "IND0073",
+        "credit_kg": 416.089
+    },
+    {
+        "transferred_by": "IND0005",
+        "received_by": "IND0074",
+        "credit_kg": 412.677
+    },
+    {
+        "transferred_by": "IND0005",
+        "received_by": "IND0075",
+        "credit_kg": 412.963
+    },
+    {
+        "transferred_by": "IND0005",
+        "received_by": "IND0076",
+        "credit_kg": 418.586
+    },
+    {
+        "transferred_by": "IND0005",
+        "received_by": "IND0077",
+        "credit_kg": 416.89
+    },
+    {
+        "transferred_by": "IND0005",
+        "received_by": "IND0078",
+        "credit_kg": 399.69
+    },
+    {
+        "transferred_by": "IND0005",
+        "received_by": "IND0079",
+        "credit_kg": 428.262
+    },
+    {
+        "transferred_by": "IND0005",
+        "received_by": "IND0080",
+        "credit_kg": 170.083
+    },
+    {
+        "transferred_by": "IND0006",
+        "received_by": "IND0080",
+        "credit_kg": 239.7
+    },
+    {
+        "transferred_by": "IND0006",
+        "received_by": "IND0081",
+        "credit_kg": 414.436
+    },
+    {
+        "transferred_by": "IND0006",
+        "received_by": "IND0082",
+        "credit_kg": 405.153
+    },
+    {
+        "transferred_by": "IND0006",
+        "received_by": "IND0083",
+        "credit_kg": 414.275
+    },
+    {
+        "transferred_by": "IND0006",
+        "received_by": "IND0084",
+        "credit_kg": 418.209
+    },
+    {
+        "transferred_by": "IND0006",
+        "received_by": "IND0085",
+        "credit_kg": 429.2
+    },
+    {
+        "transferred_by": "IND0006",
+        "received_by": "IND0086",
+        "credit_kg": 420.749
+    },
+    {
+        "transferred_by": "IND0006",
+        "received_by": "IND0087",
+        "credit_kg": 221.938
+    },
+    {
+        "transferred_by": "IND0007",
+        "received_by": "IND0087",
+        "credit_kg": 186.209
+    },
+    {
+        "transferred_by": "IND0007",
+        "received_by": "IND0088",
+        "credit_kg": 444.352
+    },
+    {
+        "transferred_by": "IND0007",
+        "received_by": "IND0089",
+        "credit_kg": 403.912
+    },
+    {
+        "transferred_by": "IND0007",
+        "received_by": "IND0090",
+        "credit_kg": 431.996
+    },
+    {
+        "transferred_by": "IND0007",
+        "received_by": "IND0091",
+        "credit_kg": 415.027
+    },
+    {
+        "transferred_by": "IND0007",
+        "received_by": "IND0092",
+        "credit_kg": 433.318
+    },
+    {
+        "transferred_by": "IND0007",
+        "received_by": "IND0093",
+        "credit_kg": 448.606
+    },
+    {
+        "transferred_by": "IND0007",
+        "received_by": "IND0094",
+        "credit_kg": 324.045
+    },
+    {
+        "transferred_by": "IND0008",
+        "received_by": "IND0094",
+        "credit_kg": 104.978
+    },
+    {
+        "transferred_by": "IND0008",
+        "received_by": "IND0095",
+        "credit_kg": 414.177
+    },
+    {
+        "transferred_by": "IND0008",
+        "received_by": "IND0096",
+        "credit_kg": 409.513
+    },
+    {
+        "transferred_by": "IND0008",
+        "received_by": "IND0097",
+        "credit_kg": 407.47
+    },
+    {
+        "transferred_by": "IND0008",
+        "received_by": "IND0098",
+        "credit_kg": 416.19
+    },
+    {
+        "transferred_by": "IND0008",
+        "received_by": "IND0099",
+        "credit_kg": 404.269
+    },
+    {
+        "transferred_by": "IND0008",
+        "received_by": "IND0100",
+        "credit_kg": 417.957
+    },
+    {
+        "transferred_by": "IND0008",
+        "received_by": "IND0101",
+        "credit_kg": 396.763
+    },
+    {
+        "transferred_by": "IND0008",
+        "received_by": "IND0102",
+        "credit_kg": 36.047
+    },
+    {
+        "transferred_by": "IND0009",
+        "received_by": "IND0102",
+        "credit_kg": 362.283
+    },
+    {
+        "transferred_by": "IND0009",
+        "received_by": "IND0103",
+        "credit_kg": 436.421
+    },
+    {
+        "transferred_by": "IND0009",
+        "received_by": "IND0104",
+        "credit_kg": 393.919
+    },
+    {
+        "transferred_by": "IND0009",
+        "received_by": "IND0105",
+        "credit_kg": 429.798
+    },
+    {
+        "transferred_by": "IND0009",
+        "received_by": "IND0106",
+        "credit_kg": 418.882
+    },
+    {
+        "transferred_by": "IND0009",
+        "received_by": "IND0107",
+        "credit_kg": 413.337
+    },
+    {
+        "transferred_by": "IND0009",
+        "received_by": "IND0108",
+        "credit_kg": 429.938
+    },
+    {
+        "transferred_by": "IND0009",
+        "received_by": "IND0109",
+        "credit_kg": 131.728
+    },
+    {
+        "transferred_by": "IND0010",
+        "received_by": "IND0109",
+        "credit_kg": 272.036
+    },
+    {
+        "transferred_by": "IND0010",
+        "received_by": "IND0110",
+        "credit_kg": 427.449
+    },
+    {
+        "transferred_by": "IND0010",
+        "received_by": "IND0111",
+        "credit_kg": 413.34
+    },
+    {
+        "transferred_by": "IND0010",
+        "received_by": "IND0112",
+        "credit_kg": 422.48
+    },
+    {
+        "transferred_by": "IND0010",
+        "received_by": "IND0113",
+        "credit_kg": 402.805
+    },
+    {
+        "transferred_by": "IND0010",
+        "received_by": "IND0114",
+        "credit_kg": 413.994
+    },
+    {
+        "transferred_by": "IND0010",
+        "received_by": "IND0115",
+        "credit_kg": 429.11
+    },
+    {
+        "transferred_by": "IND0010",
+        "received_by": "IND0116",
+        "credit_kg": 305.818
+    },
+    {
+        "transferred_by": "IND0011",
+        "received_by": "IND0116",
+        "credit_kg": 116.597
+    },
+    {
+        "transferred_by": "IND0011",
+        "received_by": "IND0117",
+        "credit_kg": 415.394
+    },
+    {
+        "transferred_by": "IND0011",
+        "received_by": "IND0118",
+        "credit_kg": 438.491
+    },
+    {
+        "transferred_by": "IND0011",
+        "received_by": "IND0119",
+        "credit_kg": 414.502
+    },
+    {
+        "transferred_by": "IND0011",
+        "received_by": "IND0120",
+        "credit_kg": 411.455
+    },
+    {
+        "transferred_by": "IND0011",
+        "received_by": "IND0121",
+        "credit_kg": 408.606
+    },
+    {
+        "transferred_by": "IND0011",
+        "received_by": "IND0122",
+        "credit_kg": 414.238
+    },
+    {
+        "transferred_by": "IND0011",
+        "received_by": "IND0123",
+        "credit_kg": 437.512
+    },
+    {
+        "transferred_by": "IND0011",
+        "received_by": "IND0124",
+        "credit_kg": 4.789
+    },
+    {
+        "transferred_by": "IND0012",
+        "received_by": "IND0124",
+        "credit_kg": 432.898
+    },
+    {
+        "transferred_by": "IND0012",
+        "received_by": "IND0125",
+        "credit_kg": 419.763
+    },
+    {
+        "transferred_by": "IND0012",
+        "received_by": "IND0126",
+        "credit_kg": 428.286
+    },
+    {
+        "transferred_by": "IND0012",
+        "received_by": "IND0127",
+        "credit_kg": 413.361
+    },
+    {
+        "transferred_by": "IND0012",
+        "received_by": "IND0128",
+        "credit_kg": 418.263
+    },
+    {
+        "transferred_by": "IND0012",
+        "received_by": "IND0129",
+        "credit_kg": 416.062
+    },
+    {
+        "transferred_by": "IND0012",
+        "received_by": "IND0130",
+        "credit_kg": 405.338
+    },
+    {
+        "transferred_by": "IND0012",
+        "received_by": "IND0131",
+        "credit_kg": 49.895
+    },
+    {
+        "transferred_by": "IND0013",
+        "received_by": "IND0131",
+        "credit_kg": 363.277
+    },
+    {
+        "transferred_by": "IND0013",
+        "received_by": "IND0132",
+        "credit_kg": 424.492
+    },
+    {
+        "transferred_by": "IND0013",
+        "received_by": "IND0133",
+        "credit_kg": 425.223
+    },
+    {
+        "transferred_by": "IND0013",
+        "received_by": "IND0134",
+        "credit_kg": 418.176
+    },
+    {
+        "transferred_by": "IND0013",
+        "received_by": "IND0135",
+        "credit_kg": 418.137
+    },
+    {
+        "transferred_by": "IND0013",
+        "received_by": "IND0136",
+        "credit_kg": 426.632
+    },
+    {
+        "transferred_by": "IND0013",
+        "received_by": "IND0137",
+        "credit_kg": 415.274
+    },
+    {
+        "transferred_by": "IND0013",
+        "received_by": "IND0138",
+        "credit_kg": 149.379
+    },
+    {
+        "transferred_by": "IND0014",
+        "received_by": "IND0138",
+        "credit_kg": 272.753
+    },
+    {
+        "transferred_by": "IND0014",
+        "received_by": "IND0139",
+        "credit_kg": 436.461
+    },
+    {
+        "transferred_by": "IND0014",
+        "received_by": "IND0140",
+        "credit_kg": 409.947
+    },
+    {
+        "transferred_by": "IND0014",
+        "received_by": "IND0141",
+        "credit_kg": 423.993
+    },
+    {
+        "transferred_by": "IND0014",
+        "received_by": "IND0142",
+        "credit_kg": 439.546
+    },
+    {
+        "transferred_by": "IND0014",
+        "received_by": "IND0143",
+        "credit_kg": 414.441
+    },
+    {
+        "transferred_by": "IND0014",
+        "received_by": "IND0144",
+        "credit_kg": 411.795
+    },
+    {
+        "transferred_by": "IND0014",
+        "received_by": "IND0145",
+        "credit_kg": 103.189
+    },
+    {
+        "transferred_by": "IND0015",
+        "received_by": "IND0145",
+        "credit_kg": 297.103
+    },
+    {
+        "transferred_by": "IND0015",
+        "received_by": "IND0146",
+        "credit_kg": 429.46
+    },
+    {
+        "transferred_by": "IND0015",
+        "received_by": "IND0147",
+        "credit_kg": 424.254
+    },
+    {
+        "transferred_by": "IND0015",
+        "received_by": "IND0148",
+        "credit_kg": 419.112
+    },
+    {
+        "transferred_by": "IND0015",
+        "received_by": "IND0149",
+        "credit_kg": 421.439
+    },
+    {
+        "transferred_by": "IND0015",
+        "received_by": "IND0150",
+        "credit_kg": 412.829
+    },
+    {
+        "transferred_by": "IND0015",
+        "received_by": "IND0151",
+        "credit_kg": 410.887
+    },
+    {
+        "transferred_by": "IND0015",
+        "received_by": "IND0152",
+        "credit_kg": 150.959
+    },
+    {
+        "transferred_by": "IND0016",
+        "received_by": "IND0152",
+        "credit_kg": 270.466
+    },
+    {
+        "transferred_by": "IND0016",
+        "received_by": "IND0153",
+        "credit_kg": 425.465
+    },
+    {
+        "transferred_by": "IND0016",
+        "received_by": "IND0154",
+        "credit_kg": 420.624
+    },
+    {
+        "transferred_by": "IND0016",
+        "received_by": "IND0155",
+        "credit_kg": 416.918
+    },
+    {
+        "transferred_by": "IND0016",
+        "received_by": "IND0156",
+        "credit_kg": 404.063
+    },
+    {
+        "transferred_by": "IND0016",
+        "received_by": "IND0157",
+        "credit_kg": 414.052
+    },
+    {
+        "transferred_by": "IND0016",
+        "received_by": "IND0158",
+        "credit_kg": 404.661
+    },
+    {
+        "transferred_by": "IND0016",
+        "received_by": "IND0159",
+        "credit_kg": 279.35
+    },
+    {
+        "transferred_by": "IND0017",
+        "received_by": "IND0159",
+        "credit_kg": 141.498
+    },
+    {
+        "transferred_by": "IND0017",
+        "received_by": "IND0160",
+        "credit_kg": 398.248
+    },
+    {
+        "transferred_by": "IND0017",
+        "received_by": "IND0161",
+        "credit_kg": 435.608
+    },
+    {
+        "transferred_by": "IND0017",
+        "received_by": "IND0162",
+        "credit_kg": 421.417
+    },
+    {
+        "transferred_by": "IND0017",
+        "received_by": "IND0163",
+        "credit_kg": 424.774
+    },
+    {
+        "transferred_by": "IND0017",
+        "received_by": "IND0164",
+        "credit_kg": 434.473
+    },
+    {
+        "transferred_by": "IND0017",
+        "received_by": "IND0165",
+        "credit_kg": 424.967
+    },
+    {
+        "transferred_by": "IND0017",
+        "received_by": "IND0166",
+        "credit_kg": 383.092
+    },
+    {
+        "transferred_by": "IND0018",
+        "received_by": "IND0166",
+        "credit_kg": 32.516
+    },
+    {
+        "transferred_by": "IND0018",
+        "received_by": "IND0167",
+        "credit_kg": 422.66
+    },
+    {
+        "transferred_by": "IND0018",
+        "received_by": "IND0168",
+        "credit_kg": 425.676
+    },
+    {
+        "transferred_by": "IND0018",
+        "received_by": "IND0169",
+        "credit_kg": 436.377
+    },
+    {
+        "transferred_by": "IND0018",
+        "received_by": "IND0170",
+        "credit_kg": 410.904
+    },
+    {
+        "transferred_by": "IND0018",
+        "received_by": "IND0171",
+        "credit_kg": 430.56
+    },
+    {
+        "transferred_by": "IND0018",
+        "received_by": "IND0172",
+        "credit_kg": 416.997
+    },
+    {
+        "transferred_by": "IND0018",
+        "received_by": "IND0173",
+        "credit_kg": 410.091
+    },
+    {
+        "transferred_by": "IND0018",
+        "received_by": "IND0174",
+        "credit_kg": 6.155
+    },
+    {
+        "transferred_by": "IND0019",
+        "received_by": "IND0174",
+        "credit_kg": 407.364
+    },
+    {
+        "transferred_by": "IND0019",
+        "received_by": "IND0175",
+        "credit_kg": 409.313
+    },
+    {
+        "transferred_by": "IND0019",
+        "received_by": "IND0176",
+        "credit_kg": 435.244
+    },
+    {
+        "transferred_by": "IND0019",
+        "received_by": "IND0177",
+        "credit_kg": 438.567
+    },
+    {
+        "transferred_by": "IND0019",
+        "received_by": "IND0178",
+        "credit_kg": 431.464
+    },
+    {
+        "transferred_by": "IND0019",
+        "received_by": "IND0179",
+        "credit_kg": 433.958
+    },
+    {
+        "transferred_by": "IND0019",
+        "received_by": "IND0180",
+        "credit_kg": 429.384
+    },
+    {
+        "transferred_by": "IND0019",
+        "received_by": "IND0181",
+        "credit_kg": 105.585
+    },
+    {
+        "transferred_by": "IND0020",
+        "received_by": "IND0181",
+        "credit_kg": 293.418
+    },
+    {
+        "transferred_by": "IND0020",
+        "received_by": "IND0182",
+        "credit_kg": 417.888
+    },
+    {
+        "transferred_by": "IND0020",
+        "received_by": "IND0183",
+        "credit_kg": 401.14
+    },
+    {
+        "transferred_by": "IND0020",
+        "received_by": "IND0184",
+        "credit_kg": 437.994
+    },
+    {
+        "transferred_by": "IND0020",
+        "received_by": "IND0185",
+        "credit_kg": 427.404
+    },
+    {
+        "transferred_by": "IND0020",
+        "received_by": "IND0186",
+        "credit_kg": 419.268
+    },
+    {
+        "transferred_by": "IND0020",
+        "received_by": "IND0187",
+        "credit_kg": 413.584
+    },
+    {
+        "transferred_by": "IND0020",
+        "received_by": "IND0188",
+        "credit_kg": 94.26
+    },
+    {
+        "transferred_by": "IND0021",
+        "received_by": "IND0188",
+        "credit_kg": 316.205
+    },
+    {
+        "transferred_by": "IND0021",
+        "received_by": "IND0189",
+        "credit_kg": 421.866
+    },
+    {
+        "transferred_by": "IND0021",
+        "received_by": "IND0190",
+        "credit_kg": 420.026
+    },
+    {
+        "transferred_by": "IND0021",
+        "received_by": "IND0191",
+        "credit_kg": 424.414
+    },
+    {
+        "transferred_by": "IND0021",
+        "received_by": "IND0192",
+        "credit_kg": 424.558
+    },
+    {
+        "transferred_by": "IND0021",
+        "received_by": "IND0193",
+        "credit_kg": 425.354
+    },
+    {
+        "transferred_by": "IND0021",
+        "received_by": "IND0194",
+        "credit_kg": 427.823
+    },
+    {
+        "transferred_by": "IND0021",
+        "received_by": "IND0195",
+        "credit_kg": 122.845
+    },
+    {
+        "transferred_by": "IND0022",
+        "received_by": "IND0195",
+        "credit_kg": 295.299
+    },
+    {
+        "transferred_by": "IND0022",
+        "received_by": "IND0196",
+        "credit_kg": 406.082
+    },
+    {
+        "transferred_by": "IND0022",
+        "received_by": "IND0197",
+        "credit_kg": 434.738
+    },
+    {
+        "transferred_by": "IND0022",
+        "received_by": "IND0198",
+        "credit_kg": 423.512
+    },
+    {
+        "transferred_by": "IND0022",
+        "received_by": "IND0199",
+        "credit_kg": 415.668
+    },
+    {
+        "transferred_by": "IND0022",
+        "received_by": "IND0200",
+        "credit_kg": 400.335
+    },
+    {
+        "transferred_by": "IND0022",
+        "received_by": "IND0201",
+        "credit_kg": 407.1
+    },
+    {
+        "transferred_by": "IND0022",
+        "received_by": "IND0202",
+        "credit_kg": 195.974
+    },
+    {
+        "transferred_by": "IND0023",
+        "received_by": "IND0202",
+        "credit_kg": 224.63
+    },
+    {
+        "transferred_by": "IND0023",
+        "received_by": "IND0203",
+        "credit_kg": 408.941
+    },
+    {
+        "transferred_by": "IND0023",
+        "received_by": "IND0204",
+        "credit_kg": 415.622
+    },
+    {
+        "transferred_by": "IND0023",
+        "received_by": "IND0205",
+        "credit_kg": 406.223
+    },
+    {
+        "transferred_by": "IND0023",
+        "received_by": "IND0206",
+        "credit_kg": 446.021
+    },
+    {
+        "transferred_by": "IND0023",
+        "received_by": "IND0207",
+        "credit_kg": 424.61
+    },
+    {
+        "transferred_by": "IND0023",
+        "received_by": "IND0208",
+        "credit_kg": 407.02
+    },
+    {
+        "transferred_by": "IND0023",
+        "received_by": "IND0209",
+        "credit_kg": 290.84
+    },
+    {
+        "transferred_by": "IND0024",
+        "received_by": "IND0209",
+        "credit_kg": 129.817
+    },
+    {
+        "transferred_by": "IND0024",
+        "received_by": "IND0210",
+        "credit_kg": 426.682
+    },
+    {
+        "transferred_by": "IND0024",
+        "received_by": "IND0211",
+        "credit_kg": 422.727
+    },
+    {
+        "transferred_by": "IND0024",
+        "received_by": "IND0212",
+        "credit_kg": 411.561
+    },
+    {
+        "transferred_by": "IND0024",
+        "received_by": "IND0213",
+        "credit_kg": 407.66
+    },
+    {
+        "transferred_by": "IND0024",
+        "received_by": "IND0214",
+        "credit_kg": 410.774
+    },
+    {
+        "transferred_by": "IND0024",
+        "received_by": "IND0215",
+        "credit_kg": 410.422
+    },
+    {
+        "transferred_by": "IND0024",
+        "received_by": "IND0216",
+        "credit_kg": 417.548
+    },
+    {
+        "transferred_by": "IND0024",
+        "received_by": "IND0217",
+        "credit_kg": 25.508
+    },
+    {
+        "transferred_by": "IND0025",
+        "received_by": "IND0217",
+        "credit_kg": 394.428
+    },
+    {
+        "transferred_by": "IND0025",
+        "received_by": "IND0218",
+        "credit_kg": 431.439
+    },
+    {
+        "transferred_by": "IND0025",
+        "received_by": "IND0219",
+        "credit_kg": 425.652
+    },
+    {
+        "transferred_by": "IND0025",
+        "received_by": "IND0220",
+        "credit_kg": 413.075
+    },
+    {
+        "transferred_by": "IND0025",
+        "received_by": "IND0221",
+        "credit_kg": 421.301
+    },
+    {
+        "transferred_by": "IND0025",
+        "received_by": "IND0222",
+        "credit_kg": 417.323
+    },
+    {
+        "transferred_by": "IND0025",
+        "received_by": "IND0223",
+        "credit_kg": 423.375
+    },
+    {
+        "transferred_by": "IND0025",
+        "received_by": "IND0224",
+        "credit_kg": 39.141
+    },
+    {
+        "transferred_by": "IND0026",
+        "received_by": "IND0224",
+        "credit_kg": 397.207
+    },
+    {
+        "transferred_by": "IND0026",
+        "received_by": "IND0225",
+        "credit_kg": 418.031
+    },
+    {
+        "transferred_by": "IND0026",
+        "received_by": "IND0226",
+        "credit_kg": 403.998
+    },
+    {
+        "transferred_by": "IND0026",
+        "received_by": "IND0227",
+        "credit_kg": 438.454
+    },
+    {
+        "transferred_by": "IND0026",
+        "received_by": "IND0228",
+        "credit_kg": 422.713
+    },
+    {
+        "transferred_by": "IND0026",
+        "received_by": "IND0229",
+        "credit_kg": 417.511
+    },
+    {
+        "transferred_by": "IND0026",
+        "received_by": "IND0230",
+        "credit_kg": 383.469
+    },
+    {
+        "transferred_by": "IND0026",
+        "received_by": "IND0231",
+        "credit_kg": 108.371
+    },
+    {
+        "transferred_by": "IND0027",
+        "received_by": "IND0231",
+        "credit_kg": 299.615
+    },
+    {
+        "transferred_by": "IND0027",
+        "received_by": "IND0232",
+        "credit_kg": 436.445
+    },
+    {
+        "transferred_by": "IND0027",
+        "received_by": "IND0233",
+        "credit_kg": 415.147
+    },
+    {
+        "transferred_by": "IND0027",
+        "received_by": "IND0234",
+        "credit_kg": 422.061
+    },
+    {
+        "transferred_by": "IND0027",
+        "received_by": "IND0235",
+        "credit_kg": 413.248
+    },
+    {
+        "transferred_by": "IND0027",
+        "received_by": "IND0236",
+        "credit_kg": 418.772
+    },
+    {
+        "transferred_by": "IND0027",
+        "received_by": "IND0237",
+        "credit_kg": 420.713
+    },
+    {
+        "transferred_by": "IND0027",
+        "received_by": "IND0238",
+        "credit_kg": 117.318
+    },
+    {
+        "transferred_by": "IND0028",
+        "received_by": "IND0238",
+        "credit_kg": 308.016
+    },
+    {
+        "transferred_by": "IND0028",
+        "received_by": "IND0239",
+        "credit_kg": 413.039
+    },
+    {
+        "transferred_by": "IND0028",
+        "received_by": "IND0240",
+        "credit_kg": 410.412
+    },
+    {
+        "transferred_by": "IND0028",
+        "received_by": "IND0241",
+        "credit_kg": 430.289
+    },
+    {
+        "transferred_by": "IND0028",
+        "received_by": "IND0242",
+        "credit_kg": 407.007
+    },
+    {
+        "transferred_by": "IND0028",
+        "received_by": "IND0243",
+        "credit_kg": 427.039
+    },
+    {
+        "transferred_by": "IND0028",
+        "received_by": "IND0244",
+        "credit_kg": 416.001
+    },
+    {
+        "transferred_by": "IND0028",
+        "received_by": "IND0245",
+        "credit_kg": 209.638
+    },
+    {
+        "transferred_by": "IND0029",
+        "received_by": "IND0245",
+        "credit_kg": 194.658
+    },
+    {
+        "transferred_by": "IND0029",
+        "received_by": "IND0246",
+        "credit_kg": 433.085
+    },
+    {
+        "transferred_by": "IND0029",
+        "received_by": "IND0247",
+        "credit_kg": 415.94
+    },
+    {
+        "transferred_by": "IND0029",
+        "received_by": "IND0248",
+        "credit_kg": 428.037
+    },
+    {
+        "transferred_by": "IND0029",
+        "received_by": "IND0249",
+        "credit_kg": 431.441
+    },
+    {
+        "transferred_by": "IND0029",
+        "received_by": "IND0250",
+        "credit_kg": 425.251
+    },
+    {
+        "transferred_by": "IND0029",
+        "received_by": "IND0251",
+        "credit_kg": 442.267
+    },
+    {
+        "transferred_by": "IND0029",
+        "received_by": "IND0252",
+        "credit_kg": 244.348
+    },
+    {
+        "transferred_by": "IND0030",
+        "received_by": "IND0252",
+        "credit_kg": 177.749
+    },
+    {
+        "transferred_by": "IND0030",
+        "received_by": "IND0253",
+        "credit_kg": 424.202
+    },
+    {
+        "transferred_by": "IND0030",
+        "received_by": "IND0254",
+        "credit_kg": 420.151
+    },
+    {
+        "transferred_by": "IND0030",
+        "received_by": "IND0255",
+        "credit_kg": 427.027
+    },
+    {
+        "transferred_by": "IND0030",
+        "received_by": "IND0256",
+        "credit_kg": 415.683
+    },
+    {
+        "transferred_by": "IND0030",
+        "received_by": "IND0257",
+        "credit_kg": 426.144
+    },
+    {
+        "transferred_by": "IND0030",
+        "received_by": "IND0258",
+        "credit_kg": 417.207
+    },
+    {
+        "transferred_by": "IND0030",
+        "received_by": "IND0259",
+        "credit_kg": 312.917
+    },
+    {
+        "transferred_by": "IND0031",
+        "received_by": "IND0259",
+        "credit_kg": 96.17
+    },
+    {
+        "transferred_by": "IND0031",
+        "received_by": "IND0260",
+        "credit_kg": 424.904
+    },
+    {
+        "transferred_by": "IND0031",
+        "received_by": "IND0261",
+        "credit_kg": 420.589
+    },
+    {
+        "transferred_by": "IND0031",
+        "received_by": "IND0262",
+        "credit_kg": 406.17
+    },
+    {
+        "transferred_by": "IND0031",
+        "received_by": "IND0263",
+        "credit_kg": 417.477
+    },
+    {
+        "transferred_by": "IND0031",
+        "received_by": "IND0264",
+        "credit_kg": 429.679
+    },
+    {
+        "transferred_by": "IND0031",
+        "received_by": "IND0265",
+        "credit_kg": 427.504
+    },
+    {
+        "transferred_by": "IND0031",
+        "received_by": "IND0266",
+        "credit_kg": 364.74
+    },
+    {
+        "transferred_by": "IND0032",
+        "received_by": "IND0266",
+        "credit_kg": 39.117
+    },
+    {
+        "transferred_by": "IND0032",
+        "received_by": "IND0267",
+        "credit_kg": 443.909
+    },
+    {
+        "transferred_by": "IND0032",
+        "received_by": "IND0268",
+        "credit_kg": 429.287
+    },
+    {
+        "transferred_by": "IND0032",
+        "received_by": "IND0269",
+        "credit_kg": 423.849
+    },
+    {
+        "transferred_by": "IND0032",
+        "received_by": "IND0270",
+        "credit_kg": 430.278
+    },
+    {
+        "transferred_by": "IND0032",
+        "received_by": "IND0271",
+        "credit_kg": 410.86
+    },
+    {
+        "transferred_by": "IND0032",
+        "received_by": "IND0272",
+        "credit_kg": 405.419
+    },
+    {
+        "transferred_by": "IND0032",
+        "received_by": "IND0273",
+        "credit_kg": 411.264
+    },
+    {
+        "transferred_by": "IND0032",
+        "received_by": "IND0274",
+        "credit_kg": 87.04
+    },
+    {
+        "transferred_by": "IND0033",
+        "received_by": "IND0274",
+        "credit_kg": 319.022
+    },
+    {
+        "transferred_by": "IND0033",
+        "received_by": "IND0275",
+        "credit_kg": 398.024
+    },
+    {
+        "transferred_by": "IND0033",
+        "received_by": "IND0276",
+        "credit_kg": 404.536
+    },
+    {
+        "transferred_by": "IND0033",
+        "received_by": "IND0277",
+        "credit_kg": 400.556
+    },
+    {
+        "transferred_by": "IND0033",
+        "received_by": "IND0278",
+        "credit_kg": 405.763
+    },
+    {
+        "transferred_by": "IND0033",
+        "received_by": "IND0279",
+        "credit_kg": 417.473
+    },
+    {
+        "transferred_by": "IND0033",
+        "received_by": "IND0280",
+        "credit_kg": 389.407
+    },
+    {
+        "transferred_by": "IND0033",
+        "received_by": "IND0281",
+        "credit_kg": 289.258
+    },
+    {
+        "transferred_by": "IND0034",
+        "received_by": "IND0281",
+        "credit_kg": 127.461
+    },
+    {
+        "transferred_by": "IND0034",
+        "received_by": "IND0282",
+        "credit_kg": 410.139
+    },
+    {
+        "transferred_by": "IND0034",
+        "received_by": "IND0283",
+        "credit_kg": 416.771
+    },
+    {
+        "transferred_by": "IND0034",
+        "received_by": "IND0284",
+        "credit_kg": 420.946
+    },
+    {
+        "transferred_by": "IND0034",
+        "received_by": "IND0285",
+        "credit_kg": 435.977
+    },
+    {
+        "transferred_by": "IND0034",
+        "received_by": "IND0286",
+        "credit_kg": 428.43
+    },
+    {
+        "transferred_by": "IND0034",
+        "received_by": "IND0287",
+        "credit_kg": 424.524
+    },
+    {
+        "transferred_by": "IND0034",
+        "received_by": "IND0288",
+        "credit_kg": 333.38
+    },
+    {
+        "transferred_by": "IND0035",
+        "received_by": "IND0288",
+        "credit_kg": 102.315
+    },
+    {
+        "transferred_by": "IND0035",
+        "received_by": "IND0289",
+        "credit_kg": 424.2
+    },
+    {
+        "transferred_by": "IND0035",
+        "received_by": "IND0290",
+        "credit_kg": 420.252
+    },
+    {
+        "transferred_by": "IND0035",
+        "received_by": "IND0291",
+        "credit_kg": 431.733
+    },
+    {
+        "transferred_by": "IND0035",
+        "received_by": "IND0292",
+        "credit_kg": 416.06
+    },
+    {
+        "transferred_by": "IND0035",
+        "received_by": "IND0293",
+        "credit_kg": 415.249
+    },
+    {
+        "transferred_by": "IND0035",
+        "received_by": "IND0294",
+        "credit_kg": 415.499
+    },
+    {
+        "transferred_by": "IND0035",
+        "received_by": "IND0295",
+        "credit_kg": 384.087
+    },
+    {
+        "transferred_by": "IND0036",
+        "received_by": "IND0295",
+        "credit_kg": 36.125
+    },
+    {
+        "transferred_by": "IND0036",
+        "received_by": "IND0296",
+        "credit_kg": 420.988
+    },
+    {
+        "transferred_by": "IND0036",
+        "received_by": "IND0297",
+        "credit_kg": 413.094
+    },
+    {
+        "transferred_by": "IND0036",
+        "received_by": "IND0298",
+        "credit_kg": 426.883
+    },
+    {
+        "transferred_by": "IND0036",
+        "received_by": "IND0299",
+        "credit_kg": 406.536
+    },
+    {
+        "transferred_by": "IND0036",
+        "received_by": "IND0300",
+        "credit_kg": 428.568
+    }
+]
