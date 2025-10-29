@@ -6,6 +6,7 @@ import "./index.css";
 import Landing from "./pages/Landing";
 import RoleSelect from "./pages/RoleSelect";
 import RolePage from "./pages/Role";
+import TradingPlatform from "./pages/TradingPlatform";
 import NotFound from "./pages/NotFound";
 
 createRoot(document.getElementById("root")!).render(
@@ -15,6 +16,7 @@ createRoot(document.getElementById("root")!).render(
 				<Route path="/" element={<Landing />} />
 				<Route path="/role-select" element={<RoleSelect />} />
 				<Route path="/role/:role" element={<RolePage />} />
+				<Route path="/trading-platform" element={<TradingPlatform />} />
 				<Route path="/404" element={<NotFound />} />
 				<Route path="*" element={<Navigate to="/404" replace />} />
 			</Routes>

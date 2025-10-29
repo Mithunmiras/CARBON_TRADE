@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -26,6 +27,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell, Area, AreaChart } from "recharts";
 import { emissionData } from "@/data/emissionData";
 import { carbonCreditTransfers } from "@/data/carbonCreditTransfers";
+import { readings } from "@/data/readings";
 
 interface DashboardContentProps {
   userRole: "company" | "auditor" | "admin" | "domestic";
@@ -33,10 +35,27 @@ interface DashboardContentProps {
 }
 
 export function DashboardContent({ userRole, currentView }: DashboardContentProps) {
+  const navigate = useNavigate();
+  // Trading view state (declare unconditionally to preserve hook order)
+  const [side, setSide] = useState<"buy" | "sell">("buy");
+  const [price, setPrice] = useState<string>("25.00");
+  const [quantity, setQuantity] = useState<string>("100");
   // Process emission data for analytics
-  const homeEmissions = emissionData.filter(record => record.home_id === "home");
-  const industryEmissions = emissionData.filter(record => record.home_id === "industry");
-  
+  // Convert readings (CSV) into emission-like records and use for admin view
+  const readingsEmissions = readings.map(r => ({
+    cluster: r.type === "urban" ? "urban" : "industry",
+    home_id: r.type === "urban" ? "home" : "industry",
+    device_id: r.entity_id || r.record_id,
+    emission_kg: Number(r.total_emission_kg),
+    credits_signed: 0
+  }));
+
+  // Choose base data depending on role: admin sees readings, others see the original emissionData
+  const baseData = userRole === "admin" ? readingsEmissions : emissionData;
+
+  const homeEmissions = baseData.filter(record => record.home_id === "home");
+  const industryEmissions = baseData.filter(record => record.home_id === "industry");
+
   const totalHomeEmissions = homeEmissions.reduce((sum, record) => sum + record.emission_kg, 0);
   const totalIndustryEmissions = industryEmissions.reduce((sum, record) => sum + record.emission_kg, 0);
   const totalCreditsTransferred = carbonCreditTransfers.reduce((sum, transfer) => sum + transfer.credit_kg, 0);
@@ -82,20 +101,16 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
 
   // Emission distribution data
   const emissionRanges = [
-    { range: "20-23 kg", count: emissionData.filter(r => r.emission_kg >= 20 && r.emission_kg < 23).length },
-    { range: "23-25 kg", count: emissionData.filter(r => r.emission_kg >= 23 && r.emission_kg < 25).length },
-    { range: "25-27 kg", count: emissionData.filter(r => r.emission_kg >= 25 && r.emission_kg < 27).length },
-    { range: "400-500 kg", count: emissionData.filter(r => r.emission_kg >= 400 && r.emission_kg < 500).length },
-    { range: "1800-2200 kg", count: emissionData.filter(r => r.emission_kg >= 1800 && r.emission_kg < 2200).length }
+    { range: "20-23 kg", count: baseData.filter(r => r.emission_kg >= 20 && r.emission_kg < 23).length },
+    { range: "23-25 kg", count: baseData.filter(r => r.emission_kg >= 23 && r.emission_kg < 25).length },
+    { range: "25-27 kg", count: baseData.filter(r => r.emission_kg >= 25 && r.emission_kg < 27).length },
+    { range: "400-500 kg", count: baseData.filter(r => r.emission_kg >= 400 && r.emission_kg < 500).length },
+    { range: "1800-2200 kg", count: baseData.filter(r => r.emission_kg >= 1800 && r.emission_kg < 2200).length }
   ];
 
   const COLORS = ['#22c55e', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6'];
 
   if (currentView === "trading" && userRole === "company") {
-    const [side, setSide] = useState<"buy" | "sell">("buy");
-    const [price, setPrice] = useState<string>("25.00");
-    const [quantity, setQuantity] = useState<string>("100");
-
     // Mock balances and order book
     const balances = { creditsKg: 1200, currencyUsd: 50000 };
     const bids = [
@@ -125,8 +140,8 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
           </div>
         <div className="flex items-center gap-3">
             <Badge className="bg-primary/10 text-primary">Industry</Badge>
-            <Button variant="secondary" asChild>
-              <a href="/tradingPlatform.html" target="_blank" rel="noopener noreferrer">Open Full Trading Desk</a>
+            <Button variant="secondary" onClick={() => navigate("/trading-platform")}>
+              Open Full Trading Desk
             </Button>
           </div>
         </div>
@@ -299,7 +314,7 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-medium text-muted-foreground">Total Devices</CardTitle>
               <div className="flex items-center gap-2">
-                <span className="text-2xl font-bold">{emissionData.length}</span>
+                <span className="text-2xl font-bold">{baseData.length}</span>
                 <Database className="h-5 w-5 text-primary" />
               </div>
             </CardHeader>
@@ -688,8 +703,8 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <span className="text-sm">Active Devices</span>
-                      <Badge variant="secondary" className="bg-success/10 text-success">
-                        {emissionData.length}
+                        <Badge variant="secondary" className="bg-success/10 text-success">
+                        {baseData.length}
                       </Badge>
                     </div>
                     <div className="flex items-center justify-between">
@@ -773,7 +788,7 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
                   <CheckCircle className="h-5 w-5 text-success" />
                   <div>
                     <div className="font-medium">Emission Records</div>
-                    <div className="text-sm text-muted-foreground">{emissionData.length} devices tracked</div>
+                    <div className="text-sm text-muted-foreground">{baseData.length} devices tracked</div>
                   </div>
                 </div>
                 <Badge variant="secondary" className="bg-success/10 text-success">
@@ -846,8 +861,8 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
   }
 
   if (currentView === "validation" && userRole === "auditor") {
-    const verifiedRecords = emissionData.filter(record => record.credits_signed > 0);
-    const unverifiedRecords = emissionData.filter(record => record.credits_signed === 0);
+  const verifiedRecords = baseData.filter(record => (record as any).credits_signed > 0);
+  const unverifiedRecords = baseData.filter(record => (record as any).credits_signed === 0);
 
     return (
       <div className="p-6 space-y-6">
@@ -869,7 +884,7 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
             <CardContent>
               <div className="text-3xl font-bold text-success">{verifiedRecords.length}</div>
               <p className="text-sm text-muted-foreground">
-                {((verifiedRecords.length / emissionData.length) * 100).toFixed(1)}% of total
+                {((verifiedRecords.length / baseData.length) * 100).toFixed(1)}% of total
               </p>
             </CardContent>
           </Card>
@@ -884,7 +899,7 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
             <CardContent>
               <div className="text-3xl font-bold text-warning">{unverifiedRecords.length}</div>
               <p className="text-sm text-muted-foreground">
-                {((unverifiedRecords.length / emissionData.length) * 100).toFixed(1)}% of total
+                {((unverifiedRecords.length / baseData.length) * 100).toFixed(1)}% of total
               </p>
             </CardContent>
           </Card>
@@ -898,9 +913,9 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold text-primary">
-                {((verifiedRecords.length / emissionData.length) * 100).toFixed(1)}%
+                {((verifiedRecords.length / baseData.length) * 100).toFixed(1)}%
               </div>
-              <Progress value={(verifiedRecords.length / emissionData.length) * 100} className="h-2 mt-2" />
+              <Progress value={(verifiedRecords.length / baseData.length) * 100} className="h-2 mt-2" />
             </CardContent>
           </Card>
         </div>
@@ -1132,7 +1147,7 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
           <CardContent className="space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-sm text-muted-foreground">Total Records</span>
-              <span className="font-bold">{emissionData.length}</span>
+              <span className="font-bold">{baseData.length}</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm text-muted-foreground">Home Devices</span>

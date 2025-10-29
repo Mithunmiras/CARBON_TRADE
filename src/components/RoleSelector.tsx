@@ -1,3 +1,4 @@
+import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -13,7 +14,7 @@ const RoleSelector = ({ onRoleSelect }: RoleSelectorProps) => {
       id: "domestic" as const,
       title: "Domestic User",
       description: "Track household energy consumption, view your carbon score, and get personalized eco-friendly recommendations.",
-      icon: Users,
+      icon: "/home-user-icon-vector-35744329.webp",
       badge: "Personal",
       color: "bg-accent text-accent-foreground",
       features: ["Energy Tracking", "Carbon Score", "Eco Tips", "Cost Savings"]
@@ -22,7 +23,7 @@ const RoleSelector = ({ onRoleSelect }: RoleSelectorProps) => {
       id: "company" as const,
       title: "Industry User",
       description: "Monitor industrial carbon emissions, track your carbon score, and optimize your facility's environmental performance.",
-      icon: Users,
+      icon: "/OIP.webp",
       badge: "Primary Users",
       color: "bg-primary text-primary-foreground",
       features: ["Carbon Data Upload", "Carbon Score", "Emissions Analytics", "Compliance Reports"]
@@ -31,7 +32,7 @@ const RoleSelector = ({ onRoleSelect }: RoleSelectorProps) => {
       id: "admin" as const,
       title: "Administrator",
       description: "Manage platform operations, user access, industry registrations, and ledger anchoring systems.",
-      icon: Settings,
+      icon: "/OIP (1).webp",
       badge: "Management",
       color: "bg-warning text-warning-foreground",
       features: ["User Management", "System Analytics", "Ledger Operations", "Platform Settings"]
@@ -68,7 +69,15 @@ const RoleSelector = ({ onRoleSelect }: RoleSelectorProps) => {
             >
               <CardHeader className="text-center pb-4">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-primary rounded-xl flex items-center justify-center mx-auto mb-4 shadow-glow group-hover:scale-110 transition-all duration-300 group-hover:shadow-2xl">
-                  <role.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary-foreground transition-transform group-hover:rotate-3" />
+                  {typeof role.icon === 'string' ? (
+                    <img 
+                      src={role.icon} 
+                      alt={`${role.title} icon`} 
+                      className="w-6 h-6 sm:w-8 sm:h-8 transition-transform group-hover:rotate-3 object-contain" 
+                    />
+                  ) : (
+                    React.createElement(role.icon as any, { className: "w-6 h-6 sm:w-8 sm:h-8 text-primary-foreground transition-transform group-hover:rotate-3" })
+                  )}
                 </div>
                 <Badge className={`${role.color} transition-all duration-300 group-hover:scale-105`} variant="default">
                   {role.badge}
