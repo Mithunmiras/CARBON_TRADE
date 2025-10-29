@@ -1,31 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { 
-  BarChart3, 
-  TrendingUp, 
-  TrendingDown, 
-  Leaf, 
-  Factory, 
-  Home, 
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  BarChart3,
+  TrendingUp,
+  TrendingDown,
+  Leaf,
+  Factory,
+  Home,
   AlertTriangle,
   CheckCircle,
   ArrowUpRight,
   ArrowDownRight,
-  Users,
   Database,
-  Shield
+  Shield,
+  Loader2
 } from "lucide-react";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell, Area, AreaChart } from "recharts";
-import { emissionData } from "@/data/emissionData";
-import { carbonCreditTransfers } from "@/data/carbonCreditTransfers";
+import { emissionService } from "@/services/emissionService";
+import { transferService } from "@/services/transferService";
+import { EmissionRecord, CarbonCreditTransfer } from "@/lib/supabase";
 
 interface DashboardContentProps {
   userRole: "company" | "auditor" | "admin" | "domestic";
@@ -33,45 +33,102 @@ interface DashboardContentProps {
 }
 
 export function DashboardContent({ userRole, currentView }: DashboardContentProps) {
-  // Process emission data for analytics
+  const [emissionData, setEmissionData] = useState<EmissionRecord[]>([]);
+  const [carbonCreditTransfers, setCarbonCreditTransfers] = useState<CarbonCreditTransfer[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const loadData = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const [emissions, transfers] = await Promise.all([
+        emissionService.getAllEmissions(),
+        transferService.getAllTransfers()
+      ]);
+      setEmissionData(emissions);
+      setCarbonCreditTransfers(transfers);
+    } catch (err) {
+      console.error('Error loading data:', err);
+      setError('Failed to load data. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="text-center">
+          <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto mb-4" />
+          <p className="text-muted-foreground">Loading dashboard data...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Card className="max-w-md">
+          <CardHeader>
+            <CardTitle className="text-destructive">Error</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted-foreground mb-4">{error}</p>
+            <Button onClick={loadData}>Retry</Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
   const homeEmissions = emissionData.filter(record => record.home_id === "home");
   const industryEmissions = emissionData.filter(record => record.home_id === "industry");
-  
-  const totalHomeEmissions = homeEmissions.reduce((sum, record) => sum + record.emission_kg, 0);
-  const totalIndustryEmissions = industryEmissions.reduce((sum, record) => sum + record.emission_kg, 0);
-  const totalCreditsTransferred = carbonCreditTransfers.reduce((sum, transfer) => sum + transfer.credit_kg, 0);
-  
-  const avgHomeEmission = totalHomeEmissions / homeEmissions.length;
-  const avgIndustryEmission = totalIndustryEmissions / industryEmissions.length;
 
-  // Create chart data for emissions by cluster
+  const totalHomeEmissions = homeEmissions.reduce((sum, record) => sum + Number(record.emission_kg), 0);
+  const totalIndustryEmissions = industryEmissions.reduce((sum, record) => sum + Number(record.emission_kg), 0);
+  const totalCreditsTransferred = carbonCreditTransfers.reduce((sum, transfer) => sum + Number(transfer.credit_kg), 0);
+
+  const avgHomeEmission = homeEmissions.length > 0 ? totalHomeEmissions / homeEmissions.length : 0;
+  const avgIndustryEmission = industryEmissions.length > 0 ? totalIndustryEmissions / industryEmissions.length : 0;
+
   const clusterData = [
     {
       cluster: "Urban Homes",
-      emissions: homeEmissions.filter(r => r.cluster === "urban").reduce((sum, r) => sum + r.emission_kg, 0),
+      emissions: homeEmissions.filter(r => r.cluster === "urban").reduce((sum, r) => sum + Number(r.emission_kg), 0),
       devices: homeEmissions.filter(r => r.cluster === "urban").length,
-      avgEmission: homeEmissions.filter(r => r.cluster === "urban").reduce((sum, r) => sum + r.emission_kg, 0) / homeEmissions.filter(r => r.cluster === "urban").length
+      avgEmission: homeEmissions.filter(r => r.cluster === "urban").length > 0
+        ? homeEmissions.filter(r => r.cluster === "urban").reduce((sum, r) => sum + Number(r.emission_kg), 0) / homeEmissions.filter(r => r.cluster === "urban").length
+        : 0
     },
     {
       cluster: "Urban Industry",
-      emissions: industryEmissions.filter(r => r.cluster === "urban").reduce((sum, r) => sum + r.emission_kg, 0),
+      emissions: industryEmissions.filter(r => r.cluster === "urban").reduce((sum, r) => sum + Number(r.emission_kg), 0),
       devices: industryEmissions.filter(r => r.cluster === "urban").length,
-      avgEmission: industryEmissions.filter(r => r.cluster === "urban").reduce((sum, r) => sum + r.emission_kg, 0) / industryEmissions.filter(r => r.cluster === "urban").length
+      avgEmission: industryEmissions.filter(r => r.cluster === "urban").length > 0
+        ? industryEmissions.filter(r => r.cluster === "urban").reduce((sum, r) => sum + Number(r.emission_kg), 0) / industryEmissions.filter(r => r.cluster === "urban").length
+        : 0
     },
     {
       cluster: "Industrial Complex",
-      emissions: industryEmissions.filter(r => r.cluster === "industry").reduce((sum, r) => sum + r.emission_kg, 0),
+      emissions: industryEmissions.filter(r => r.cluster === "industry").reduce((sum, r) => sum + Number(r.emission_kg), 0),
       devices: industryEmissions.filter(r => r.cluster === "industry").length,
-      avgEmission: industryEmissions.filter(r => r.cluster === "industry").reduce((sum, r) => sum + r.emission_kg, 0) / industryEmissions.filter(r => r.cluster === "industry").length
+      avgEmission: industryEmissions.filter(r => r.cluster === "industry").length > 0
+        ? industryEmissions.filter(r => r.cluster === "industry").reduce((sum, r) => sum + Number(r.emission_kg), 0) / industryEmissions.filter(r => r.cluster === "industry").length
+        : 0
     }
   ];
 
-  // Create transfer flow data
   const transfersByReceiver = carbonCreditTransfers.reduce((acc, transfer) => {
     if (!acc[transfer.received_by]) {
       acc[transfer.received_by] = 0;
     }
-    acc[transfer.received_by] += transfer.credit_kg;
+    acc[transfer.received_by] += Number(transfer.credit_kg);
     return acc;
   }, {} as Record<string, number>);
 
@@ -80,13 +137,12 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
     .slice(0, 10)
     .map(([device, credits]) => ({ device, credits }));
 
-  // Emission distribution data
   const emissionRanges = [
-    { range: "20-23 kg", count: emissionData.filter(r => r.emission_kg >= 20 && r.emission_kg < 23).length },
-    { range: "23-25 kg", count: emissionData.filter(r => r.emission_kg >= 23 && r.emission_kg < 25).length },
-    { range: "25-27 kg", count: emissionData.filter(r => r.emission_kg >= 25 && r.emission_kg < 27).length },
-    { range: "400-500 kg", count: emissionData.filter(r => r.emission_kg >= 400 && r.emission_kg < 500).length },
-    { range: "1800-2200 kg", count: emissionData.filter(r => r.emission_kg >= 1800 && r.emission_kg < 2200).length }
+    { range: "20-23 kg", count: emissionData.filter(r => Number(r.emission_kg) >= 20 && Number(r.emission_kg) < 23).length },
+    { range: "23-25 kg", count: emissionData.filter(r => Number(r.emission_kg) >= 23 && Number(r.emission_kg) < 25).length },
+    { range: "25-27 kg", count: emissionData.filter(r => Number(r.emission_kg) >= 25 && Number(r.emission_kg) < 27).length },
+    { range: "400-500 kg", count: emissionData.filter(r => Number(r.emission_kg) >= 400 && Number(r.emission_kg) < 500).length },
+    { range: "1800-2200 kg", count: emissionData.filter(r => Number(r.emission_kg) >= 1800 && Number(r.emission_kg) < 2200).length }
   ];
 
   const COLORS = ['#22c55e', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6'];
@@ -96,7 +152,6 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
     const [price, setPrice] = useState<string>("25.00");
     const [quantity, setQuantity] = useState<string>("100");
 
-    // Mock balances and order book
     const balances = { creditsKg: 1200, currencyUsd: 50000 };
     const bids = [
       { price: 25.2, qty: 400 },
@@ -129,7 +184,6 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-          {/* Order entry */}
           <Card className="xl:col-span-1">
             <CardHeader>
               <CardTitle>Place Order</CardTitle>
@@ -166,7 +220,6 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
             </CardContent>
           </Card>
 
-          {/* Order book */}
           <Card className="xl:col-span-1">
             <CardHeader>
               <CardTitle>Order Book</CardTitle>
@@ -216,7 +269,6 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
             </CardContent>
           </Card>
 
-          {/* Recent trades */}
           <Card className="xl:col-span-1">
             <CardHeader>
               <CardTitle>Recent Trades</CardTitle>
@@ -254,7 +306,7 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
         <Card>
           <CardHeader>
             <CardTitle>Market Summary</CardTitle>
-            <CardDescription>Today’s movement</CardDescription>
+            <CardDescription>Today's movement</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -290,7 +342,6 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
           </Badge>
         </div>
 
-        {/* Key Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <Card className="border-l-4 border-l-primary">
             <CardHeader className="pb-3">
@@ -356,7 +407,6 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
           </Card>
         </div>
 
-        {/* Charts Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <Card>
             <CardHeader>
@@ -420,7 +470,6 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
           </Card>
         </div>
 
-        {/* Transfer Analysis */}
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -519,7 +568,7 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
                         <div className="text-xs text-muted-foreground">avg per device</div>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center justify-between p-4 bg-muted/50 rounded-lg">
                       <div className="flex items-center gap-3">
                         <div className="w-3 h-3 bg-warning rounded-full"></div>
@@ -534,7 +583,7 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
                     <div className="pt-4 border-t">
                       <div className="text-sm text-muted-foreground">
                         Industry devices emit <span className="font-bold text-warning">
-                        {(avgIndustryEmission / avgHomeEmission).toFixed(1)}x</span> more than home devices
+                        {avgHomeEmission > 0 ? (avgIndustryEmission / avgHomeEmission).toFixed(1) : 0}x</span> more than home devices
                       </div>
                     </div>
                   </div>
@@ -585,7 +634,7 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">Avg Transfer</span>
-                    <span className="font-bold">{(totalCreditsTransferred / carbonCreditTransfers.length).toFixed(2)} kg</span>
+                    <span className="font-bold">{carbonCreditTransfers.length > 0 ? (totalCreditsTransferred / carbonCreditTransfers.length).toFixed(2) : 0} kg</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">Unique Recipients</span>
@@ -843,8 +892,8 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
   }
 
   if (currentView === "validation" && userRole === "auditor") {
-    const verifiedRecords = emissionData.filter(record => record.credits_signed > 0);
-    const unverifiedRecords = emissionData.filter(record => record.credits_signed === 0);
+    const verifiedRecords = emissionData.filter(record => Number(record.credits_signed) > 0);
+    const unverifiedRecords = emissionData.filter(record => Number(record.credits_signed) === 0);
 
     return (
       <div className="p-6 space-y-6">
@@ -866,7 +915,7 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
             <CardContent>
               <div className="text-3xl font-bold text-success">{verifiedRecords.length}</div>
               <p className="text-sm text-muted-foreground">
-                {((verifiedRecords.length / emissionData.length) * 100).toFixed(1)}% of total
+                {emissionData.length > 0 ? ((verifiedRecords.length / emissionData.length) * 100).toFixed(1) : 0}% of total
               </p>
             </CardContent>
           </Card>
@@ -881,7 +930,7 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
             <CardContent>
               <div className="text-3xl font-bold text-warning">{unverifiedRecords.length}</div>
               <p className="text-sm text-muted-foreground">
-                {((unverifiedRecords.length / emissionData.length) * 100).toFixed(1)}% of total
+                {emissionData.length > 0 ? ((unverifiedRecords.length / emissionData.length) * 100).toFixed(1) : 0}% of total
               </p>
             </CardContent>
           </Card>
@@ -895,9 +944,9 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold text-primary">
-                {((verifiedRecords.length / emissionData.length) * 100).toFixed(1)}%
+                {emissionData.length > 0 ? ((verifiedRecords.length / emissionData.length) * 100).toFixed(1) : 0}%
               </div>
-              <Progress value={(verifiedRecords.length / emissionData.length) * 100} className="h-2 mt-2" />
+              <Progress value={emissionData.length > 0 ? (verifiedRecords.length / emissionData.length) * 100 : 0} className="h-2 mt-2" />
             </CardContent>
           </Card>
         </div>
@@ -909,7 +958,7 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              {unverifiedRecords.slice(0, 10).map((record, index) => (
+              {unverifiedRecords.slice(0, 10).map((record) => (
                 <div key={record.device_id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 bg-muted rounded-full flex items-center justify-center">
@@ -923,7 +972,7 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="font-bold">{record.emission_kg.toFixed(2)} kg CO₂</div>
+                    <div className="font-bold">{Number(record.emission_kg).toFixed(2)} kg CO₂</div>
                     <Badge variant="outline" className="text-xs">
                       Pending
                     </Badge>
@@ -938,9 +987,9 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
   }
 
   if (currentView === "energy" && userRole === "domestic") {
-    const userHomeData = homeEmissions.slice(0, 10); // Simulate user's home devices
-    const userTotalEmissions = userHomeData.reduce((sum, record) => sum + record.emission_kg, 0);
-    const userAvgEmission = userTotalEmissions / userHomeData.length;
+    const userHomeData = homeEmissions.slice(0, 10);
+    const userTotalEmissions = userHomeData.reduce((sum, record) => sum + Number(record.emission_kg), 0);
+    const userAvgEmission = userHomeData.length > 0 ? userTotalEmissions / userHomeData.length : 0;
 
     return (
       <div className="p-6 space-y-6">
@@ -1053,14 +1102,14 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
                         <TrendingUp className="h-4 w-4 text-warning" />
                       )}
                       <span className={`text-sm font-medium ${userAvgEmission < avgHomeEmission ? 'text-success' : 'text-warning'}`}>
-                        {Math.abs(((userAvgEmission - avgHomeEmission) / avgHomeEmission) * 100).toFixed(1)}%
+                        {avgHomeEmission > 0 ? Math.abs(((userAvgEmission - avgHomeEmission) / avgHomeEmission) * 100).toFixed(1) : 0}%
                       </span>
                     </div>
                   </div>
 
-                  <Progress 
-                    value={userAvgEmission < avgHomeEmission ? 75 : 45} 
-                    className="h-2" 
+                  <Progress
+                    value={userAvgEmission < avgHomeEmission ? 75 : 45}
+                    className="h-2"
                   />
 
                   <div className="text-xs text-muted-foreground">
@@ -1079,7 +1128,7 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              {userHomeData.map((device, index) => (
+              {userHomeData.map((device) => (
                 <div key={device.device_id} className="flex items-center justify-between p-4 border rounded-lg">
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
@@ -1091,12 +1140,12 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="font-bold">{device.emission_kg.toFixed(2)} kg CO₂</div>
-                    <Badge 
-                      variant="outline" 
-                      className={`text-xs ${device.emission_kg < avgHomeEmission ? 'border-success text-success' : 'border-warning text-warning'}`}
+                    <div className="font-bold">{Number(device.emission_kg).toFixed(2)} kg CO₂</div>
+                    <Badge
+                      variant="outline"
+                      className={`text-xs ${Number(device.emission_kg) < avgHomeEmission ? 'border-success text-success' : 'border-warning text-warning'}`}
                     >
-                      {device.emission_kg < avgHomeEmission ? 'Efficient' : 'Above Avg'}
+                      {Number(device.emission_kg) < avgHomeEmission ? 'Efficient' : 'Above Avg'}
                     </Badge>
                   </div>
                 </div>
@@ -1108,7 +1157,6 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
     );
   }
 
-  // Default overview for other roles and views
   return (
     <div className="p-6 space-y-6">
       <div className="flex items-center justify-between">
