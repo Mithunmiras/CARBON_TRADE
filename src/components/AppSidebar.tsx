@@ -36,6 +36,7 @@ export function AppSidebar({ userRole, currentView, onViewChange }: AppSidebarPr
 
   const companyMenuItems = [
     { id: "overview", title: "Overview", icon: Home },
+    { id: "trading", title: "Trading Platform", icon: TrendingUp },
     { id: "upload", title: "Data Upload", icon: Upload },
     { id: "analytics", title: "Analytics", icon: BarChart3 },
     { id: "reports", title: "Reports", icon: FileText },

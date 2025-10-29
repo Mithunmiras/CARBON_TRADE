@@ -1,7 +1,12 @@
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { 
   BarChart3, 
   TrendingUp, 
@@ -85,6 +90,192 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
   ];
 
   const COLORS = ['#22c55e', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6'];
+
+  if (currentView === "trading" && userRole === "company") {
+    const [side, setSide] = useState<"buy" | "sell">("buy");
+    const [price, setPrice] = useState<string>("25.00");
+    const [quantity, setQuantity] = useState<string>("100");
+
+    // Mock balances and order book
+    const balances = { creditsKg: 1200, currencyUsd: 50000 };
+    const bids = [
+      { price: 25.2, qty: 400 },
+      { price: 25.0, qty: 600 },
+      { price: 24.8, qty: 800 }
+    ];
+    const asks = [
+      { price: 25.4, qty: 350 },
+      { price: 25.6, qty: 700 },
+      { price: 25.9, qty: 900 }
+    ];
+    const recent = [
+      { time: "10:01", side: "buy", price: 25.3, qty: 120 },
+      { time: "09:58", side: "sell", price: 25.5, qty: 200 },
+      { time: "09:54", side: "buy", price: 25.1, qty: 150 }
+    ];
+
+    const estimatedTotal = Number(price || 0) * Number(quantity || 0);
+
+    return (
+      <div className="p-6 space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-foreground">Trading Platform</h1>
+            <p className="text-muted-foreground">Trade carbon credits (kg CO₂) on the marketplace</p>
+          </div>
+          <div className="flex items-center gap-3">
+            <Badge className="bg-primary/10 text-primary">Industry</Badge>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          {/* Order entry */}
+          <Card className="xl:col-span-1">
+            <CardHeader>
+              <CardTitle>Place Order</CardTitle>
+              <CardDescription>Create a limit order</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-2 gap-3">
+                <Button variant={side === "buy" ? "default" : "secondary"} onClick={() => setSide("buy")}>Buy</Button>
+                <Button variant={side === "sell" ? "destructive" : "secondary"} onClick={() => setSide("sell")}>Sell</Button>
+              </div>
+
+              <div className="space-y-2">
+                <div className="text-sm text-muted-foreground">Price (USD per kg)</div>
+                <Input value={price} onChange={(e) => setPrice(e.target.value)} placeholder="25.00" />
+              </div>
+
+              <div className="space-y-2">
+                <div className="text-sm text-muted-foreground">Quantity (kg CO₂)</div>
+                <Input value={quantity} onChange={(e) => setQuantity(e.target.value)} placeholder="100" />
+              </div>
+
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-muted-foreground">Estimated total</span>
+                <span className="font-medium">${estimatedTotal.toFixed(2)}</span>
+              </div>
+
+              <Button className={side === "sell" ? "bg-destructive text-destructive-foreground hover:bg-destructive/90" : ""}>
+                {side === "buy" ? "Place Buy Order" : "Place Sell Order"}
+              </Button>
+
+              <div className="pt-2 text-xs text-muted-foreground">
+                Balances: {balances.creditsKg} kg • ${balances.currencyUsd.toLocaleString()} USD
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Order book */}
+          <Card className="xl:col-span-1">
+            <CardHeader>
+              <CardTitle>Order Book</CardTitle>
+              <CardDescription>Top of book bids and asks</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <div className="text-sm font-medium mb-2">Bids</div>
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Price</TableHead>
+                        <TableHead className="text-right">Qty</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {bids.map((b, i) => (
+                        <TableRow key={`bid-${i}`} className="bg-success/5">
+                          <TableCell className="font-medium">${b.price.toFixed(2)}</TableCell>
+                          <TableCell className="text-right">{b.qty}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+                <div>
+                  <div className="text-sm font-medium mb-2">Asks</div>
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Price</TableHead>
+                        <TableHead className="text-right">Qty</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {asks.map((a, i) => (
+                        <TableRow key={`ask-${i}`} className="bg-warning/5">
+                          <TableCell className="font-medium">${a.price.toFixed(2)}</TableCell>
+                          <TableCell className="text-right">{a.qty}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Recent trades */}
+          <Card className="xl:col-span-1">
+            <CardHeader>
+              <CardTitle>Recent Trades</CardTitle>
+              <CardDescription>Most recent marketplace activity</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Time</TableHead>
+                    <TableHead>Side</TableHead>
+                    <TableHead className="text-right">Price</TableHead>
+                    <TableHead className="text-right">Qty</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {recent.map((r, i) => (
+                    <TableRow key={`t-${i}`}>
+                      <TableCell>{r.time}</TableCell>
+                      <TableCell>
+                        <Badge className={r.side === "buy" ? "bg-success/10 text-success" : "bg-destructive/10 text-destructive"}>
+                          {r.side.toUpperCase()}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-right">${r.price.toFixed(2)}</TableCell>
+                      <TableCell className="text-right">{r.qty}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+        </div>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Market Summary</CardTitle>
+            <CardDescription>Today’s movement</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-4 rounded-lg bg-primary/5">
+                <div className="text-sm text-muted-foreground">Mid Price</div>
+                <div className="text-2xl font-bold">$25.40</div>
+              </div>
+              <div className="p-4 rounded-lg bg-success/5">
+                <div className="text-sm text-muted-foreground">24h Change</div>
+                <div className="text-2xl font-bold text-success">+1.2%</div>
+              </div>
+              <div className="p-4 rounded-lg bg-warning/5">
+                <div className="text-sm text-muted-foreground">24h Volume</div>
+                <div className="text-2xl font-bold">18,500 kg</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   if (currentView === "overview") {
     return (
