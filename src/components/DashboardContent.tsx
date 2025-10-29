@@ -123,8 +123,11 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
             <h1 className="text-3xl font-bold text-foreground">Trading Platform</h1>
             <p className="text-muted-foreground">Trade carbon credits (kg CO₂) on the marketplace</p>
           </div>
-          <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3">
             <Badge className="bg-primary/10 text-primary">Industry</Badge>
+            <Button variant="secondary" asChild>
+              <a href="/tradingPlatform.html" target="_blank" rel="noopener noreferrer">Open Full Trading Desk</a>
+            </Button>
           </div>
         </div>
 
