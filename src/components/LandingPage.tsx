@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, TrendingUp, FileCheck, Users, ArrowRight, Factory, Leaf, BarChart3, Play } from "lucide-react";
+import LiquidChrome from "./LiquidChrome";
 
 interface LandingPageProps {
   onGetStarted: () => void;
@@ -42,16 +43,17 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Background Image with Overlay */}
+      {/* Background: Liquid chrome shader + overlays */}
       <div className="absolute inset-0">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('${backgroundImageUrl}')`
-          }}
+        <LiquidChrome
+          baseColor={[0.07, 0.12, 0.06]}
+          speed={0.8}
+          amplitude={0.45}
+          interactive={true}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-background/85" />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-secondary/5" />
+  {/* keep overlay gradients for readability (reduced opacity so shader shows through) */}
+  <div className="absolute inset-0 bg-gradient-to-br from-background/40 via-background/30 to-background/20 pointer-events-none" />
+  <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary/10 pointer-events-none" />
       </div>
       
       {/* Hero Section */}
