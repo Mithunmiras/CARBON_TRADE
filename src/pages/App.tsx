@@ -1,7 +1,10 @@
 import { useState } from "react";
 import LandingPage from "@/components/LandingPage";
-import RoleSelector from "@/components/RoleSelector";
+import RoleSelectPage from "@/pages/RoleSelect";
 import Dashboard from "@/components/Dashboard";
+import DomesticPage from "@/pages/Domestic";
+import IndustryPage from "@/pages/Industry";
+import AdministratorPage from "@/pages/Administrator";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
@@ -19,6 +22,9 @@ const App = () => {
   const handleRoleSelect = (role: UserRole) => {
     setUserRole(role);
     setCurrentView("dashboard");
+    try {
+      if (role) localStorage.setItem('selectedRole', role);
+    } catch (e) {}
   };
 
   const handleBackToLanding = () => {
@@ -31,38 +37,37 @@ const App = () => {
     setUserRole(null);
   };
 
+  // Restore selection from localStorage if present
+  useState(() => {
+    try {
+      const s = localStorage.getItem('selectedRole') as UserRole | null;
+      if (s) {
+        setUserRole(s);
+        setCurrentView('dashboard');
+      }
+    } catch (e) {}
+  });
+
   if (currentView === "dashboard" && userRole) {
-    return (
-      <div className="relative">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={handleBackToRoleSelect}
-          className="absolute top-4 left-4 z-50 bg-card/80 backdrop-blur-sm border border-border/50"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Change Role
-        </Button>
-        <Dashboard userRole={userRole} />
-      </div>
-    );
+    // Render role-specific page wrapper which includes its own Change Role button
+    if (userRole === "domestic") {
+      return <DomesticPage onBackToRoleSelect={handleBackToRoleSelect} />;
+    }
+
+    if (userRole === "company") {
+      return <IndustryPage onBackToRoleSelect={handleBackToRoleSelect} />;
+    }
+
+    if (userRole === "admin") {
+      return <AdministratorPage onBackToRoleSelect={handleBackToRoleSelect} />;
+    }
+
+    // Fallback: render generic dashboard
+    return <Dashboard userRole={userRole} />;
   }
 
   if (currentView === "roleSelect") {
-    return (
-      <div className="relative">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={handleBackToLanding}
-          className="absolute top-4 left-4 z-50 bg-card/80 backdrop-blur-sm border border-border/50"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Home
-        </Button>
-        <RoleSelector onRoleSelect={handleRoleSelect} />
-      </div>
-    );
+    return <RoleSelectPage onBack={handleBackToLanding} onRoleSelect={handleRoleSelect} />;
   }
 
   return <LandingPage onGetStarted={handleGetStarted} />;

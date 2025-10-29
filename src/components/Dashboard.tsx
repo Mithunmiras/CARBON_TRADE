@@ -8,10 +8,12 @@ import { Bell, Settings, User } from "lucide-react";
 
 interface DashboardProps {
   userRole: "company" | "auditor" | "admin" | "domestic";
+  /** optional initial view, e.g. 'trading' */
+  initialView?: string;
 }
 
-const Dashboard = ({ userRole }: DashboardProps) => {
-  const [currentView, setCurrentView] = useState("overview");
+const Dashboard = ({ userRole, initialView }: DashboardProps) => {
+  const [currentView, setCurrentView] = useState(initialView ?? "overview");
 
   const roleColors = {
     company: "bg-primary text-primary-foreground",

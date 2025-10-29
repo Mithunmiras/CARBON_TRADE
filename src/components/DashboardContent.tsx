@@ -25,7 +25,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell, Area, AreaChart } from "recharts";
 import { emissionService } from "@/services/emissionService";
 import { transferService } from "@/services/transferService";
-import { EmissionRecord, CarbonCreditTransfer } from "@/lib/supabase";
+import { EmissionRecord, CarbonCreditTransfer } from "@/lib/types";
 
 interface DashboardContentProps {
   userRole: "company" | "auditor" | "admin" | "domestic";
@@ -37,6 +37,10 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
   const [carbonCreditTransfers, setCarbonCreditTransfers] = useState<CarbonCreditTransfer[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  // Trading-related state (must be declared unconditionally to preserve hooks order)
+  const [side, setSide] = useState<"buy" | "sell">("buy");
+  const [price, setPrice] = useState<string>("25.00");
+  const [quantity, setQuantity] = useState<string>("100");
 
   useEffect(() => {
     loadData();
@@ -148,10 +152,6 @@ export function DashboardContent({ userRole, currentView }: DashboardContentProp
   const COLORS = ['#22c55e', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6'];
 
   if (currentView === "trading" && userRole === "company") {
-    const [side, setSide] = useState<"buy" | "sell">("buy");
-    const [price, setPrice] = useState<string>("25.00");
-    const [quantity, setQuantity] = useState<string>("100");
-
     const balances = { creditsKg: 1200, currencyUsd: 50000 };
     const bids = [
       { price: 25.2, qty: 400 },

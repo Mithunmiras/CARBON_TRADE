@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, TrendingUp, FileCheck, Users, ArrowRight, Factory, Leaf, BarChart3, Play } from "lucide-react";
@@ -8,6 +9,17 @@ interface LandingPageProps {
 }
 
 const LandingPage = ({ onGetStarted }: LandingPageProps) => {
+  const navigate = useNavigate();
+
+  const handleGetStartedClick = () => {
+    // Always navigate to the role selection page. We don't call the parent callback
+    // so the app relies on routing to show the role selector.
+    try {
+      navigate('/role-select');
+    } catch (e) {
+      // ignore if router not present
+    }
+  };
   const backgroundImageUrl = "https://images.pexels.com/photos/9800029/pexels-photo-9800029.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop";
 
   const features = [
@@ -83,7 +95,7 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
           
           <div className="flex justify-center items-center animate-fade-in delay-400">
             <div className="flex justify-center w-full">
-              <Button size="lg" className="shadow-xl hover:shadow-2xl transition-all duration-300 px-8 py-6 text-lg" onClick={onGetStarted}>
+              <Button size="lg" className="shadow-xl hover:shadow-2xl transition-all duration-300 px-8 py-6 text-lg" onClick={handleGetStartedClick}>
                 Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
@@ -160,7 +172,7 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
           <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
             Join industry leaders who trust our platform for accurate, verifiable carbon measurement and reporting.
           </p>
-          <Button size="lg" variant="secondary" className="shadow-xl hover:shadow-2xl transition-all duration-300" onClick={onGetStarted}>
+          <Button size="lg" variant="secondary" className="shadow-xl hover:shadow-2xl transition-all duration-300" onClick={handleGetStartedClick}>
             Get Started Today
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
