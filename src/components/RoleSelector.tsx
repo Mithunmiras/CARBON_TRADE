@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Users, Shield, Settings, ArrowRight } from "lucide-react";
 
 interface RoleSelectorProps {
-  onRoleSelect: (role: "company" | "auditor" | "admin" | "domestic") => void;
+  onRoleSelect: (role: "company" | "admin" | "domestic") => void;
 }
 
 const RoleSelector = ({ onRoleSelect }: RoleSelectorProps) => {
@@ -28,15 +28,6 @@ const RoleSelector = ({ onRoleSelect }: RoleSelectorProps) => {
       features: ["Carbon Data Upload", "Carbon Score", "Emissions Analytics", "Compliance Reports"]
     },
     {
-      id: "auditor" as const,
-      title: "Auditor",
-      description: "Review and verify carbon data, manage verified/unverified records, and generate comprehensive audit reports.",
-      icon: Shield,
-      badge: "Validation",
-      color: "bg-secondary text-secondary-foreground",
-      features: ["Data Verification", "Verified Records", "Not Verified Queue", "Audit Reports"]
-    },
-    {
       id: "admin" as const,
       title: "Administrator",
       description: "Manage platform operations, user access, industry registrations, and ledger anchoring systems.",
@@ -49,7 +40,7 @@ const RoleSelector = ({ onRoleSelect }: RoleSelectorProps) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-background flex items-center justify-center p-4 sm:p-6">
-      <div className="container max-w-7xl">
+      <div className="container max-w-6xl">
         <div className="text-center mb-8 sm:mb-12 animate-fade-in">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 animate-scale-in">
             Choose Your Role
@@ -59,13 +50,21 @@ const RoleSelector = ({ onRoleSelect }: RoleSelectorProps) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {roles.map((role, index) => (
-            <Card 
-              key={role.id} 
-              className="border-2 border-border hover:border-primary/40 transition-all duration-500 hover:shadow-elegant group cursor-pointer bg-gradient-card hover-scale animate-fade-in"
-              style={{ animationDelay: `${index * 100}ms` }}
-              onClick={() => onRoleSelect(role.id)}
+            <Card
+              key={role.id}
+              className="border-2 border-border hover:border-primary/40 transition-all duration-300 hover:shadow-elegant group cursor-pointer bg-card h-full flex flex-col"
+              style={{ animationDelay: `${index * 80}ms` }}
+              onClick={() => onRoleSelect(role.id as any)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onRoleSelect(role.id as any);
+                }
+              }}
             >
               <CardHeader className="text-center pb-4">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-primary rounded-xl flex items-center justify-center mx-auto mb-4 shadow-glow group-hover:scale-110 transition-all duration-300 group-hover:shadow-2xl">
@@ -78,35 +77,40 @@ const RoleSelector = ({ onRoleSelect }: RoleSelectorProps) => {
                   {role.title}
                 </CardTitle>
               </CardHeader>
-              
-              <CardContent className="space-y-4">
-                <CardDescription className="text-center text-muted-foreground leading-relaxed text-sm sm:text-base transition-colors group-hover:text-foreground/80">
-                  {role.description}
-                </CardDescription>
-                
-                <div className="space-y-2">
-                  <p className="text-sm font-medium text-foreground">Key Features:</p>
-                  <ul className="space-y-1">
-                    {role.features.map((feature, featureIndex) => (
-                      <li 
-                        key={featureIndex} 
-                        className="text-sm text-muted-foreground flex items-center transition-all duration-300 group-hover:text-foreground/90 animate-fade-in"
-                        style={{ animationDelay: `${(index * 100) + (featureIndex * 50)}ms` }}
-                      >
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 transition-all group-hover:scale-125 group-hover:bg-primary/80"></div>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+
+              <CardContent className="space-y-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <CardDescription className="text-center text-muted-foreground leading-relaxed text-sm sm:text-base transition-colors group-hover:text-foreground/80">
+                    {role.description}
+                  </CardDescription>
+
+                  <div className="space-y-2 mt-4">
+                    <p className="text-sm font-medium text-foreground">Key Features:</p>
+                    <ul className="space-y-1">
+                      {role.features.map((feature, featureIndex) => (
+                        <li
+                          key={featureIndex}
+                          className="text-sm text-muted-foreground flex items-center transition-all duration-300 group-hover:text-foreground/90 animate-fade-in"
+                          style={{ animationDelay: `${(index * 80) + (featureIndex * 40)}ms` }}
+                        >
+                          <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2 transition-all group-hover:scale-125 group-hover:bg-primary/80"></div>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                
-                <Button 
-                  className="w-full mt-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 hover:scale-105"
-                  variant="outline"
-                >
-                  Access Dashboard
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </Button>
+
+                <div className="w-full">
+                  <Button
+                    className="w-full mt-4"
+                    onClick={(e) => { e.stopPropagation(); onRoleSelect(role.id as any); }}
+                    aria-label={`Access ${role.title} dashboard`}
+                  >
+                    Access Dashboard
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-200" />
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))}
